@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Fin du portfolio">
-      <change afterPath="$PROJECT_DIR$/CSS/style_contact.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/style_about.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/style_about.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/About.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/About.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HTML/Contacts.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/Contacts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/Projets.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/Projets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,22 +52,25 @@
     &quot;assignee&quot;: &quot;KoThek64&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/KoThek64/New_Portfolio.git",
-    "accountId": "42357552-7b7c-4a17-ba90-d0cd96d8e476"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/KoThek64/New_Portfolio.git&quot;,
+    &quot;accountId&quot;: &quot;42357552-7b7c-4a17-ba90-d0cd96d8e476&quot;
   },
-  "recentNewPullRequestHead": {
-    "server": {
-      "useHttp": false,
-      "host": "github.com",
-      "port": null,
-      "suffix": null
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
     },
-    "owner": "KoThek64",
-    "repository": "New_Portfolio"
+    &quot;owner&quot;: &quot;KoThek64&quot;,
+    &quot;repository&quot;: &quot;New_Portfolio&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -80,7 +86,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#4 on dev",
+    "git-widget-placeholder": "dev",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -115,6 +121,7 @@
       <workItem from="1760529115802" duration="8003000" />
       <workItem from="1760538941879" duration="3500000" />
       <workItem from="1760546582802" duration="305000" />
+      <workItem from="1760563001762" duration="311000" />
     </task>
     <task id="LOCAL-00001" summary="Début">
       <option name="closed" value="true" />
@@ -156,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760551855832</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fin du portfolio">
+      <option name="closed" value="true" />
+      <created>1760555644450</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760555644450</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
