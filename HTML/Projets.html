@@ -2,9 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="../CSS/style_projets.css">
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700"
+          onload="this.rel='stylesheet'" rel="preload"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 </head>
 <body>
+<header>
+    <div class="Header-left">
+        <a href="../index.html">
+            <img src="../images/logo.png" alt="Logo de Mattys Lachaise" class="logo"/>
+        </a>
+        <a class="texte-cliquable" href="../index.html">
+            <span class="titre-site">Portfolio</span>
+        </a>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="Projets.html">Projets</a></li>
+            <li><a href="About.html">À propos</a></li>
+            <li><a href="Contacts.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="projects-container">
+        <h1 class="projects-title">Mes Projets</h1>
+        <p class="projects-description">Une présentation de mon travail en développement logiciel, avec des projets qui
+            mettent en valeur mes compétences et ma passion pour le code.</p>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="../images/Suivi_depense.png" alt="Projet 1">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-name">Application de suivi des dépenses</h3>
+                    <p class="project-desc">Une application pour gérer ses dépenses efficacement.</p>
+                    <div class="project-tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">JavaFX</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/KoThek64/Suivi_Des_Depenses" class="project-link">Voir sur
+                            GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="../images/Cuisine_Delight.png" alt="Projet 2">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-name">Site web de faux restaurant</h3>
+                    <p class="project-desc">Un site web pour un faux restaurant, nommé ici "Cuisine-Delight".</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/KoThek64/Site_Resto_Fictif" class="project-link">Voir sur GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="../images/quadtree.png" alt="Projet 3">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-name">Jeu en Quadtree</h3>
+                    <p class="project-desc">Projet universitaire (SAE): Nous avons codé par groupe de 2 un jeu en Golang
+                        avec des Quadtree.</p>
+                    <div class="project-tags">
+                        <span class="tag">Go</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="../images/QuiEstCe.png" alt="Projet 4">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-name">Jeu Qui-Est-Ce ?</h3>
+                    <p class="project-desc">Projet universitaire (SAE): par groupe de 4 nous devions recréer le fameux
+                        jeu qui-est-ce ? malheureusement jamais terminé.</p>
+                    <div class="project-tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">JavaFX</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 Mattys Lachaise. Tous droits réservés.</p>
+</footer>
 
 </body>
 </html>

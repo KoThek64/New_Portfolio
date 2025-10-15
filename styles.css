@@ -102,9 +102,7 @@ main {
 footer {
     padding: 30px 20px;
     text-align: center;
-    background: rgba(10, 22, 40, 0.5);
     margin-top: auto;
-    border-top: 1px solid rgba(42, 63, 95, 0.3);
 }
 
 footer p {
