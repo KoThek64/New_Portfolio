@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #E0E6F0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.main-card {
+    text-align: center;
+    padding: 60px 40px;
+    width: 100%;
+    background: rgba(15, 22, 41, 0.4);
+    border: 1px solid rgba(0, 163, 255, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 163, 255, 0.15),
+    0 0 80px rgba(0, 163, 255, 0.1),
+    inset 0 0 60px rgba(0, 163, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.main-card h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.main-card h1::before {
+    content: '// ';
+    color: #00A3FF;
+}
+
+.main-card p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #C5D0E0;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-accueil {
+    background: transparent;
+    color: #E0E6F0;
+    border: 2px solid #2A3F5F;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-accueil:hover {
+    background: #00A3FF;
+    border-color: #00A3FF;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 163, 255, 0.3);
+}
+
+footer {
+    padding: 30px 20px;
+    text-align: center;
+    background: rgba(10, 22, 40, 0.5);
+    margin-top: auto;
+    border-top: 1px solid rgba(42, 63, 95, 0.3);
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: #7A8396;
+    font-weight: 400;
+}
