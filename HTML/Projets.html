@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Mes Projets</title>
     <link rel="stylesheet" href="../CSS/style_projets.css">
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
     <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700"
@@ -19,7 +20,12 @@
             <span class="titre-site">Portfolio</span>
         </a>
     </div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav id="nav-menu">
         <ul class="nav-links">
             <li><a href="../index.html">Accueil</a></li>
             <li><a href="Projets.html">Projets</a></li>
@@ -28,13 +34,11 @@
         </ul>
     </nav>
 </header>
-
 <main>
     <div class="projects-container">
         <h1 class="projects-title">Mes Projets</h1>
         <p class="projects-description">Une présentation de mon travail en développement logiciel, avec des projets qui
             mettent en valeur mes compétences et ma passion pour le code.</p>
-
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image">
@@ -53,7 +57,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="project-card">
                 <div class="project-image">
                     <img src="../images/Cuisine_Delight.png" alt="Projet 2">
@@ -71,7 +74,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="project-card">
                 <div class="project-image">
                     <img src="../images/quadtree.png" alt="Projet 3">
@@ -85,7 +87,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="project-card">
                 <div class="project-image">
                     <img src="../images/QuiEstCe.png" alt="Projet 4">
@@ -100,14 +101,39 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </main>
-
 <footer>
     <p>© 2024 Mattys Lachaise. Tous droits réservés.</p>
 </footer>
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
 
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu quand on clique sur un lien
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Fermer le menu quand on clique en dehors
+    document.addEventListener('click', (event) => {
+        const isClickInsideNav = navMenu.contains(event.target);
+        const isClickOnHamburger = hamburger.contains(event.target);
+
+        if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+</script>
 </body>
 </html>
