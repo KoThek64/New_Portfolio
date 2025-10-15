@@ -1,0 +1,55 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"dd621313-96af-4bf7-b7fa-240294cd5ed2\" name=\"Changes\" comment=\"Finalisation de index.html\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"HTML File\" />\n        <option value=\"CSS File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <excluded-from-favorite>\n      <branch-storage>\n        <map>\n          <entry type=\"LOCAL\">\n            <value>\n              <list>\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"master\" />\n              </list>\n            </value>\n          </entry>\n        </map>\n      </branch-storage>\n    </excluded-from-favorite>\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;KoThek64&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/KoThek64/New_Portfolio.git&quot;,\n    &quot;accountId&quot;: &quot;42357552-7b7c-4a17-ba90-d0cd96d8e476&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 0\n}</component>\n  <component name=\"ProjectId\" id=\"345zKtrES81NNLHAzmo350FvoBg\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"dev\",\n    \"list.type.of.created.stylesheet\": \"CSS\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"configurable.group.editor\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"dd621313-96af-4bf7-b7fa-240294cd5ed2\" name=\"Changes\" comment=\"\" />\n      <created>1760518159775</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1760518159775</updated>\n      <workItem from=\"1760518160822\" duration=\"93000\" />\n      <workItem from=\"1760518300230\" duration=\"15000\" />\n      <workItem from=\"1760529115802\" duration=\"8003000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Début\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1760529405225</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1760529405225</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Début de page d'accueil index.html et styles.css\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1760535314449</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1760535314449</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Finalisation de index.html\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1760537435971</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1760537435971</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Début\" />\n    <MESSAGE value=\"Début de page d'accueil index.html et styles.css\" />\n    <MESSAGE value=\"Finalisation de index.html\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Finalisation de index.html\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c1a3101d4f350ee2ee60751c8af1157f9e86dce2)
++++ b/.idea/workspace.xml	(date 1760537833368)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Finalisation de index.html" />
++    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Début de Projets.html" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -92,7 +92,7 @@
+       <updated>1760518159775</updated>
+       <workItem from="1760518160822" duration="93000" />
+       <workItem from="1760518300230" duration="15000" />
+-      <workItem from="1760529115802" duration="8003000" />
++      <workItem from="1760529115802" duration="8307000" />
+     </task>
+     <task id="LOCAL-00001" summary="Début">
+       <option name="closed" value="true" />
+@@ -118,7 +118,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1760537435971</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="Début de Projets.html">
++      <option name="closed" value="true" />
++      <created>1760537833061</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1760537833061</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -128,6 +136,7 @@
+     <MESSAGE value="Début" />
+     <MESSAGE value="Début de page d'accueil index.html et styles.css" />
+     <MESSAGE value="Finalisation de index.html" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Finalisation de index.html" />
++    <MESSAGE value="Début de Projets.html" />
++    <option name="LAST_COMMIT_MESSAGE" value="Début de Projets.html" />
+   </component>
+ </project>
+\ No newline at end of file
