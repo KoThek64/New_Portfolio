@@ -7,6 +7,8 @@
 html {
     background-color: #0A1628;
     overscroll-behavior: none;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -19,6 +21,8 @@ body {
     color: #E0E6F0;
     background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%) no-repeat fixed;
     background-size: cover;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 main {
