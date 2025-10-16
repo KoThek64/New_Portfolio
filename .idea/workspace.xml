@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="JS">
+    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Barre latérale (encore)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/style_about.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/style_about.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +82,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#10 on dev",
-    "last_opened_file_path": "/home/matts/Documents/SSD/Programmes/Web/1 - Restaurants/Site_Resto_Fictif",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "/home/matts/Documents/SSD/Programmes/Web/New_Portfolio",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -130,6 +131,8 @@
       <workItem from="1760602301746" duration="144000" />
       <workItem from="1760602559941" duration="161000" />
       <workItem from="1760602737713" duration="9000" />
+      <workItem from="1760602924505" duration="60000" />
+      <workItem from="1760603417163" duration="437000" />
     </task>
     <task id="LOCAL-00001" summary="Début">
       <option name="closed" value="true" />
@@ -227,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760602616960</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Barre latérale (encore)">
+      <option name="closed" value="true" />
+      <created>1760602971446</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1760602971446</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +257,7 @@
     <MESSAGE value="." />
     <MESSAGE value="Barre latérale" />
     <MESSAGE value="JS" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS" />
+    <MESSAGE value="Barre latérale (encore)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Barre latérale (encore)" />
   </component>
 </project>
