@@ -22,6 +22,11 @@ body {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
 /* Header styles - identique aux autres pages */
 header {
     width: 100%;

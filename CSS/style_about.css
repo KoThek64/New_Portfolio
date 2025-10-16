@@ -24,6 +24,11 @@ body {
     -ms-overflow-style: none;
 }
 
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 /* Header styles - identique à style_projets.css */
 header {
     width: 100%;
