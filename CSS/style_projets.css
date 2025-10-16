@@ -4,13 +4,21 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: #0A1628;
+    overscroll-behavior: none;
+}
+
 body {
-    background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%);
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     font-family: 'Space Grotesk', sans-serif;
     color: #E0E6F0;
+    background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%) no-repeat fixed;
+    background-size: cover;
 }
 
 /* Header styles */
