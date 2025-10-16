@@ -536,37 +536,47 @@ main {
     .hamburger span {
         width: 24px;
     }
+
     .titre-site {
         font-size: 1.15rem;
     }
+
     .logo {
         height: 32px;
         width: 32px;
     }
+
     main {
         padding: 25px 15px;
     }
+
     .contact-title {
         font-size: 1.8rem;
     }
+
     .contact-description {
         font-size: 0.95rem;
     }
+
     .contact-form-section {
         padding: 20px 18px;
     }
+
     .code-section {
         padding: 18px;
     }
+
     .code-content {
         padding: 15px;
     }
-.code-content pre {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-    line-height: 1.8;
-    white-space: pre;
-    overflow-x: auto;
+
+    .code-content pre {
+        margin: 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        line-height: 1.8;
+        white-space: pre;
+        overflow-x: auto;
+    }
 }
 /* Empêcher absolument tout scroll horizontal */

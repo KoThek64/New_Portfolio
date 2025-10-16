@@ -414,35 +414,46 @@ footer p {
     .hamburger span {
         width: 24px;
     }
+
     .titre-site {
         font-size: 1.15rem;
     }
+
     .logo {
         height: 32px;
         width: 32px;
     }
+
     main {
         padding: 25px 15px;
     }
+
     .projects-title {
         font-size: 1.8rem;
     }
+
     .projects-description {
         font-size: 0.95rem;
     }
+
     .project-image {
         height: 180px;
     }
+
     .project-content {
         padding: 18px 15px;
     }
+
     .project-name {
         font-size: 1.1rem;
     }
+
     .project-desc {
         font-size: 0.9rem;
     }
+
     footer {
         display: none;
     }
+}
 /* Empêcher absolument tout scroll horizontal */
