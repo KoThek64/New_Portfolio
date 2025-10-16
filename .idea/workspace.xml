@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Ajout de mon CV + Changement des couleurs des bordures sur telephones">
+    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Ajout du .gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,25 +74,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/matts/Documents/SSD/Programmes/Web/New_Portfolio/documents&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "/home/matts/Documents/SSD/Programmes/Web/New_Portfolio",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/documents" />
@@ -123,7 +123,10 @@
       <workItem from="1760563001762" duration="425000" />
       <workItem from="1760563458766" duration="12000" />
       <workItem from="1760563632839" duration="123000" />
-      <workItem from="1760596185985" duration="1415000" />
+      <workItem from="1760596185985" duration="1627000" />
+      <workItem from="1760597864290" duration="14000" />
+      <workItem from="1760597951409" duration="8000" />
+      <workItem from="1760601303512" duration="491000" />
     </task>
     <task id="LOCAL-00001" summary="Début">
       <option name="closed" value="true" />
@@ -181,7 +184,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760563413307</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Finalisation des couleurs des bords du site sur téléphone">
+      <option name="closed" value="true" />
+      <created>1760597804017</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1760597804017</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Ajout du .gitignore">
+      <option name="closed" value="true" />
+      <created>1760601427346</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1760601427346</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +214,8 @@
     <MESSAGE value="About.html et style_about.css" />
     <MESSAGE value="Fin du portfolio" />
     <MESSAGE value="Ajout de mon CV + Changement des couleurs des bordures sur telephones" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de mon CV + Changement des couleurs des bordures sur telephones" />
+    <MESSAGE value="Finalisation des couleurs des bords du site sur téléphone" />
+    <MESSAGE value="Ajout du .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout du .gitignore" />
   </component>
 </project>
