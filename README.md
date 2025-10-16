@@ -1,6 +1,7 @@
 # 🌐 Portfolio de Mattys Lachaise
 
 Bienvenue sur mon portfolio personnel ! Je suis actuellement étudiant en BUT Informatique à l'IUT de Nantes, et ce site présente mes projets, mes compétences et mon parcours.
+#### ---> [Voir le portfolio](https://portfolio-mattys.netlify.app) <---
 
 ## 📋 À propos
 
