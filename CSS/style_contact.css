@@ -5,6 +5,8 @@
 }
 html {
     background-color: #0A1628;
+    overflow-x: hidden;
+    width: 100%;
     overscroll-behavior: none;
 }
 
@@ -18,7 +20,9 @@ body {
     color: #E0E6F0;
     background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%) no-repeat fixed;
     background-size: cover;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -387,20 +391,23 @@ main {
     nav {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 70%;
-        max-width: 300px;
+        right: 0;
+        transform: translateX(100%);
+        width: 60%;
+        max-width: 250px;
         height: 100vh;
         background: rgba(10, 22, 40, 0.98);
         backdrop-filter: blur(20px);
-        transition: right 0.4s ease;
+        transition: transform 0.4s ease;
         z-index: 1001;
         padding-top: 80px;
         border-left: 1px solid rgba(0, 163, 255, 0.3);
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        box-shadow: none;
     }
     nav.active {
+        transform: translateX(0);
         right: 0;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
     }
     nav .nav-links {
         flex-direction: column;
@@ -435,7 +442,7 @@ main {
         width: 36px;
     }
     nav {
-        width: 80%;
+        width: 70%;
         max-width: 100%;
     }
     .nav-links a {
@@ -562,4 +569,4 @@ main {
     white-space: pre;
     overflow-x: auto;
 }
-}
+/* Empêcher absolument tout scroll horizontal */
