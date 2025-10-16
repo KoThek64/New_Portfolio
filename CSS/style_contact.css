@@ -18,6 +18,9 @@ body {
     color: #E0E6F0;
     background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%) no-repeat fixed;
     background-size: cover;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 /* Header styles - identique aux autres pages */
 header {
