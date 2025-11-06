@@ -265,10 +265,6 @@ main {
     display: block;
     color: #E0E6F0;
 }
-/* Animation de typing */
-.typing-animation {
-    animation: fadeIn 0.5s ease-in;
-}
 @keyframes fadeIn {
     from {
         opacity: 0;
