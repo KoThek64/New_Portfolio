@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Modif readme + ajout de LICENCE" />
+    <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Suppression de l'animation du code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +50,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/KoThek64/New_Portfolio.git&quot;,
-    &quot;accountId&quot;: &quot;42357552-7b7c-4a17-ba90-d0cd96d8e476&quot;
+    &quot;accountId&quot;: &quot;f6e19c11-b66d-45f6-8e80-686c5139fb78&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -79,8 +81,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#16 on dev",
-    "last_opened_file_path": "/home/matts/Documents/SSD/Programmes/Web/New_Portfolio",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "dev",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/mattys/Documents/Programmes/Web/New_Portfolio",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -88,6 +93,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,7 +108,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.26830.93" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.27397.92" />
       </set>
     </attachedChunks>
   </component>
@@ -133,6 +139,8 @@
       <workItem from="1760605719441" duration="149000" />
       <workItem from="1760605925527" duration="1140000" />
       <workItem from="1760607543186" duration="728000" />
+      <workItem from="1762419065076" duration="134000" />
+      <workItem from="1762766850211" duration="82000" />
     </task>
     <task id="LOCAL-00001" summary="Début">
       <option name="closed" value="true" />
@@ -262,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760608070022</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Suppression de l'animation du code">
+      <option name="closed" value="true" />
+      <created>1762419164618</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1762419164618</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +301,7 @@
     <MESSAGE value="Zoom dézoome désactivé" />
     <MESSAGE value="Correction du menu hamburger" />
     <MESSAGE value="Modif readme + ajout de LICENCE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modif readme + ajout de LICENCE" />
+    <MESSAGE value="Suppression de l'animation du code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Suppression de l'animation du code" />
   </component>
 </project>
