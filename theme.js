@@ -1,18 +1,18 @@
+const themeStorageKey = 'theme-preference';
+
+const applyTheme = (theme) => {
+    if (theme === 'system') {
+        document.documentElement.removeAttribute('data-theme');
+    } else {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+};
+
+// Apply theme immediately to avoid FOUC
+const savedTheme = localStorage.getItem(themeStorageKey) || 'system';
+applyTheme(savedTheme);
+
 document.addEventListener('DOMContentLoaded', () => {
-    const themeStorageKey = 'theme-preference';
-    const savedTheme = localStorage.getItem(themeStorageKey) || 'system';
-
-    const applyTheme = (theme) => {
-        if (theme === 'system') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', theme);
-        }
-    };
-
-    // Apply initially
-    applyTheme(savedTheme);
-
     // Create UI
     const themeContainer = document.createElement('div');
     themeContainer.className = 'theme-switcher';

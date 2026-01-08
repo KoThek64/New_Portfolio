@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="../images/6.png">
     <title>Portfolio - Mes Projets</title>
     <link rel="stylesheet" href="../CSS/theme.css">
+    <link rel="stylesheet" href="../CSS/common.css">
     <link rel="stylesheet" href="../CSS/style_projets.css">
     <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
     <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700"
@@ -110,34 +111,7 @@
 <footer>
     <p>© 2024 Mattys Lachaise. Tous droits réservés.</p>
 </footer>
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Fermer le menu quand on clique sur un lien
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-
-    // Fermer le menu quand on clique en dehors
-    document.addEventListener('click', (event) => {
-        const isClickInsideNav = navMenu.contains(event.target);
-        const isClickOnHamburger = hamburger.contains(event.target);
-
-        if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
-    });
-</script>
+<script src="../main.js"></script>
 <script src="../theme.js"></script>
 </body>
 </html>
