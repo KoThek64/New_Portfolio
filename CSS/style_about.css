@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html {
-    background-color: #0A1628;
+    background-color: #000000;
     overflow-x: hidden;
     width: 100%;
     overscroll-behavior: none;
@@ -16,31 +16,46 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Space Grotesk', sans-serif;
-    color: #E0E6F0;
-    background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%) no-repeat fixed;
-    background-size: cover;
+    color: #FFFFFF;
+    background-color: #000000;
+    background-image: radial-gradient(circle at 50% 0%, #0e1e35 0%, #000000 70%);
+    background-attachment: fixed;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
 html::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
 /* Header styles - identique à style_projets.css */
 header {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    background: rgba(10, 22, 40, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    z-index: 100;
+    padding: 15px 30px;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    z-index: -1;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 .Header-left {
     display: flex;
@@ -61,7 +76,7 @@ header {
 .titre-site {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #E0E6F0;
+    color: #FFFFFF;
     letter-spacing: 0.5px;
 }
 .texte-cliquable:hover .titre-site {
@@ -83,7 +98,7 @@ header {
 .hamburger span {
     width: 28px;
     height: 3px;
-    background: #E0E6F0;
+    background: #FFFFFF;
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -103,14 +118,14 @@ nav .nav-links {
     align-items: center;
 }
 .nav-links a {
-    color: #A0A8B8;
+    color: #CCCCCC;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
     transition: color 0.3s ease;
 }
 .nav-links a:hover {
-    color: #E0E6F0;
+    color: #FFFFFF;
 }
 /* Main content */
 main {
@@ -152,7 +167,7 @@ main {
 }
 .profile-title {
     font-size: 1.3rem;
-    color: #A0A8B8;
+    color: #CCCCCC;
     margin-bottom: 8px;
 }
 .profile-location {
@@ -172,7 +187,7 @@ main {
     background: linear-gradient(135deg, rgba(30, 144, 255, 0.15) 0%, rgba(0, 163, 255, 0.15) 100%);
     border: 2px solid rgba(30, 144, 255, 0.5);
     border-radius: 12px;
-    color: #E0E6F0;
+    color: #FFFFFF;
     text-decoration: none;
     font-size: 1.05rem;
     font-weight: 600;
@@ -198,7 +213,7 @@ main {
 }
 /* Sections d'information */
 .info-section {
-    background: rgba(20, 35, 55, 0.6);
+    background: rgba(10, 10, 10, 0.6);
     border-radius: 16px;
     padding: 30px;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -212,7 +227,7 @@ main {
 .section-title {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #E0E6F0;
+    color: #FFFFFF;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
@@ -253,12 +268,12 @@ main {
 .timeline-content h3 {
     font-size: 1.15rem;
     font-weight: 600;
-    color: #E0E6F0;
+    color: #FFFFFF;
     margin-bottom: 5px;
 }
 .timeline-institution {
     font-size: 0.95rem;
-    color: #A0A8B8;
+    color: #CCCCCC;
     margin-bottom: 3px;
 }
 .timeline-date {
@@ -299,7 +314,7 @@ main {
 .skill-name {
     font-size: 1rem;
     font-weight: 500;
-    color: #E0E6F0;
+    color: #FFFFFF;
 }
 /* Grille de passions */
 .passions-grid {
@@ -331,7 +346,7 @@ main {
 .passion-name {
     font-size: 0.95rem;
     font-weight: 500;
-    color: #E0E6F0;
+    color: #FFFFFF;
 }
 /* Footer */
 footer {
@@ -366,27 +381,30 @@ footer p {
         top: 0;
         right: 0;
         transform: translateX(100%);
-        width: 60%;
-        max-width: 250px;
+        width: 100%;
         height: 100vh;
-        background: rgba(10, 22, 40, 0.98);
+        background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(20px);
-        transition: transform 0.4s ease;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1001;
-        padding-top: 80px;
-        border-left: 1px solid rgba(0, 163, 255, 0.3);
+        padding-top: 100px;
+        border-left: none;
         box-shadow: none;
     }
     nav.active {
         transform: translateX(0);
         right: 0;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        box-shadow: none;
     }
     nav .nav-links {
         flex-direction: column;
-        gap: 0;
-        align-items: stretch;
-        padding: 0;
+        gap: 30px;
+        align-items: center;
+        width: 100%;
+    }
+    nav .nav-links li {
+        width: 100%;
+        text-align: center;
     }
     .nav-links li {
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -443,7 +461,7 @@ footer p {
         width: 36px;
     }
     nav {
-        width: 70%;
+        width: 100%;
         max-width: 100%;
     }
     .nav-links a {

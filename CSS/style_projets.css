@@ -7,7 +7,7 @@
 html {
     overflow-x: hidden;
     width: 100%;
-    background-color: #0A1628;
+    background-color: #000000;
     overscroll-behavior: none;
 }
 
@@ -18,15 +18,17 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Space Grotesk', sans-serif;
-    color: #E0E6F0;
-    background: linear-gradient(135deg, #0A1628 0%, #0F1B2D 100%) no-repeat fixed;
-    background-size: cover;
+    color: #FFFFFF;
+    background-color: #000000;
+    background-image: radial-gradient(circle at 50% 0%, #0e1e35 0%, #000000 70%);
+    background-attachment: fixed;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+
 
 html::-webkit-scrollbar {
     width: 0;
@@ -35,16 +37,29 @@ html::-webkit-scrollbar {
 
 /* Header styles */
 header {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    background: rgba(10, 22, 40, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    z-index: 100;
+    padding: 15px 30px;
+    position: sticky;
+    top: 20px;
+    z-index: 1000;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    z-index: -1;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 .Header-left {
     display: flex;
@@ -65,7 +80,7 @@ header {
 .titre-site {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #E0E6F0;
+    color: #FFFFFF;
     letter-spacing: 0.5px;
 }
 .texte-cliquable:hover .titre-site {
@@ -87,7 +102,7 @@ header {
 .hamburger span {
     width: 28px;
     height: 3px;
-    background: #E0E6F0;
+    background: #FFFFFF;
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -107,14 +122,14 @@ nav .nav-links {
     align-items: center;
 }
 .nav-links a {
-    color: #A0A8B8;
+    color: #CCCCCC;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
     transition: color 0.3s ease;
 }
 .nav-links a:hover {
-    color: #E0E6F0;
+    color: #FFFFFF;
 }
 /* Main content */
 main {
@@ -130,12 +145,12 @@ main {
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
-    color: #E0E6F0;
+    color: #FFFFFF;
 }
 .projects-description {
     text-align: center;
     font-size: 1.1rem;
-    color: #A0A8B8;
+    color: #CCCCCC;
     max-width: 800px;
     margin: 0 auto 60px;
     line-height: 1.6;
@@ -148,10 +163,10 @@ main {
     margin-top: 40px;
 }
 .project-card {
-    background: rgba(20, 35, 55, 0.6);
+    background: rgba(10, 10, 10, 0.8);
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -159,18 +174,25 @@ main {
 }
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(30, 144, 255, 0.3);
-    border-color: rgba(30, 144, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 163, 255, 0.3);
+    border-color: rgba(0, 163, 255, 0.4);
 }
 .project-image {
     width: 100%;
     height: 220px;
-    background: linear-gradient(135deg, #1a2940 0%, #0d1825 100%);
+    background: linear-gradient(135deg, #050505 0%, #000000 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
+}
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.95;
+    border-radius: 0;
 }
 .project-image img {
     width: 100%;
@@ -188,7 +210,7 @@ main {
 .project-name {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #E0E6F0;
+    color: #FFFFFF;
     margin-bottom: 12px;
 }
 .project-desc {
@@ -240,7 +262,7 @@ main {
     text-align: center;
     padding: 10px 16px;
     background: transparent;
-    color: #A0A8B8;
+    color: #CCCCCC;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 500;
@@ -248,7 +270,7 @@ main {
     transition: color 0.3s ease;
 }
 .project-link-secondary:hover {
-    color: #E0E6F0;
+    color: #FFFFFF;
 }
 footer {
     padding: 30px 20px;
@@ -283,27 +305,30 @@ footer p {
         top: 0;
         right: 0;
         transform: translateX(100%);
-        width: 60%;
-        max-width: 250px;
+        width: 100%;
         height: 100vh;
-        background: rgba(10, 22, 40, 0.98);
+        background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(20px);
-        transition: transform 0.4s ease;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1001;
-        padding-top: 80px;
-        border-left: 1px solid rgba(0, 163, 255, 0.3);
+        padding-top: 100px;
+        border-left: none;
         box-shadow: none;
     }
     nav.active {
         transform: translateX(0);
         right: 0;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        box-shadow: none;
     }
     nav .nav-links {
         flex-direction: column;
-        gap: 0;
-        align-items: stretch;
-        padding: 0;
+        gap: 30px;
+        align-items: center;
+        width: 100%;
+    }
+    nav .nav-links li {
+        width: 100%;
+        text-align: center;
     }
     .nav-links li {
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -352,7 +377,7 @@ footer p {
         width: 36px;
     }
     nav {
-        width: 70%;
+        width: 100%;
         max-width: 100%;
     }
     .nav-links a {
@@ -377,7 +402,7 @@ footer p {
         margin-top: 30px;
     }
     .project-card {
-        background: rgba(20, 35, 55, 0.8);
+        background: rgba(10, 10, 10, 0.8);
     }
     .project-image {
         height: 200px;
