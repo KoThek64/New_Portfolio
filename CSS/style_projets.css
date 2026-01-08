@@ -7,7 +7,7 @@
 html {
     overflow-x: hidden;
     width: 100%;
-    background-color: #000000;
+    background-color: var(--bg-color);
     overscroll-behavior: none;
 }
 
@@ -18,9 +18,9 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Space Grotesk', sans-serif;
-    color: #FFFFFF;
-    background-color: #000000;
-    background-image: radial-gradient(circle at 50% 0%, #0e1e35 0%, #000000 70%);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: var(--bg-gradient);
     background-attachment: fixed;
     overflow-x: hidden;
     overflow-y: auto;
@@ -53,13 +53,13 @@ header::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 10, 0.5);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--card-border);
     border-radius: 20px;
     z-index: -1;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--card-shadow);
 }
 .Header-left {
     display: flex;
@@ -80,11 +80,11 @@ header::before {
 .titre-site {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-color);
     letter-spacing: 0.5px;
 }
 .texte-cliquable:hover .titre-site {
-    color: #1e90ff;
+    color: var(--accent-color);
     transition: color 0.3s ease;
 }
 /* Menu Hamburger */
@@ -102,7 +102,7 @@ header::before {
 .hamburger span {
     width: 28px;
     height: 3px;
-    background: #FFFFFF;
+    background: var(--hamburger-color);
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -122,14 +122,14 @@ nav .nav-links {
     align-items: center;
 }
 .nav-links a {
-    color: #CCCCCC;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
     transition: color 0.3s ease;
 }
 .nav-links a:hover {
-    color: #FFFFFF;
+    color: var(--text-color);
 }
 /* Main content */
 main {
@@ -145,12 +145,12 @@ main {
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
-    color: #FFFFFF;
+    color: var(--text-color);
 }
 .projects-description {
     text-align: center;
     font-size: 1.1rem;
-    color: #CCCCCC;
+    color: var(--text-secondary);
     max-width: 800px;
     margin: 0 auto 60px;
     line-height: 1.6;
@@ -163,10 +163,10 @@ main {
     margin-top: 40px;
 }
 .project-card {
-    background: rgba(10, 10, 10, 0.8);
+    background: var(--card-bg);
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--card-border);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -174,17 +174,17 @@ main {
 }
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 163, 255, 0.3);
-    border-color: rgba(0, 163, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--card-hover-shadow);
+    border-color: var(--card-hover-border);
 }
 .project-image {
     width: 100%;
     height: 220px;
-    background: linear-gradient(135deg, #050505 0%, #000000 100%);
+    background: var(--project-img-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--card-border);
     overflow: hidden;
 }
 .project-image img {
@@ -210,12 +210,12 @@ main {
 .project-name {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--text-color);
     margin-bottom: 12px;
 }
 .project-desc {
     font-size: 0.95rem;
-    color: #8A92A3;
+    color: var(--text-secondary);
     line-height: 1.5;
     margin-bottom: 16px;
 }
@@ -226,13 +226,13 @@ main {
     margin-bottom: 20px;
 }
 .tag {
-    background: rgba(30, 144, 255, 0.15);
-    color: #5BA3E8;
+    background: var(--tag-bg);
+    color: var(--tag-text);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid rgba(30, 144, 255, 0.2);
+    border: 1px solid var(--accent-hover);
 }
 .project-links {
     margin-top: auto;
@@ -245,24 +245,24 @@ main {
     text-align: center;
     padding: 10px 16px;
     background: transparent;
-    color: #1e90ff;
+    color: var(--accent-color);
     text-decoration: none;
     border-radius: 8px;
     font-weight: 500;
     font-size: 0.9rem;
-    border: 1px solid rgba(30, 144, 255, 0.5);
+    border: 1px solid var(--accent-border);
     transition: all 0.3s ease;
 }
 .project-link:hover {
-    background: rgba(30, 144, 255, 0.1);
-    border-color: #1e90ff;
+    background: var(--accent-hover);
+    border-color: var(--accent-color);
 }
 .project-link-secondary {
     flex: 1;
     text-align: center;
     padding: 10px 16px;
     background: transparent;
-    color: #CCCCCC;
+    color: var(--text-secondary);
     text-decoration: none;
     border-radius: 8px;
     font-weight: 500;
@@ -270,7 +270,7 @@ main {
     transition: color 0.3s ease;
 }
 .project-link-secondary:hover {
-    color: #FFFFFF;
+    color: var(--text-color);
 }
 footer {
     padding: 30px 20px;
@@ -279,7 +279,7 @@ footer {
 }
 footer p {
     font-size: 0.9rem;
-    color: #7A8396;
+    color: var(--footer-text);
     font-weight: 400;
 }
 /* Responsive Design */
@@ -402,7 +402,7 @@ footer p {
         margin-top: 30px;
     }
     .project-card {
-        background: rgba(10, 10, 10, 0.8);
+        background: var(--card-bg);
     }
     .project-image {
         height: 200px;

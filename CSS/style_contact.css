@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html {
-    background-color: #000000;
+    background-color: var(--bg-color);
     overflow-x: hidden;
     width: 100%;
     overscroll-behavior: none;
@@ -17,9 +17,9 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Space Grotesk', sans-serif;
-    color: #FFFFFF;
-    background-color: #000000;
-    background-image: radial-gradient(circle at 50% 0%, #0e1e35 0%, #000000 70%);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: var(--bg-gradient);
     background-attachment: fixed;
     overflow-x: hidden;
     overflow-y: auto;
@@ -51,13 +51,13 @@ header::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(10, 10, 10, 0.5);
+    background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--card-border);
     border-radius: 20px;
     z-index: -1;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--card-shadow);
 }
 .Header-left {
     display: flex;
@@ -78,11 +78,11 @@ header::before {
 .titre-site {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-color);
     letter-spacing: 0.5px;
 }
 .texte-cliquable:hover .titre-site {
-    color: #1e90ff;
+    color: var(--accent-color);
     transition: color 0.3s ease;
 }
 /* Menu Hamburger */
@@ -100,7 +100,7 @@ header::before {
 .hamburger span {
     width: 28px;
     height: 3px;
-    background: #FFFFFF;
+    background: var(--hamburger-color);
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -120,14 +120,14 @@ nav .nav-links {
     align-items: center;
 }
 .nav-links a {
-    color: #CCCCCC;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 400;
     transition: color 0.3s ease;
 }
 .nav-links a:hover {
-    color: #FFFFFF;
+    color: var(--text-color);
 }
 /* Main content */
 main {
@@ -145,7 +145,7 @@ main {
 }
 .contact-subtitle {
     font-size: 0.9rem;
-    color: #1e90ff;
+    color: var(--accent-color);
     margin-bottom: 15px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -153,12 +153,12 @@ main {
 .contact-title {
     font-size: 3rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 .contact-description {
     font-size: 1.1rem;
-    color: #CCCCCC;
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -172,15 +172,15 @@ main {
 }
 /* Formulaire de contact */
 .contact-form-section {
-    background: rgba(10, 10, 10, 0.6);
+    background: var(--section-bg);
     border-radius: 16px;
     padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--section-border);
     transition: all 0.3s ease;
 }
 .contact-form-section:hover {
-    border-color: rgba(0, 163, 255, 0.3);
-    box-shadow: 0 5px 20px rgba(0, 163, 255, 0.15);
+    border-color: var(--accent-border);
+    box-shadow: 0 5px 20px var(--card-hover-shadow);
 }
 .form-group {
     margin-bottom: 25px;
@@ -189,17 +189,17 @@ main {
     display: block;
     font-size: 0.95rem;
     font-weight: 500;
-    color: #FFFFFF;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
     border-radius: 12px;
-    color: #FFFFFF;
+    color: var(--text-color);
     font-family: inherit;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -208,23 +208,16 @@ main {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #00A3FF;
-    background: rgba(0, 163, 255, 0.05);
-    box-shadow: 0 0 20px rgba(0, 163, 255, 0.1);
+    border-color: var(--accent-border);
+    background: var(--btn-bg);
+    box-shadow: 0 0 20px var(--card-hover-shadow);
     font-family: 'Space Grotesk', sans-serif;
     font-size: 0.95rem;
     transition: all 0.3s ease;
 }
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: rgba(0, 163, 255, 0.5);
-    background: rgba(10, 22, 40, 0.7);
-    box-shadow: 0 0 0 3px rgba(0, 163, 255, 0.1);
-}
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #7A8396;
+    color: var(--footer-text);
 }
 .form-group textarea {
     resize: vertical;
@@ -233,8 +226,8 @@ main {
 .submit-btn {
     width: 100%;
     padding: 16px 24px;
-    background: #1e90ff;
-    color: #FFFFFF;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border: none;
     border-radius: 8px;
     font-family: 'Space Grotesk', sans-serif;
@@ -248,41 +241,41 @@ main {
     transition: all 0.3s ease;
 }
 .submit-btn:hover {
-    background: #1c7ed6;
+    background: var(--btn-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(30, 144, 255, 0.4);
+    box-shadow: 0 5px 20px var(--card-hover-shadow);
 }
 .submit-btn .material-symbols-outlined {
     font-size: 1.3rem;
 }
 /* Section code */
 .code-section {
-    background: rgba(10, 10, 10, 0.6);
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 4px 30px var(--card-shadow);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 .code-section:hover {
-    border-color: rgba(0, 163, 255, 0.3);
-    box-shadow: 0 10px 40px rgba(0, 163, 255, 0.1);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 10px 40px var(--card-hover-shadow);
 }
 .code-header {
     margin-bottom: 20px;
 }
 .code-comment {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     font-style: italic;
 }
 .code-content {
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--code-bg);
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
     overflow-x: auto;
 }
 .code-content pre {
@@ -295,7 +288,7 @@ main {
 }
 .code-content code {
     display: block;
-    color: #FFFFFF;
+    color: var(--code-text);
 }
 @keyframes fadeIn {
     from {
@@ -330,21 +323,21 @@ main {
 .social-link {
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--item-bg);
+    border: 1px solid var(--item-border);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: var(--text-color);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .social-link:hover {
-    background: rgba(0, 163, 255, 0.1);
-    border-color: #00A3FF;
-    color: #00A3FF;
+    background: var(--accent-hover);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
     transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 163, 255, 0.2);
+    box-shadow: 0 10px 20px var(--card-hover-shadow);
 }
 .social-link svg {
     width: 24px;
@@ -361,31 +354,31 @@ main {
     align-items: center;
     gap: 15px;
     padding: 18px 25px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--item-bg);
+    border: 1px solid var(--item-border);
     border-radius: 12px;
     transition: all 0.3s ease;
 }
 .info-item:hover {
-    background: rgba(0, 163, 255, 0.05);
-    border-color: rgba(0, 163, 255, 0.5);
+    background: var(--accent-hover);
+    border-color: var(--accent-border);
     transform: translateX(5px);
 }
 .info-item .material-symbols-outlined {
-    color: #00A3FF;
+    color: var(--accent-color);
     font-size: 1.5rem;
 }
 .info-item a {
-    color: #FFFFFF;
+    color: var(--text-color);
     text-decoration: none;
     transition: color 0.3s ease;
     font-size: 1rem;
 }
 .info-item a:hover {
-    color: #00A3FF;
+    color: var(--accent-color);
 }
 .info-item span {
-    color: #FFFFFF;
+    color: var(--text-color);
     font-size: 1rem;
 }
 /* Responsive Design */
