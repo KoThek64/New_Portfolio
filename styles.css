@@ -3,165 +3,167 @@
 /* Note: Core styles (reset, body, header, footer) are in CSS/common.css */
 
 main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .main-card {
-    text-align: center;
-    padding: 60px 40px;
-    width: 100%;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
-    box-shadow: 0 4px 30px var(--card-shadow);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  text-align: center;
+  padding: 60px 40px;
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: 0 4px 30px var(--card-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .main-card:hover {
-    border-color: var(--card-hover-border);
-    box-shadow: 0 0 50px var(--card-hover-shadow);
+  border-color: var(--card-hover-border);
+  box-shadow: 0 0 50px var(--card-hover-shadow);
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .main-card h1 {
-    font-size: 5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 20px;
-    line-height: 1.1;
-    letter-spacing: -2px;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -2px;
 }
 
 .main-card h1::before {
-    content: '// ';
-    color: var(--accent-color);
+  content: "// ";
+  color: var(--accent-color);
 }
 
 .main-card p {
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 50px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Home Buttons */
 .buttons-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn-accueil {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 32px;
-    background: var(--btn-bg);
-    border: 1px solid var(--btn-border);
-    border-radius: 12px;
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: 12px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
 }
 
 .btn-accueil:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-border);
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px var(--card-hover-shadow);
+  background: var(--accent-hover);
+  border-color: var(--accent-border);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px var(--card-hover-shadow);
 }
 
 .btn-accueil:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .btn-accueil .material-symbols-outlined {
-    font-size: 1.4rem;
-    color: var(--accent-color);
+  font-size: 1.4rem;
+  color: var(--accent-color);
 }
 
 /* Responsive Index */
 @media (max-width: 1024px) {
-    .main-card h1 {
-        font-size: 4rem;
-    }
+  .main-card h1 {
+    font-size: 4rem;
+  }
 
-    .main-card {
-        padding: 50px 30px;
-    }
+  .main-card {
+    padding: 50px 30px;
+  }
 }
 
 @media (max-width: 768px) {
-    .main-card h1 {
-        font-size: 3rem;
-    }
+  .main-card h1 {
+    font-size: 3rem;
+  }
 
-    .main-card p {
-        font-size: 1.1rem;
-    }
+  .main-card p {
+    font-size: 1.1rem;
+  }
 
-    .btn-accueil {
-        padding: 18px 28px;
-        font-size: 1.2rem;
-    }
+  .btn-accueil {
+    padding: 18px 28px;
+    font-size: 1.2rem;
+  }
 
-    .buttons-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .btn-accueil {
-        width: 100%;
-        justify-content: center;
-    }
+  .buttons-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-accueil {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
-    .main-card {
-        padding: 40px 20px;
-        border-radius: 20px;
-    }
-    
-    .main-card h1 {
-        font-size: 2.5rem;
-    }
-    
-    .main-card p {
-        font-size: 1rem;
-        margin-bottom: 30px;
-    }
+  .main-card {
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+
+  .main-card h1 {
+    font-size: 2.5rem;
+  }
+
+  .main-card p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
 }
