@@ -1,106 +1,106 @@
 :root {
-    /* Dark Theme (Default) */
-    --bg-color: #000000;
-    --bg-gradient: radial-gradient(circle at 50% 0%, #0e1e35 0%, #000000 70%);
-    --text-color: #FFFFFF;
-    --text-secondary: #CCCCCC;
-    --card-bg: rgba(5, 5, 5, 0.4);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --card-shadow: rgba(0, 0, 0, 0.1);
-    --accent-color: #00A3FF;
-    --accent-hover: rgba(0, 163, 255, 0.2);
-    --accent-border: rgba(0, 163, 255, 0.8);
-    --btn-bg: rgba(255, 255, 255, 0.05);
-    --btn-border: rgba(255, 255, 255, 0.1);
-    --footer-text: #9BA8B8;
-    --nav-bg: rgba(0, 0, 0, 0.95);
-    --hamburger-color: #FFFFFF;
-    --modal-bg: rgba(5, 5, 5, 0.95); /* For mobile nav/cards */
-    --card-hover-border: rgba(0, 163, 255, 0.4);
-    --card-hover-shadow: rgba(0, 163, 255, 0.1);
-    --btn-primary-bg: #00A3FF;
-    --btn-primary-hover: #0082CC;
-    --btn-primary-text: #FFFFFF;
-    --code-bg: rgba(0, 0, 0, 0.4);
-    --code-text: #FFFFFF;
-    --project-img-bg: linear-gradient(135deg, #050505 0%, #000000 100%);
-    --section-bg: rgba(10, 10, 10, 0.6);
-    --section-border: rgba(255, 255, 255, 0.05);
-    --item-bg: rgba(255, 255, 255, 0.03);
-    --item-border: rgba(255, 255, 255, 0.1);
-    --tag-bg: rgba(30, 144, 255, 0.15);
-    --tag-text: #5BA3E8;
-    --text-muted: #8A92A3;
+  /* Dark Theme (Default) */
+  --bg-color: #000000;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #0e1e35 0%, #000000 70%);
+  --text-color: #ffffff;
+  --text-secondary: #cccccc;
+  --card-bg: rgba(5, 5, 5, 0.4);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --accent-color: #00a3ff;
+  --accent-hover: rgba(0, 163, 255, 0.2);
+  --accent-border: rgba(0, 163, 255, 0.8);
+  --btn-bg: rgba(255, 255, 255, 0.05);
+  --btn-border: rgba(255, 255, 255, 0.1);
+  --footer-text: #9ba8b8;
+  --nav-bg: rgba(0, 0, 0, 0.95);
+  --hamburger-color: #ffffff;
+  --modal-bg: rgba(5, 5, 5, 0.95); /* For mobile nav/cards */
+  --card-hover-border: rgba(0, 163, 255, 0.4);
+  --card-hover-shadow: rgba(0, 163, 255, 0.1);
+  --btn-primary-bg: #00a3ff;
+  --btn-primary-hover: #0082cc;
+  --btn-primary-text: #ffffff;
+  --code-bg: rgba(0, 0, 0, 0.4);
+  --code-text: #ffffff;
+  --project-img-bg: linear-gradient(135deg, #050505 0%, #000000 100%);
+  --section-bg: rgba(10, 10, 10, 0.6);
+  --section-border: rgba(255, 255, 255, 0.05);
+  --item-bg: rgba(255, 255, 255, 0.03);
+  --item-border: rgba(255, 255, 255, 0.1);
+  --tag-bg: rgba(30, 144, 255, 0.15);
+  --tag-text: #5ba3e8;
+  --text-muted: #8a92a3;
 }
 
 [data-theme="light"] {
-    /* Light Theme */
-    --bg-color: #F0F4F8;
-    --bg-gradient: radial-gradient(circle at 50% 0%, #E3EAF2 0%, #F0F4F8 70%);
-    --text-color: #1A1A1A;
-    --text-secondary: #4A4A4A;
+  /* Light Theme */
+  --bg-color: #f0f4f8;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #e3eaf2 0%, #f0f4f8 70%);
+  --text-color: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --accent-color: #0077cc;
+  --accent-hover: rgba(0, 119, 204, 0.1);
+  --accent-border: rgba(0, 119, 204, 0.6);
+  --btn-bg: rgba(0, 0, 0, 0.05);
+  --btn-border: rgba(0, 0, 0, 0.1);
+  --footer-text: #5a6a78;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --hamburger-color: #1a1a1a;
+  --modal-bg: rgba(255, 255, 255, 0.95);
+  --card-hover-border: rgba(0, 119, 204, 0.4);
+  --card-hover-shadow: rgba(0, 119, 204, 0.1);
+  --btn-primary-bg: #0077cc;
+  --btn-primary-hover: #005fa3;
+  --btn-primary-text: #ffffff;
+  --code-bg: rgba(0, 0, 0, 0.05);
+  --code-text: #1a1a1a;
+  --project-img-bg: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+  --section-bg: rgba(255, 255, 255, 0.6);
+  --section-border: rgba(0, 0, 0, 0.05);
+  --item-bg: rgba(0, 0, 0, 0.03);
+  --item-border: rgba(0, 0, 0, 0.05);
+  --tag-bg: rgba(0, 119, 204, 0.1);
+  --tag-text: #005fa3;
+  --text-muted: #5a6a78;
+}
+
+/* System Preference */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg-color: #f0f4f8;
+    --bg-gradient: radial-gradient(circle at 50% 0%, #e3eaf2 0%, #f0f4f8 70%);
+    --text-color: #1a1a1a;
+    --text-secondary: #4a4a4a;
     --card-bg: rgba(255, 255, 255, 0.7);
     --card-border: rgba(0, 0, 0, 0.1);
     --card-shadow: rgba(0, 0, 0, 0.05);
-    --accent-color: #0077CC;
+    --accent-color: #0077cc;
     --accent-hover: rgba(0, 119, 204, 0.1);
     --accent-border: rgba(0, 119, 204, 0.6);
     --btn-bg: rgba(0, 0, 0, 0.05);
     --btn-border: rgba(0, 0, 0, 0.1);
-    --footer-text: #5A6A78;
+    --footer-text: #5a6a78;
     --nav-bg: rgba(255, 255, 255, 0.95);
-    --hamburger-color: #1A1A1A;
+    --hamburger-color: #1a1a1a;
     --modal-bg: rgba(255, 255, 255, 0.95);
     --card-hover-border: rgba(0, 119, 204, 0.4);
     --card-hover-shadow: rgba(0, 119, 204, 0.1);
-    --btn-primary-bg: #0077CC;
-    --btn-primary-hover: #005FA3;
-    --btn-primary-text: #FFFFFF;
+    --btn-primary-bg: #0077cc;
+    --btn-primary-hover: #005fa3;
+    --btn-primary-text: #ffffff;
     --code-bg: rgba(0, 0, 0, 0.05);
-    --code-text: #1A1A1A;
-    --project-img-bg: linear-gradient(135deg, #E0E0E0 0%, #F5F5F5 100%);
+    --code-text: #1a1a1a;
+    --project-img-bg: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
     --section-bg: rgba(255, 255, 255, 0.6);
     --section-border: rgba(0, 0, 0, 0.05);
     --item-bg: rgba(0, 0, 0, 0.03);
     --item-border: rgba(0, 0, 0, 0.05);
     --tag-bg: rgba(0, 119, 204, 0.1);
-    --tag-text: #005FA3;
-    --text-muted: #5A6A78;
-}
-
-/* System Preference */
-@media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-        --bg-color: #F0F4F8;
-        --bg-gradient: radial-gradient(circle at 50% 0%, #E3EAF2 0%, #F0F4F8 70%);
-        --text-color: #1A1A1A;
-        --text-secondary: #4A4A4A;
-        --card-bg: rgba(255, 255, 255, 0.7);
-        --card-border: rgba(0, 0, 0, 0.1);
-        --card-shadow: rgba(0, 0, 0, 0.05);
-        --accent-color: #0077CC;
-        --accent-hover: rgba(0, 119, 204, 0.1);
-        --accent-border: rgba(0, 119, 204, 0.6);
-        --btn-bg: rgba(0, 0, 0, 0.05);
-        --btn-border: rgba(0, 0, 0, 0.1);
-        --footer-text: #5A6A78;
-        --nav-bg: rgba(255, 255, 255, 0.95);
-        --hamburger-color: #1A1A1A;
-        --modal-bg: rgba(255, 255, 255, 0.95);
-        --card-hover-border: rgba(0, 119, 204, 0.4);
-        --card-hover-shadow: rgba(0, 119, 204, 0.1);
-        --btn-primary-bg: #0077CC;
-        --btn-primary-hover: #005FA3;
-        --btn-primary-text: #FFFFFF;
-        --code-bg: rgba(0, 0, 0, 0.05);
-        --code-text: #1A1A1A;
-        --project-img-bg: linear-gradient(135deg, #E0E0E0 0%, #F5F5F5 100%);
-        --section-bg: rgba(255, 255, 255, 0.6);
-        --section-border: rgba(0, 0, 0, 0.05);
-        --item-bg: rgba(0, 0, 0, 0.03);
-        --item-border: rgba(0, 0, 0, 0.05);
-        --tag-bg: rgba(0, 119, 204, 0.1);
-        --tag-text: #005FA3;
-        --text-muted: #5A6A78;
-    }
+    --tag-text: #005fa3;
+    --text-muted: #5a6a78;
+  }
 }
