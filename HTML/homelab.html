@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <title>Portfolio - HomeLab</title>
+    <link rel="stylesheet" href="../CSS/theme.css">
+    <link rel="stylesheet" href="../CSS/common.css">
+    <link rel="stylesheet" href="../CSS/style_homelab.css">
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Space+Grotesk:wght@400;500;700"
+        onload="this.rel='stylesheet'" rel="preload" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <div class="Header-left">
+            <a href="../index.html">
+                <img src="../images/6.png" alt="Logo de Mattys Lachaise" class="logo" />
+            </a>
+            <a class="texte-cliquable" href="../index.html">
+                <span class="titre-site">Portfolio</span>
+            </a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="Projets.html">Projets</a></li>
+                <li><a href="About.html">À propos</a></li>
+                <li><a href="Contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="homelab-container">
+            <!-- Section Header -->
+            <section class="homelab-header">
+                <h1 class="homelab-title">Mon HomeLab</h1>
+                <p class="homelab-subtitle">Infrastructure réseau et serveurs personnels</p>
+            </section>
+
+            <!-- Section Réseau -->
+            <section class="info-section">
+                <h2 class="section-title">
+                    <span class="material-symbols-outlined">router</span>
+                    Configuration Réseau
+                </h2>
+                <div class="network-info">
+                    <div class="network-item">
+                        <div class="network-icon">
+                            <span class="material-symbols-outlined">apartment</span>
+                        </div>
+                        <div class="network-content">
+                            <h3>Environnement</h3>
+                            <p>Réseau CROUS (PlanetCampus / Wifirst)</p>
+                            <p class="network-detail">Connexion partagée en résidence universitaire avec portail captif</p>
+                        </div>
+                    </div>
+                    <div class="network-item">
+                        <div class="network-icon">
+                            <span class="material-symbols-outlined">security</span>
+                        </div>
+                        <div class="network-content">
+                            <h3>Passerelle (Gateway)</h3>
+                            <p>PC HP recyclé sous <strong>OPNsense</strong></p>
+                            <p class="network-detail">MAC Spoofing pour bypasser le portail captif et partager la connexion</p>
+                        </div>
+                    </div>
+                    <div class="network-item">
+                        <div class="network-icon">
+                            <span class="material-symbols-outlined">device_hub</span>
+                        </div>
+                        <div class="network-content">
+                            <h3>Switch</h3>
+                            <p>Switch 5 ports non-manageable</p>
+                            <p class="network-detail">Distribution vers Cuby, Asus-Tuf, PC portable, PS5</p>
+                        </div>
+                    </div>
+                    <div class="network-item">
+                        <div class="network-icon">
+                            <span class="material-symbols-outlined">vpn_lock</span>
+                        </div>
+                        <div class="network-content">
+                            <h3>Mesh VPN</h3>
+                            <p><strong>Tailscale</strong> (IPs en 100.x.y.z)</p>
+                            <p class="network-detail">Connexion point-à-point sécurisée entre tous les appareils</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Infrastructure -->
+            <section class="info-section">
+                <h2 class="section-title">
+                    <span class="material-symbols-outlined">dns</span>
+                    Infrastructure Matérielle
+                </h2>
+
+                <!-- Serveur Cuby -->
+                <div class="server-card">
+                    <div class="server-header">
+                        <div class="server-icon">
+                            <span class="material-symbols-outlined">storage</span>
+                        </div>
+                        <div class="server-info">
+                            <h3>"Cuby" - Hyperviseur Proxmox</h3>
+                            <p class="server-ip">IP Tailscale : 100.88.49.20</p>
+                        </div>
+                    </div>
+                    <p class="server-desc">Chaque service est isolé dans son propre conteneur LXC (Debian).</p>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">monitoring</span>
+                            <span class="service-name">Uptime Kuma</span>
+                            <span class="service-desc">Monitoring</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">code</span>
+                            <span class="service-name">Gitea</span>
+                            <span class="service-desc">Dépôts Git</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">menu_book</span>
+                            <span class="service-name">Wiki.js</span>
+                            <span class="service-desc">Documentation</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">description</span>
+                            <span class="service-name">Paperless-ngx</span>
+                            <span class="service-desc">Documents</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">widgets</span>
+                            <span class="service-name">Portainer</span>
+                            <span class="service-desc">Docker</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">build</span>
+                            <span class="service-name">IT-Tools</span>
+                            <span class="service-desc">Outils dev</span>
+                        </div>
+                    </div>
+
+                    <!-- Sous-section Bases de données -->
+                    <div class="subsection-title">
+                        <span class="material-symbols-outlined">database</span>
+                        Bases de données
+                    </div>
+                    <div class="database-list">
+                        <div class="database-item">
+                            <div class="database-icon">
+                                <span class="material-symbols-outlined">database</span>
+                            </div>
+                            <div class="database-content">
+                                <h4>db-pokemon</h4>
+                                <p class="database-tech"><strong>PostgreSQL</strong></p>
+                                <p class="database-desc">Base de données pour mon projet Pokémon en Kotlin. Stocke les données des Pokémon, types, capacités et statistiques. Les données ont été récupérées via PokéAPI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serveur Asus-Tuf -->
+                <div class="server-card">
+                    <div class="server-header">
+                        <div class="server-icon">
+                            <span class="material-symbols-outlined">sports_esports</span>
+                        </div>
+                        <div class="server-info">
+                            <h3>"Asus-Tuf" - Serveur de Jeu</h3>
+                            <p class="server-ip">OS : Linux Ubuntu Server</p>
+                        </div>
+                    </div>
+                    <p class="server-desc">Serveur Minecraft (Modpack : Better MC 4) avec tunnel playit.gg pour l'accès public.</p>
+                    <div class="services-grid single">
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">videogame_asset</span>
+                            <span class="service-name">Minecraft</span>
+                            <span class="service-desc">Better MC 4</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="material-symbols-outlined">cloud</span>
+                            <span class="service-name">playit.gg</span>
+                            <span class="service-desc">Tunnel public</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Schéma -->
+            <section class="info-section">
+                <h2 class="section-title">
+                    <span class="material-symbols-outlined">account_tree</span>
+                    Schéma d'Architecture
+                </h2>
+                <div class="schema-container">
+                    <img src="https://mermaid.ink/img/pako:eNqNVW1v4jgQ_iuWP3UlSAmEt2hVicLdbnXQZgts725zQiYZwNfEjmynC9vt_zm-3z_gj63tFC4UtLoIkfF4Hj_z4pk844jHgH28FCRbockgZEg_Mp8XihumQDBQs_793XSMvoT4freVQHJUKC7RA11QIVWI_yqg5nno3WrLQFAJaJQLksD7ubi8ugi4UIQmqE8yRRfvDhhgccjeMH8gCr6SzexjYFiDPtJCFd0FtxKYhCO6Ua-vTfQ_GmecLyhbWrr12j_8IuKT9k_5hr3b2ZBHJCkHqUN42m2R2607bqvjuE7tsu4dcY-_UhWtNKQQUBNlOkhpbf6zOrD08_lmFgi-TvnaEPWn13_osPaaz78cHW6e4e_92UegaUySRAP2oo1wQORqzomIz6I-UAVEQ-y7sN9ts92_SiKtOgv5LU8NYqrLkwIyK4sbcUYVFzqxZ1EP9JFqlHk5f8uCiUd5CkwRRTk7CwpIBiIBKU1193KVLddHeHkea-8RA2Gwe3mPewRxFnQzmXCeGLqbSdWKFnGXK5pIFMPTCWpw_eUixPG8mvFHSDmz9gGXailg_GkY4nclQOlOHVW8J3M5G4N4AmEK3hvrrplMf9VFn85zpnJU7J2Qj-yd1oFFgizUq5X14BqUbkptgLwTVJCQDVUmLVZwlkUrTHLGIEFBPk9odAR643YvVwJMjgoBkSwjAuhrri6GwPgTr6Bg3HQc5-cNPNGdLnU_wWwEcmViP2iQ1XwObu2pbq3mrJ2N8-3IsakEMbvXaVdg3Nn7gQZUKlK-GCXuN9OqWr0qjZHCpDRWzHbRtcXWawcbdblNTzZLFT3ds2kr1LpARlVUYu9iKSxUdapX33VsUbT7RyK520a5Hpm7bYi_n_Hg_yJL7uGKnus0xr4SOVRwCiIlZomfzZEhVitI9Sj1tRgT8RjikL1oTEbYn5yne5jg-XKF_QVJpF7lWaxTOKBEVzk9aIWuAog-1zca--163R6C_We8xn6n7bSa7UbX82pdt91tdSt4g33X9ZxGs9vxOrV63WvVut5LBX-ztHrMes12s9PqNhot12s03AqG2EygUfGxst-slx-97R3e?type=png" alt="Schéma d'architecture HomeLab">
+                    <p class="schema-hint">
+                        <span class="material-symbols-outlined" style="font-size: 1rem; vertical-align: middle;">swipe</span>
+                        Glissez pour voir le schéma complet
+                    </p>
+                </div>
+            </section>
+
+            <!-- Retour -->
+            <div class="back-link">
+                <a href="Projets.html" class="btn-back">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Retour aux projets
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Mattys Lachaise. Tous droits réservés.</p>
+    </footer>
+
+    <script src="../main.js"></script>
+    <script src="../theme.js"></script>
+</body>
+
+</html>
