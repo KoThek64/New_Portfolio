@@ -240,21 +240,22 @@
 }
 @media (max-width: 1050px) {
   .contact-content {
-    gap: 40px;
-  }
-  .code-section {
-    display: none;
-    padding: 25px;
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
   .contact-title {
     font-size: 2.5rem;
   }
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
   .contact-form-section {
     padding: 30px;
+  }
+  .code-section {
+    padding: 25px;
+  }
+  /* Cacher seulement le bloc de code, garder les liens et infos */
+  .code-header,
+  .code-content {
+    display: none;
   }
 }
 @media (max-width: 480px) {

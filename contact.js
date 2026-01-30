@@ -123,35 +123,4 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
 });
 
-// Gestion du menu hamburger
-function initHamburgerMenu() {
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
-    
-    if (!hamburger || !navMenu) return;
-    
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-    
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
-    
-    document.addEventListener('click', (event) => {
-        const isClickInsideNav = navMenu.contains(event.target);
-        const isClickOnHamburger = hamburger.contains(event.target);
-        if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
-    });
-}
-
-// Initialiser au chargement de la page
-document.addEventListener('DOMContentLoaded', initHamburgerMenu);
 
