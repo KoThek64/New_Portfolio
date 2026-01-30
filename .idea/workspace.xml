@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dd621313-96af-4bf7-b7fa-240294cd5ed2" name="Changes" comment="Ajout de la partie serveur avec page d'info">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/style_about.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/style_about.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/About.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/About.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +94,7 @@
     "git-widget-placeholder": "master",
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/mattys/Documents/Programmes/Web/3 - TapisMarket/TapisMarket",
+    "last_opened_file_path": "/home/mattys/Documents/Programmes/Web/1 - Portfolio/New_Portfolio",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -115,7 +117,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.29346.242" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-WS-253.30387.83" />
       </set>
     </attachedChunks>
   </component>
@@ -151,6 +153,7 @@
       <workItem from="1769429645170" duration="914000" />
       <workItem from="1769431325730" duration="1532000" />
       <workItem from="1769510164572" duration="13000" />
+      <workItem from="1769784740471" duration="1821000" />
     </task>
     <task id="LOCAL-00001" summary="Début">
       <option name="closed" value="true" />
