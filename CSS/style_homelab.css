@@ -172,12 +172,30 @@
 /* Services Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 12px;
 }
 
 .services-grid.single {
   grid-template-columns: repeat(2, 1fr);
+}
+
+.services-grid:not(.single) .service-item {
+  grid-column: span 2;
+}
+
+/* 1 élément seul sur la dernière ligne → toute la largeur */
+.services-grid:not(.single) .service-item:last-child:nth-child(3n+1) {
+  grid-column: span 6;
+}
+
+/* 2 éléments sur la dernière ligne → moitié chacun */
+.services-grid:not(.single) .service-item:nth-last-child(2):nth-child(3n+1) {
+  grid-column: span 3;
+}
+
+.services-grid:not(.single) .service-item:last-child:nth-child(3n+2) {
+  grid-column: span 3;
 }
 
 .service-item {
@@ -393,6 +411,22 @@
 
   .services-grid.single {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Reset des règles desktop */
+  .services-grid:not(.single) .service-item {
+    grid-column: span 1;
+  }
+
+  .services-grid:not(.single) .service-item:last-child:nth-child(3n+1),
+  .services-grid:not(.single) .service-item:nth-last-child(2):nth-child(3n+1),
+  .services-grid:not(.single) .service-item:last-child:nth-child(3n+2) {
+    grid-column: span 1;
+  }
+
+  /* 1 élément seul sur la dernière ligne (grille de 2) */
+  .services-grid:not(.single) .service-item:last-child:nth-child(2n+1) {
+    grid-column: 1 / -1;
   }
 
   .database-item {
