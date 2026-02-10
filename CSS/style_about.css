@@ -194,12 +194,14 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
-.skill-item i[class^="devicon"] {
+.skill-item i[class^="devicon"],
+.skill-item .material-symbols-outlined {
   font-size: 1.6rem;
   color: var(--text-secondary);
   transition: color 0.3s ease;
 }
-.skill-item:hover i[class^="devicon"] {
+.skill-item:hover i[class^="devicon"],
+.skill-item:hover .material-symbols-outlined {
   color: var(--skill-color, var(--accent-color));
 }
 .skill-item:hover {
