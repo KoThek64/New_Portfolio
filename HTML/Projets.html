@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
+    <meta name="description" content="Découvrez les projets de Mattys Lachaise : applications Kotlin, sites web, jeu CLI Pokémon et infrastructure HomeLab.">
+    <meta property="og:title" content="Mes Projets – Mattys Lachaise">
+    <meta property="og:description" content="Découvrez les projets de Mattys Lachaise : applications Kotlin, sites web, jeu CLI Pokémon et infrastructure HomeLab.">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="../images/6.png">
-    <title>Portfolio - Mes Projets</title>
+    <title>Projets – Mattys Lachaise</title>
     <link rel="stylesheet" href="../CSS/theme.css">
     <link rel="stylesheet" href="../CSS/common.css">
     <link rel="stylesheet" href="../CSS/style_projets.css">
@@ -56,8 +60,7 @@
                         </div>
                         <div class="project-content">
                             <h3 class="project-name">Application de suivi des dépenses</h3>
-                            <p class="project-desc">Une application pour gérer ses dépenses efficacement. Disponible
-                                uniquement sur PC</p>
+                            <p class="project-desc">Application desktop pour ajouter et supprimer des dépenses par catégorie, avec une interface graphique JavaFX. Disponible uniquement sur PC.</p>
                             <div class="project-tags">
                                 <span class="tag">Kotlin</span>
                                 <span class="tag">JavaFX</span>
@@ -74,8 +77,7 @@
                         </div>
                         <div class="project-content">
                             <h3 class="project-name">Site web de faux restaurant</h3>
-                            <p class="project-desc">Un site web pour un faux restaurant, nommé ici "Cuisine-Delight".
-                            </p>
+                            <p class="project-desc">Site vitrine pour un restaurant fictif avec présentation du menu, des plats et un design responsive. Déployé sur Netlify.</p>
                             <div class="project-tags">
                                 <span class="tag">HTML</span>
                                 <span class="tag">CSS</span>
@@ -91,11 +93,31 @@
                     </div>
                     <div class="project-card">
                         <div class="project-image">
+                            <img src="../images/pokémon.png" alt="Projet Pokémon">
+                        </div>
+                        <div class="project-content">
+                            <span class="project-badge wip">En cours</span>
+                            <h3 class="project-name">Jeu Pokémon en CLI</h3>
+                            <p class="project-desc">Jeu Pokémon en ligne de commande avec combats au tour par tour, 151 Pokémon importés depuis PokéAPI, sauvegarde de partie et système de types complet.</p>
+                            <div class="project-tags">
+                                <span class="tag">Kotlin</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Ktor</span>
+                                <span class="tag">Exposed ORM</span>
+                                <span class="tag">JUnit 5</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/KoThek64/Pokemon" class="project-link">Voir sur GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
                             <img src="../images/Serveur.jpg" alt="HomeLab">
                         </div>
                         <div class="project-content">
                             <h3 class="project-name">HomeLab</h3>
-                            <p class="project-desc">Infrastructure réseau et serveurs personnels : Proxmox, OPNsense, conteneurs LXC, Tailscale VPN.</p>
+                            <p class="project-desc">Infrastructure personnelle auto-hébergée : hyperviseur Proxmox, pare-feu OPNsense et sept services isolés en conteneurs LXC, reliés via Tailscale.</p>
                             <div class="project-tags">
                                 <span class="tag">Proxmox</span>
                                 <span class="tag">OPNsense</span>
@@ -119,8 +141,7 @@
                         </div>
                         <div class="project-content">
                             <h3 class="project-name">Site Web e-commerce (TapisMarket)</h3>
-                            <p class="project-desc">Projet universitaire (SAE): Nous avons fait par groupe de 5 un site
-                                marketplace comme un Amazon qui vend des tapis.</p>
+                            <p class="project-desc">Marketplace e-commerce développée en groupe de 5 avec gestion des comptes, catalogue produits, panier et commandes. Déployé sur Railway.</p>
                             <div class="project-tags">
                                 <span class="tag">PHP</span>
                                 <span class="tag">HTML</span>
@@ -142,9 +163,7 @@
                         </div>
                         <div class="project-content">
                             <h3 class="project-name">Jeu en Quadtree</h3>
-                            <p class="project-desc">Projet universitaire (SAE): Nous avons codé par groupe de 2 un jeu
-                                en Golang
-                                avec des Quadtree.</p>
+                            <p class="project-desc">Jeu 2D en Go développé en binôme où le joueur se déplace sur une map générée via une structure de données quadtree.</p>
                             <div class="project-tags">
                                 <span class="tag">Go</span>
                             </div>
@@ -160,9 +179,7 @@
                         </div>
                         <div class="project-content">
                             <h3 class="project-name">Jeu Qui-Est-Ce ?</h3>
-                            <p class="project-desc">Projet universitaire (SAE): par groupe de 4 nous devions recréer le
-                                fameux
-                                jeu qui-est-ce ? malheureusement jamais terminé.</p>
+                            <p class="project-desc">Recréation du jeu de société Qui-Est-Ce ? en Kotlin/JavaFX, développé en groupe de 4 dans le cadre d'une SAE universitaire. Projet inachevé.</p>
                             <div class="project-tags">
                                 <span class="tag">Kotlin</span>
                                 <span class="tag">JavaFX</span>

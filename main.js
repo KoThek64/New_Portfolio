@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Lien actif dans la nav
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const linkPath = new URL(link.href).pathname;
+        if (currentPath === linkPath || (currentPath.endsWith('/') && linkPath.endsWith('index.html'))) {
+            link.classList.add('active');
+        }
+    });
+
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
 
