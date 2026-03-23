@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Mattys Lachaise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="cv.css">
+</head>
+<body>
+
+  <!-- TOP CONTROLS -->
+  <div class="page-controls">
+    <a href="index.html" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour au portfolio
+    </a>
+    <button class="btn-download" id="btn-dl" onclick="downloadPDF()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Télécharger le PDF
+    </button>
+  </div>
+
+  <!-- CV DOCUMENT -->
+  <div id="cv-wrapper">
+    <div id="cv">
+
+      <!-- ══ HEADER ══════════════════════════════════════════ -->
+      <div class="cv-header">
+        <div class="cv-photo-wrap">
+          <img src="images/Mattys.jpg" alt="Mattys Lachaise" class="cv-photo">
+        </div>
+        <div class="cv-header-info">
+          <div class="cv-name">Mattys Lachaise</div>
+          <div class="cv-subtitle">Étudiant en BUT Informatique — 2ème année</div>
+          <div class="cv-contacts">
+            <div class="cv-contact">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Nantes, France
+            </div>
+            <div class="cv-contact">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              mattys.contact@gmail.com
+            </div>
+            <div class="cv-contact">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 010 .18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              06 68 54 03 07
+            </div>
+          </div>
+        </div>
+
+        <!-- QR codes — colonne séparée à droite du header -->
+        <div class="cv-header-qrs">
+          <div class="cv-contact-qr">
+            <span class="cv-contact-qr-label">GitHub</span>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://github.com/KoThek64&color=ffffff&bgcolor=0a1628&margin=2" width="60" height="60" alt="GitHub">
+          </div>
+          <div class="cv-contact-qr">
+            <span class="cv-contact-qr-label">LinkedIn</span>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.linkedin.com/in/mattys-lachaise-b16617360/&color=ffffff&bgcolor=0a1628&margin=2" width="60" height="60" alt="LinkedIn">
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ BODY ════════════════════════════════════════════ -->
+      <div class="cv-body">
+
+        <!-- ── LEFT ──────────────────────────────────────── -->
+        <div class="cv-left">
+
+          <div class="cv-section">
+            <div class="cv-section-label">Compétences</div>
+            <div id="cv-skills"></div>
+          </div>
+
+          <div class="cv-divider"></div>
+
+          <div class="cv-section">
+            <div class="cv-section-label">Environnement</div>
+            <div id="cv-skills-env"></div>
+          </div>
+
+          <div class="cv-divider"></div>
+
+          <div class="cv-section">
+            <div class="cv-section-label">Centres d'intérêt</div>
+            <div class="cv-list">
+              <div class="cv-list-item"><div class="cv-list-item-left">Jeux vidéos</div></div>
+              <div class="cv-list-item"><div class="cv-list-item-left">Programmation</div></div>
+              <div class="cv-list-item"><div class="cv-list-item-left">Musique</div></div>
+              <div class="cv-list-item"><div class="cv-list-item-left">Cuisine</div></div>
+              <div class="cv-list-item"><div class="cv-list-item-left">Autodidaxie</div></div>
+            </div>
+          </div>
+
+          <div class="cv-divider"></div>
+
+          <div class="cv-section">
+            <div class="cv-section-label">Langues</div>
+            <div class="cv-list">
+              <div class="cv-list-item">
+                <div class="cv-list-item-left">Français</div>
+                <span class="cv-list-badge">NATIF</span>
+              </div>
+              <div class="cv-list-item">
+                <div class="cv-list-item-left">Anglais</div>
+                <span class="cv-list-badge">B2</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── RIGHT ─────────────────────────────────────── -->
+        <div class="cv-right">
+
+          <div class="cv-section">
+            <div class="cv-section-label">Profil</div>
+            <p class="cv-profile-text" id="cv-profile"></p>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label">Expériences</div>
+            <div class="cv-timeline" id="cv-experiences"></div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label">Formation</div>
+            <div class="cv-timeline" id="cv-formation"></div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label">Projets</div>
+            <div class="cv-projects" id="cv-projects"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ══ FOOTER ══════════════════════════════════════════ -->
+      <div class="cv-footer">
+        <span class="cv-footer-l">© 2026 Mattys Lachaise</span>
+        <span class="cv-footer-r">github.com/KoThek64</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="cv.js"></script>
+</body>
+</html>
