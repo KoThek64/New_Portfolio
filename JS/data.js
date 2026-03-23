@@ -129,7 +129,7 @@ const DATA = {
     },
     {
       name: 'HomeLab',
-      desc: 'Infrastructure auto-hébergée — Proxmox + OPNsense, 7 services isolés en conteneurs LXC, reliés via Tailscale.',
+      desc: 'Infrastructure auto-hébergée — Proxmox + OPNsense, 8 services isolés en conteneurs LXC, reliés via Tailscale.',
       tags: ['Proxmox', 'OPNsense', 'Docker', 'Tailscale', 'Ubuntu Server']
     },
     {
