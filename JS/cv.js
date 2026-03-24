@@ -27,8 +27,10 @@ async function downloadPDF() {
         if (controls) controls.style.display = 'none';
         const wrapper = clonedDoc.getElementById('cv-wrapper');
         if (wrapper) {
-          wrapper.style.cssText = 'width:794px;margin:0;border:none;border-radius:0;box-shadow:none;';
+          wrapper.style.cssText = 'width:794px;height:auto;margin:0;border:none;border-radius:0;box-shadow:none;overflow:visible;';
         }
+        const cvEl = clonedDoc.getElementById('cv');
+        if (cvEl) { cvEl.style.transform = ''; cvEl.style.transformOrigin = ''; }
       }
     },
     jsPDF: {
@@ -65,6 +67,26 @@ async function downloadPDF() {
 const style = document.createElement('style');
 style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
 document.head.appendChild(style);
+
+/* ─── SCALING RESPONSIVE ─────────────────────────────────── */
+function scaleCv() {
+  const wrapper = document.getElementById('cv-wrapper');
+  const cv = document.getElementById('cv');
+  const hPad = window.innerWidth <= 480 ? 24 : window.innerWidth <= 840 ? 32 : 48;
+  const available = Math.min(window.innerWidth - hPad, 794);
+  if (available < 794) {
+    const s = available / 794;
+    cv.style.transform = `scale(${s})`;
+    cv.style.transformOrigin = 'top left';
+    wrapper.style.height = Math.round(1122 * s) + 'px';
+  } else {
+    cv.style.transform = '';
+    cv.style.transformOrigin = '';
+    wrapper.style.height = '';
+  }
+}
+scaleCv();
+window.addEventListener('resize', scaleCv);
 
 /* ─── RENDU DEPUIS data.js ─────────────────────────────────── */
 document.getElementById('cv-profile').innerHTML = DATA.profile;

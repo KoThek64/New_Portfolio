@@ -31,7 +31,7 @@ body {
 
 /* ── TOP CONTROLS ────────────────────────────────────────── */
 .page-controls {
-  width: 794px;
+  width: min(794px, 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,7 +76,7 @@ body {
 
 /* ── CV WRAPPER ──────────────────────────────────────────── */
 #cv-wrapper {
-  width: 794px;
+  width: min(794px, 100%);
   border: 1px solid #ddd;
   border-radius: 3px;
   overflow: hidden;
@@ -390,4 +390,13 @@ body {
   font-size: 7.5px;
   letter-spacing: 0.1em;
   color: var(--accent2);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 840px) {
+  body { padding: 24px 16px 40px; }
+}
+@media (max-width: 480px) {
+  body { padding: 16px 12px 32px; }
+  .btn-download { font-size: 0.68rem; padding: 9px 16px; }
 }

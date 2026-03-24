@@ -781,11 +781,14 @@ footer p {
   #homelab .homelab-layout { grid-template-columns: 1fr; }
   .contact-inner { flex-direction: column; }
   nav { display: none; }
-  #hamburger { display: flex; }
+  #hamburger { display: flex; cursor: pointer; }
   #mobile-menu { display: flex; }
+  #cursor-dot, #cursor-ring { display: none; }
+  body { cursor: auto; }
 }
 @media (max-width: 600px) {
   section { padding: 80px 0; }
   .hero-cta { flex-direction: column; }
   .btn-primary, .btn-outline { justify-content: center; }
+  footer { justify-content: center; text-align: center; }
 }
