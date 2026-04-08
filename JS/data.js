@@ -76,13 +76,14 @@ const DATA = {
     'SQL':          { icon: 'devicon-postgresql-plain',       color: '#4479A1' },
     'Bash':         { icon: 'devicon-bash-plain',             color: '#4EAA25' },
     'Symfony':      { icon: 'devicon-symfony-original',       color: '#8B5CF6' },
-    'Flutter':      { icon: 'devicon-flutter-plain',          color: '#0175C2' },
     'CodeIgniter':  { icon: 'devicon-codeigniter-plain',      color: '#EF4223' },
     'Ktor':         { icon: 'devicon-ktor-plain',             color: '#7F52FF' },
     'Tailwind CSS': { icon: 'devicon-tailwindcss-original',   color: '#06B6D4' },
     'Node.js':      { icon: 'devicon-nodejs-plain',           color: '#339933' },
     'JUnit 5':      { icon: 'devicon-junit-plain',            color: '#25A162' },
+    'Jetpack Compose': { icon: 'devicon-jetpackcompose-plain', color: '#4285F4' },
     'JavaFX':       { icon: 'devicon-java-plain',             color: '#ea8220' },
+    'Supabase':     { icon: 'devicon-supabase-plain',         color: '#3ECF8E' },
     'Git':          { icon: 'devicon-git-plain',              color: '#F05032' },
     'GitHub':       { icon: 'devicon-github-original',        color: '#6e7681' },
     'GitLab':       { icon: 'devicon-gitlab-plain',           color: '#FC6D26' },
@@ -101,16 +102,16 @@ const DATA = {
   // Groupes de compétences pour index.html (avec icônes devicon)
   skillsIndex: [
     { label: 'Langages',               items: ['Kotlin', 'PHP', 'Python', 'JavaScript', 'TypeScript', 'Go', 'Dart', 'HTML', 'CSS', 'SQL', 'Bash'] },
-    { label: 'Frameworks & Librairies',items: ['Symfony', 'Flutter', 'CodeIgniter', 'Ktor', 'Tailwind CSS', 'Node.js', 'JUnit 5', 'JavaFX'] },
-    { label: 'Outils & Déploiement',   items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Railway', 'Netlify'] },
+    { label: 'Frameworks & Librairies',items: ['Symfony', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'Tailwind CSS', 'Node.js', 'JUnit 5', 'JavaFX'] },
+    { label: 'Outils & Déploiement',   items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Supabase', 'Railway', 'Netlify'] },
     { label: 'Systèmes',               items: ['Linux', 'EndeavourOS', 'Fedora', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Windows'] },
   ],
 
   // Groupes de compétences pour cv.html (tags simples, structure différente)
   skillsCV: [
     { label: 'Langages',               items: ['PHP', 'Kotlin', 'Python', 'JavaScript', 'TypeScript', 'Dart', 'Go', 'SQL', 'HTML/CSS', 'Markdown', 'Bash'] },
-    { label: 'Frameworks & Librairies',items: ['Symfony', 'Node.js', 'Ktor', 'Flutter', 'Tailwind CSS', 'CodeIgniter', 'JUnit', 'JavaFX'] },
-    { label: 'Outils',                 items: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Docker', 'DBeaver', 'Tailscale'] },
+    { label: 'Frameworks & Librairies',items: ['Symfony', 'Jetpack Compose', 'Node.js', 'Ktor', 'Tailwind CSS', 'CodeIgniter', 'JUnit', 'JavaFX'] },
+    { label: 'Outils',                 items: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Docker', 'Supabase', 'DBeaver', 'Tailscale'] },
     { label: 'Systèmes & Déploiement', items: ['Linux', 'ProxmoxVE', 'OPNsense', 'Ubuntu Server', 'Railway', 'Netlify'] },
   ],
 
@@ -136,7 +137,14 @@ const DATA = {
       name: 'Jeu Pokémon CLI',
       desc: '151 Pokémon importés depuis PokéAPI, combats au tour par tour, tests unitaires JUnit 5.',
       tags: ['Kotlin', 'Ktor', 'PostgreSQL', 'JUnit 5', 'Exposed ORM']
+    },
+      /*
+    {
+      name: 'Tapis Market',
+      desc: 'Marketplace e-commerce en groupe de 5 avec comptes, catalogue, panier et commandes. Déployé sur Railway.',
+      tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Railway']
     }
+       */
   ]
 
 };
