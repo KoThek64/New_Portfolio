@@ -1,72 +1,10 @@
-/* ─── TÉLÉCHARGEMENT PDF ─────────────────────────────────────────── */
-async function downloadPDF() {
-  const btn = document.getElementById('btn-dl');
-  btn.disabled = true;
-  btn.innerHTML = `
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-      style="animation: spin 1s linear infinite">
-      <path d="M21 12a9 9 0 11-6.219-8.56"/>
-    </svg>
-    Génération en cours…`;
-
-  const el = document.getElementById('cv');
-
-  const opt = {
-    margin: 0,
-    filename: 'CV_Mattys_Lachaise.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#ffffff',
-      logging: false,
-      onclone: function(clonedDoc) {
-        const body = clonedDoc.body;
-        body.style.cssText = 'margin:0;padding:0;background:#ffffff;display:block;min-height:auto;';
-        const controls = clonedDoc.querySelector('.page-controls');
-        if (controls) controls.style.display = 'none';
-        const wrapper = clonedDoc.getElementById('cv-wrapper');
-        if (wrapper) {
-          wrapper.style.cssText = 'width:794px;height:auto;margin:0;border:none;border-radius:0;box-shadow:none;overflow:visible;';
-        }
-        const cvEl = clonedDoc.getElementById('cv');
-        if (cvEl) { cvEl.style.transform = ''; cvEl.style.transformOrigin = ''; }
-      }
-    },
-    jsPDF: {
-      unit: 'mm',
-      format: 'a4',
-      orientation: 'portrait'
-    }
-  };
-
-  try {
-    await html2pdf().set(opt).from(el).save();
-  } catch(e) {
-    console.error(e);
+/* ─── IMPRESSION / SAUVEGARDE PDF NATIVE ─────────────────── */
+async function printCV() {
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready;
   }
-
-  btn.disabled = false;
-  btn.innerHTML = `
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <polyline points="20 6 9 17 4 12"/>
-    </svg>
-    PDF téléchargé !`;
-
-  setTimeout(() => {
-    btn.innerHTML = `
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Télécharger le PDF`;
-  }, 3000);
+  window.print();
 }
-
-const style = document.createElement('style');
-style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
-document.head.appendChild(style);
 
 /* ─── SCALING RESPONSIVE ─────────────────────────────────── */
 function scaleCv() {

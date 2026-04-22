@@ -121,6 +121,7 @@ section { padding: 120px 0; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.4s; }
 
 /* ──────────────────────────────────────────────────────────────────
    HERO
@@ -810,6 +811,24 @@ footer p {
   section { padding: 80px 0; }
   .hero-cta { flex-direction: column; }
   .btn-primary, .btn-outline { justify-content: center; }
-  .hero-available { flex-wrap: wrap; font-size: 0.75rem; gap: 8px; }
+  .hero-available {
+    font-size: 0.7rem;
+    padding: 7px 14px;
+    gap: 8px;
+    max-width: 100%;
+  }
+  .available-text, .available-meta { white-space: nowrap; }
   footer { justify-content: center; text-align: center; }
+}
+@media (max-width: 420px) {
+  .hero-available {
+    font-size: 0.62rem;
+    padding: 6px 12px;
+    gap: 7px;
+  }
+  .available-dot { width: 6px; height: 6px; }
+}
+@media (max-width: 340px) {
+  .hero-available { font-size: 0.58rem; padding: 5px 10px; gap: 6px; }
+  .available-meta { display: none; }
 }

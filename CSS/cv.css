@@ -508,3 +508,47 @@ body {
         padding: 9px 16px;
     }
 }
+
+/* ── PRINT / SAUVEGARDE PDF NATIVE ───────────────────────── */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html, body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 210mm;
+        height: 297mm;
+    }
+
+    .page-controls {
+        display: none !important;
+    }
+
+    #cv-wrapper {
+        width: 210mm !important;
+        height: 297mm !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    #cv {
+        width: 210mm !important;
+        height: 297mm !important;
+        transform: none !important;
+        transform-origin: top left !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Préservation des couleurs (backgrounds, accents) à l'impression */
+    *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+}
