@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mattys-lachaise.fr/sitemap.xml
