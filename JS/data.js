@@ -2,7 +2,7 @@ const DATA = {
 
     profile: `Étudiant en <strong>BUT Informatique à l'IUT de Nantes</strong>, passionné de développement
     et d'infrastructure. Orienté backend (<strong>PHP, Kotlin</strong>), avec des notions frontend
-    (<strong>TypeScript, Tailwind</strong>). Curieux, autonome, et toujours en train d'apprendre.`,
+    (<strong>TypeScript, React</strong>). Curieux, autonome, et toujours en train d'apprendre.`,
 
     experiences: [
         {
@@ -83,6 +83,16 @@ const DATA = {
         'JUnit 5': {icon: 'devicon-junit-plain', color: '#25A162'},
         'Jetpack Compose': {icon: 'devicon-jetpackcompose-plain', color: '#4285F4'},
         'JavaFX': {icon: 'devicon-java-plain', color: '#ea8220'},
+        'React': {icon: 'devicon-react-original', color: '#61DAFB'},
+        'SCSS': {icon: 'devicon-sass-original', color: '#CC6699'},
+        'Doctrine ORM': {
+            color: '#FC6A31',
+            svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FC6A31" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>`
+        },
+        'Mermaid JS': {
+            color: '#FF3670',
+            svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF3670" stroke-width="2"><rect x="3" y="3" width="7" height="5" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/><rect x="14" y="16" width="7" height="5" rx="1"/><path d="M6.5 8v4m0 0h11m-11 0v4m11-4v4"/></svg>`
+        },
         'Supabase': {icon: 'devicon-supabase-plain', color: '#3ECF8E'},
         'Git': {icon: 'devicon-git-plain', color: '#F05032'},
         'GitHub': {icon: 'devicon-github-original', color: '#6e7681'},
@@ -109,13 +119,13 @@ const DATA = {
     skillsIndex: [
         {
             label: 'Langages',
-            items: ['Kotlin', 'PHP', 'Python', 'JavaScript', 'TypeScript', 'Go', 'Dart', 'HTML', 'CSS', 'SQL', 'Bash']
+            items: ['PHP', 'Kotlin', 'JavaScript', 'TypeScript', 'Python', 'Go', 'Dart', 'HTML', 'CSS', 'SQL', 'Bash']
         },
         {
             label: 'Frameworks & Librairies',
-            items: ['Symfony', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'Tailwind CSS', 'Node.js', 'JUnit 5', 'JavaFX']
+            items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX']
         },
-        {label: 'Outils & Déploiement', items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Supabase', 'Railway', 'Netlify']},
+        {label: 'Outils & Déploiement', items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Supabase', 'Railway', 'Netlify', 'Mermaid JS']},
         {
             label: 'Systèmes',
             items: ['Linux', 'EndeavourOS', 'Fedora', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Windows']
@@ -126,16 +136,16 @@ const DATA = {
     skillsCV: [
         {
             label: 'Langages',
-            items: ['PHP', 'Kotlin', 'Python', 'JavaScript', 'TypeScript', 'Dart', 'Go', 'SQL', 'HTML/CSS', 'Markdown', 'Bash']
+            items: ['PHP', 'Kotlin', 'JavaScript', 'TypeScript', 'Python', 'Go', 'Dart', 'HTML/CSS', 'SQL', 'Markdown', 'Bash']
         },
         {
             label: 'Frameworks & Librairies',
-            items: ['Symfony', 'Jetpack Compose', 'Node.js', 'Ktor', 'Tailwind CSS', 'CodeIgniter', 'JUnit', 'JavaFX']
+            items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX']
         },
-        {label: 'Outils', items: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Docker', 'Supabase', 'DBeaver', 'Tailscale']},
+        {label: 'Outils', items: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Docker', 'Supabase', 'DBeaver', 'Tailscale', 'Mermaid JS']},
         {
             label: 'Systèmes & Déploiement',
-            items: ['Linux', 'ProxmoxVE', 'OPNsense', 'Ubuntu Server', 'Railway', 'Netlify']
+            items: ['Linux', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Railway', 'Netlify']
         },
     ],
 
@@ -150,25 +160,18 @@ const DATA = {
         {
             name: 'Fait Maison',
             desc: "Réseau social de partage de recettes — publication, notation, commentaires, abonnements, fil d'actualité.",
-            tags: ['Symfony', 'PHP 8.4', 'PostgreSQL', 'Tailwind CSS', 'Doctrine ORM']
+            tags: ['PHP 8.4', 'Symfony', 'PostgreSQL', 'Tailwind CSS', 'Doctrine ORM']
         },
         {
             name: 'HomeLab',
-            desc: 'Infrastructure auto-hébergée — Proxmox + OPNsense, 8 services isolés en conteneurs LXC, reliés via Tailscale.',
+            desc: 'Infrastructure auto-hébergée — Proxmox + OPNsense, 7 services isolés en conteneurs LXC, reliés via Tailscale.',
             tags: ['Proxmox', 'OPNsense', 'Docker', 'Tailscale', 'Ubuntu Server']
         },
         {
-            name: 'Jeu Pokémon CLI',
-            desc: '151 Pokémon importés depuis PokéAPI, combats au tour par tour, tests unitaires JUnit 5.',
-            tags: ['Kotlin', 'Ktor', 'PostgreSQL', 'JUnit 5', 'Exposed ORM']
-        },
-        /*
-      {
-        name: 'Tapis Market',
-        desc: 'Marketplace e-commerce en groupe de 5 avec comptes, catalogue, panier et commandes. Déployé sur Railway.',
-        tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Railway']
-      }
-         */
+            name: 'Tapis Market',
+            desc: 'Marketplace e-commerce en groupe de 5 avec comptes, catalogue, panier et commandes. Déployé sur Railway.',
+            tags: ['PHP', 'CodeIgniter 4', 'MySQL', 'Railway']
+        }
     ]
 
 };

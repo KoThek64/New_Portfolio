@@ -252,23 +252,29 @@
                 </div>
             </div>
 
-            <!-- Pokémon -->
+            <!-- My Money -->
             <div class="project-card">
-                <img class="project-img" src="images/pokémon.png" alt="Jeu Pokémon CLI">
+                <div class="project-img-placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="2" y="5" width="20" height="14" rx="2"/>
+                        <path d="M2 10h20"/>
+                        <circle cx="17" cy="14.5" r="1.5"/>
+                    </svg>
+                    <span>Bientôt en ligne</span>
+                </div>
                 <div class="project-body">
-                    <span class="project-badge">En cours</span>
-                    <h3 class="project-name">Jeu Pokémon CLI</h3>
-                    <p class="project-desc">Jeu Pokémon en ligne de commande avec combats tour par tour, 151 Pokémon via
-                        PokéAPI, sauvegarde et système de types complet.</p>
+                    <span class="project-badge">À venir</span>
+                    <h3 class="project-name">My Money</h3>
+                    <p class="project-desc">Version web plus aboutie de mon projet <strong>Suivi des dépenses</strong> :
+                        gestion de budget par catégorie, revenus, statistiques et objectifs d'épargne. Projet en
+                        préparation.</p>
                     <div class="project-tags">
-                        <span class="tag">Kotlin</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Symfony</span>
                         <span class="tag">PostgreSQL</span>
-                        <span class="tag">Ktor</span>
-                        <span class="tag">Exposed ORM</span>
-                        <span class="tag">JUnit 5</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/KoThek64/Pokemon" class="proj-link">GitHub →</a>
+                        <span class="tag">Doctrine ORM</span>
+                        <span class="tag">SCSS</span>
+                        <span class="tag">Docker</span>
                     </div>
                 </div>
             </div>
@@ -374,7 +380,7 @@
             <div class="homelab-info reveal reveal-delay-1">
                 <p class="homelab-desc">
                     Infrastructure personnelle auto-hébergée. Hyperviseur
-                    <strong>Proxmox</strong> avec 8 services isolés en conteneurs LXC, pare-feu
+                    <strong>Proxmox</strong> avec 7 services isolés en conteneurs LXC, pare-feu
                     <strong>OPNsense</strong> et VPN mesh <strong>Tailscale</strong>.
                 </p>
                 <div class="network-chips">
@@ -450,11 +456,6 @@
                             <span class="term-service-desc">Gestion Multi-BD</span>
                             <span class="term-status"><span class="status-dot"></span>running</span>
                         </div>
-                        <div class="term-service">
-                            <span class="term-service-name">db-pokemon</span>
-                            <span class="term-service-desc">PostgreSQL · Projet Pokémon</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
 
                         <br>
                         <div><span class="term-prompt">mattys@asus-tuf</span> <span class="term-cmd">systemctl status minecraft</span>
@@ -467,7 +468,7 @@
                         </div>
 
                         <br>
-                        <div class="term-comment">8 services · 2 serveurs · 0 downtime 🟢</div>
+                        <div class="term-comment">7 services · 2 serveurs · 0 downtime 🟢</div>
                     </div>
                 </div>
             </div>
