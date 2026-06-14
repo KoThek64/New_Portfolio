@@ -374,6 +374,38 @@ section { padding: 120px 0; }
 .timeline-role { font-size: 0.95rem; font-weight: 500; margin-bottom: 2px; }
 .timeline-place { font-size: 0.82rem; color: var(--muted2); }
 
+/* Ligne condensée + accordéon des expériences secondaires (non-tech) */
+.timeline-entry-more {
+  opacity: 0.65;
+  padding: 0 0 4px 24px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 1px solid var(--border);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.timeline-entry-more:hover { opacity: 1; }
+.timeline-entry-more::before { background: transparent; border-style: dashed; }
+.timeline-entry-more .timeline-role { font-size: 0.85rem; font-weight: 400; font-style: italic; }
+.exp-chevron { display: inline-block; transition: transform 0.3s ease; font-style: normal; }
+.timeline-entry-more.open .exp-chevron { transform: rotate(180deg); }
+
+.timeline-extra {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.timeline-extra.open { grid-template-rows: 1fr; }
+.timeline-extra-inner { overflow: hidden; }
+/* Espace après le bouton sans casser le trait : padding porté par l'entrée
+   (sa bordure gauche traverse le padding), pastille réalignée sur le texte. */
+.timeline-extra-inner .timeline-entry:first-child { padding-top: 14px; }
+.timeline-extra-inner .timeline-entry:first-child::before { top: 20px; }
+
 /* ──────────────────────────────────────────────────────────────────
    SKILLS
 ─────────────────────────────────────────────────────────────────── */

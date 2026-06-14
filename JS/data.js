@@ -5,6 +5,17 @@ const DATA = {
     (<strong>TypeScript, React</strong>). Curieux, autonome, et toujours en train d'apprendre.`,
 
     experiences: [
+        // ── À activer dès le début de l'alternance (rentrée 2026) ────────────────
+        // Décommenter et placer en PREMIER (expérience la plus récente),
+        // puis retirer le highlight de l'expérience Enedis ci-dessous.
+        // {
+        //     date: 'Sep. 2026 → Aoû. 2027',
+        //     role: 'Alternant développeur web full-stack',
+        //     org: 'Lunéos',
+        //     location: 'Nantes',
+        //     desc: "Intégration de maquettes Figma et développement full-stack (WordPress, Shopify, Webflow ou custom code), connexion d'API tierces, automatisations N8N et intégration d'agents IA",
+        //     highlight: true
+        // },
         {
             date: 'Avr. → Juil. 2026',
             role: "Stagiaire développeur d'application web",
@@ -13,33 +24,39 @@ const DATA = {
             desc: "Développement de fonctionnalités et maintenance d'applications web (Symfony/PHP, Node.js, PostgreSQL, TypeScript, AWS)",
             highlight: true
         },
+        // secondary: true → expériences non-tech, groupées en une ligne sur le portfolio
+        // (le CV les affiche toujours en détail)
         {
             date: 'Sep. 2025 → Mar. 2026',
             role: 'Employé commercial',
             org: 'Super U Dalby',
             location: 'Nantes',
-            desc: "Mise en rayon des produits frais, accueil client et respect des normes d'hygiène"
+            desc: "Mise en rayon des produits frais, accueil client et respect des normes d'hygiène",
+            secondary: true
         },
         {
             date: 'Juil. → Août 2025',
             role: 'Vendeur en boulangerie',
             org: 'Super U',
             location: 'Saint-Palais-sur-Mer',
-            desc: 'Accueil clients, vente et conseil en boulangerie-pâtisserie'
+            desc: 'Accueil clients, vente et conseil en boulangerie-pâtisserie',
+            secondary: true
         },
         {
             date: 'Juil. → Août 2024',
             role: 'Opérateur de production',
             org: 'Schneider les Agriers',
             location: 'Angoulême',
-            desc: 'Assemblage de pièces de produits finis, brasage et débrasage de pièces, conditionnement'
+            desc: 'Assemblage de pièces de produits finis, brasage et débrasage de pièces, conditionnement',
+            secondary: true
         },
         {
             date: 'Juin → Juil. 2023',
             role: 'Manutentionnaire saisonnier',
             org: 'Viticulteur',
             location: 'Fouquebrune',
-            desc: 'Désherbage autour de jeunes pousses de vignes, entretien des grandes vignes, attachage des pousses'
+            desc: 'Désherbage autour de jeunes pousses de vignes, entretien des grandes vignes, attachage des pousses',
+            secondary: true
         }
     ],
 

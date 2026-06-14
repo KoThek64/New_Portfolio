@@ -102,7 +102,12 @@ document.querySelectorAll('.project-card, .project-card-small').forEach(card => 
 });
 
 /* ─── RENDU DEPUIS data.js ──────────────────────────────────── */
-document.getElementById('index-experiences').innerHTML = DATA.experiences.map(e => `
+/* Expériences : on détaille les expériences principales (dev) et on condense
+   les expériences secondaires (commerce, vente, production) en une seule ligne. */
+const mainExp = DATA.experiences.filter(e => !e.secondary);
+const otherExp = DATA.experiences.filter(e => e.secondary);
+
+let expHtml = mainExp.map(e => `
   <div class="timeline-entry ${e.highlight ? 'highlight' : ''}">
     <div class="timeline-year">${e.date}</div>
     <div>
@@ -111,6 +116,43 @@ document.getElementById('index-experiences').innerHTML = DATA.experiences.map(e 
     </div>
   </div>
 `).join('');
+
+if (otherExp.length) {
+    const otherHtml = otherExp.map(e => `
+    <div class="timeline-entry">
+      <div class="timeline-year">${e.date}</div>
+      <div>
+        <div class="timeline-role">${e.role}</div>
+        <div class="timeline-place">${e.org} · ${e.location}</div>
+      </div>
+    </div>
+  `).join('');
+
+    expHtml += `
+  <button type="button" class="timeline-entry timeline-entry-more" id="exp-toggle" aria-expanded="false" aria-controls="exp-extra">
+    <div class="timeline-year">2023 → 2026</div>
+    <div>
+      <div class="timeline-role">+ ${otherExp.length} expériences en commerce, vente &amp; production <span class="exp-chevron">▾</span></div>
+      <div class="timeline-place exp-toggle-hint">Cliquer pour afficher</div>
+    </div>
+  </button>
+  <div class="timeline-extra" id="exp-extra"><div class="timeline-extra-inner">${otherHtml}</div></div>
+`;
+}
+
+document.getElementById('index-experiences').innerHTML = expHtml;
+
+const expToggle = document.getElementById('exp-toggle');
+if (expToggle) {
+    const expExtra = document.getElementById('exp-extra');
+    const expHint = expToggle.querySelector('.exp-toggle-hint');
+    expToggle.addEventListener('click', () => {
+        const open = expExtra.classList.toggle('open');
+        expToggle.classList.toggle('open', open);
+        expToggle.setAttribute('aria-expanded', open);
+        if (expHint) expHint.textContent = open ? 'Cliquer pour masquer' : 'Cliquer pour afficher';
+    });
+}
 
 function renderChip(name) {
     var m = DATA.skillsMeta[name] || {};
