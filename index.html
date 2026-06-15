@@ -159,6 +159,7 @@
         <div class="about-grid">
             <div class="about-photo-wrap reveal reveal-delay-2">
                 <img src="images/Mattys.jpg" alt="Mattys Lachaise">
+                <span class="about-accent-badge"><span class="badge-dot"></span>BUT INFO · NANTES</span>
             </div>
 
             <div class="about-text">
@@ -252,33 +253,6 @@
                 </div>
             </div>
 
-            <!-- My Money -->
-            <div class="project-card">
-                <div class="project-img-placeholder">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="2" y="5" width="20" height="14" rx="2"/>
-                        <path d="M2 10h20"/>
-                        <circle cx="17" cy="14.5" r="1.5"/>
-                    </svg>
-                    <span>Bientôt en ligne</span>
-                </div>
-                <div class="project-body">
-                    <span class="project-badge">À venir</span>
-                    <h3 class="project-name">My Money</h3>
-                    <p class="project-desc">Version web plus aboutie de mon projet <strong>Suivi des dépenses</strong> :
-                        gestion de budget par catégorie, revenus, statistiques et objectifs d'épargne. Projet en
-                        préparation.</p>
-                    <div class="project-tags">
-                        <span class="tag">PHP</span>
-                        <span class="tag">Symfony</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Doctrine ORM</span>
-                        <span class="tag">SCSS</span>
-                        <span class="tag">Docker</span>
-                    </div>
-                </div>
-            </div>
-
             <!-- Suivi dépenses -->
             <div class="project-card">
                 <img class="project-img" src="images/Suivi_depense.png" alt="Suivi dépenses">
@@ -314,6 +288,62 @@
                         <a href="https://github.com/KoThek64/Site_Resto_Fictif" class="proj-link">GitHub</a>
                         <a href="https://cuisinedelight.netlify.app/" class="proj-link primary">Voir le site →</a>
                     </div>
+                </div>
+            </div>
+
+            <!-- Pokémon - projet en pause -->
+            <div class="project-card project-wide">
+                <div class="project-img-placeholder wide-visual">
+                    <img src="images/pokemon.png" alt="Logo Pokémon" class="wide-logo">
+                    <span>Jeu CLI</span>
+                </div>
+                <div class="project-body">
+                    <span class="project-badge paused">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="6" y="5" width="4" height="14" rx="1"/>
+                            <rect x="14" y="5" width="4" height="14" rx="1"/>
+                        </svg>
+                        En pause
+                    </span>
+                    <h3 class="project-name">Pokémon CLI</h3>
+                    <p class="project-desc">Jeu Pokémon au tour par tour en ligne de commande : combats, équipes et
+                        import automatique des données depuis la PokéAPI. Développement mis en pause — à reprendre
+                        plus tard.</p>
+                    <div class="project-tags">
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">PokéAPI</span>
+                        <span class="tag">Gradle</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/KoThek64/Pokemon" class="proj-link">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prochainement - My Money mis en avant -->
+        <div class="project-upcoming reveal">
+            <div class="upcoming-visual">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="5" width="20" height="14" rx="2"/>
+                    <path d="M2 10h20"/>
+                    <circle cx="17" cy="14.5" r="1.5"/>
+                </svg>
+            </div>
+            <div class="upcoming-body">
+                <span class="upcoming-status"><span class="upcoming-dot"></span>En préparation</span>
+                <h3 class="upcoming-name">My Money</h3>
+                <p class="upcoming-desc">Mon prochain projet : une version web plus aboutie de
+                    <strong>Suivi des dépenses</strong> — gestion de budget par catégorie, revenus, statistiques et
+                    objectifs d'épargne.</p>
+                <div class="project-tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">Symfony</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Doctrine ORM</span>
+                    <span class="tag">SCSS</span>
+                    <span class="tag">Docker</span>
                 </div>
             </div>
         </div>
@@ -538,6 +568,7 @@
 <!-- Footer -->
 <footer>
     <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
     <p>Fait avec <span class="footer-accent">♥</span></p>
 </footer>
 
