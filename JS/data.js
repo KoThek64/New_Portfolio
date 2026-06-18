@@ -92,6 +92,7 @@ const DATA = {
         'CSS': {icon: 'devicon-css3-plain', color: '#1572B6'},
         'SQL': {icon: 'devicon-postgresql-plain', color: '#4479A1'},
         'Bash': {icon: 'devicon-bash-plain', color: '#4EAA25'},
+        'PowerShell': {icon: 'devicon-powershell-plain', color: '#5391FE'},
         'Symfony': {icon: 'devicon-symfony-original', color: '#8B5CF6'},
         'CodeIgniter': {icon: 'devicon-codeigniter-plain', color: '#EF4223'},
         'Ktor': {icon: 'devicon-ktor-plain', color: '#7F52FF'},
@@ -136,7 +137,7 @@ const DATA = {
     skillsIndex: [
         {
             label: 'Langages',
-            items: ['PHP', 'Kotlin', 'JavaScript', 'TypeScript', 'Python', 'Go', 'Dart', 'HTML', 'CSS', 'SQL', 'Bash']
+            items: ['PHP', 'Kotlin', 'JavaScript', 'TypeScript', 'Python', 'Go', 'Dart', 'HTML', 'CSS', 'SQL', 'Bash', 'PowerShell']
         },
         {
             label: 'Frameworks & Librairies',
@@ -153,7 +154,7 @@ const DATA = {
     skillsCV: [
         {
             label: 'Langages',
-            items: ['PHP', 'Kotlin', 'JavaScript', 'TypeScript', 'Python', 'Go', 'Dart', 'HTML/CSS', 'SQL', 'Markdown', 'Bash']
+            items: ['PHP', 'Kotlin', 'JavaScript', 'TypeScript', 'Python', 'Go', 'Dart', 'HTML/CSS', 'SQL', 'Markdown', 'Bash', 'PowerShell']
         },
         {
             label: 'Frameworks & Librairies',
