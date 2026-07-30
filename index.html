@@ -409,98 +409,19 @@
         <div class="homelab-layout">
             <div class="homelab-info reveal reveal-delay-1">
                 <p class="homelab-desc">
-                    Infrastructure personnelle auto-hébergée. Hyperviseur
-                    <strong>Proxmox</strong> avec 7 services isolés en conteneurs LXC, pare-feu
-                    <strong>OPNsense</strong> et VPN mesh <strong>Tailscale</strong>.
+                    Infrastructure personnelle auto-hébergée sur un hyperviseur <strong>Proxmox VE</strong>.
+                    Aujourd'hui recentrée sur un <strong>conteneur LXC</strong> dédié au jeu : chaque serveur
+                    Minecraft y tourne dans son propre conteneur <strong>Docker</strong>, isolé des autres — et
+                    bientôt piloté par un dashboard que je développe pour l'occasion.
                 </p>
-                <div class="network-chips">
-                    <div class="net-chip">
-                        <div class="net-chip-dot"></div>
-                        Proxmox VE (Cuby)
-                    </div>
-                    <div class="net-chip">
-                        <div class="net-chip-dot"></div>
-                        OPNsense (Gateway)
-                    </div>
-                    <div class="net-chip">
-                        <div class="net-chip-dot"></div>
-                        Tailscale 100.x.y.z
-                    </div>
-                    <div class="net-chip">
-                        <div class="net-chip-dot"></div>
-                        Ubuntu Server (Asus-Tuf)
-                    </div>
-                    <div class="net-chip">
-                        <div class="net-chip-dot"></div>
-                        Switch 5 ports
-                    </div>
-                </div>
-                <img src="images/Serveur.jpg" alt="HomeLab"
-                     style="border-radius:12px; border:1px solid var(--border); width:100%;">
+
+                <p class="homelab-block-title">// réseau</p>
+                <div id="homelab-network"></div>
             </div>
 
-            <div class="reveal reveal-delay-2">
-                <div class="terminal">
-                    <div class="terminal-bar">
-                        <div class="term-dot"></div>
-                        <div class="term-dot"></div>
-                        <div class="term-dot"></div>
-                        <span class="term-title">mattys@cuby ~ — bash</span>
-                    </div>
-                    <div class="terminal-body">
-                        <div><span class="term-prompt">mattys@cuby</span> <span class="term-cmd">pct list</span></div>
-                        <div class="term-comment">─── Services LXC (Debian) ──────────────────</div>
-
-                        <div class="term-service">
-                            <span class="term-service-name">uptime-kuma</span>
-                            <span class="term-service-desc">Monitoring</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-                        <div class="term-service">
-                            <span class="term-service-name">gitea</span>
-                            <span class="term-service-desc">Dépôts Git</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-                        <div class="term-service">
-                            <span class="term-service-name">wiki-js</span>
-                            <span class="term-service-desc">Documentation</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-                        <div class="term-service">
-                            <span class="term-service-name">paperless-ngx</span>
-                            <span class="term-service-desc">Documents</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-                        <div class="term-service">
-                            <span class="term-service-name">portainer</span>
-                            <span class="term-service-desc">Docker GUI</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-                        <div class="term-service">
-                            <span class="term-service-name">it-tools</span>
-                            <span class="term-service-desc">Outils dev</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-                        <div class="term-service">
-                            <span class="term-service-name">cloudbeaver</span>
-                            <span class="term-service-desc">Gestion Multi-BD</span>
-                            <span class="term-status"><span class="status-dot"></span>running</span>
-                        </div>
-
-                        <br>
-                        <div><span class="term-prompt">mattys@asus-tuf</span> <span class="term-cmd">systemctl status minecraft</span>
-                        </div>
-                        <div class="term-comment">─── Serveur de jeu ────────────────────────</div>
-                        <div class="term-service">
-                            <span class="term-service-name">minecraft (Better MC 4)</span>
-                            <span class="term-service-desc">via playit.gg</span>
-                            <span class="term-status"><span class="status-dot"></span>active</span>
-                        </div>
-
-                        <br>
-                        <div class="term-comment">7 services · 2 serveurs · 0 downtime 🟢</div>
-                    </div>
-                </div>
+            <div class="homelab-arch reveal reveal-delay-2">
+                <p class="homelab-block-title">// architecture</p>
+                <div id="homelab-arch"></div>
             </div>
         </div>
     </div>

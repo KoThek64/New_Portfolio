@@ -173,6 +173,41 @@ const DATA = {
         {label: 'Design', items: ['Canva']},
     ],
 
+    // ── HomeLab ─────────────────────────────────────────────────────────────
+    // Deux blocs rendus par index.js : la topologie réseau, puis l'architecture
+    // du serveur (Proxmox → LXC → conteneurs Docker).
+    // Pour ajouter un serveur Minecraft : une entrée de plus dans `containers`.
+    homelab: {
+        network: {
+            // Chaîne principale, de la box jusqu'au switch
+            chain: [
+                {name: 'Box SFR', meta: '5G'},
+                {name: 'Switch 5 ports', meta: 'Gigabit'}
+            ],
+            // Machines branchées en aval du switch
+            leaves: [
+                {name: 'Poste de dev'},
+                {name: 'Cuby', meta: 'Serveur', accent: true}
+            ]
+        },
+        host: {name: 'Cuby', os: 'Proxmox VE', role: 'Hyperviseur'},
+        lxc: {id: '100', name: 'minecraft', os: 'Debian', role: 'Conteneur LXC'},
+        // Le conteneur qui orchestre les autres
+        manager: {
+            name: 'dashboard',
+            status: 'planned',
+            statusLabel: 'à venir',
+            desc: "Interface web maison pour créer, démarrer, arrêter et surveiller chaque serveur sans passer par SSH.",
+            tags: ['PHP', 'Symfony', 'Docker API']
+        },
+        // Un conteneur Docker = un serveur de jeu
+        containers: [
+            {name: 'mc-paper', desc: 'Serveur Paper · exposé via playit.gg', status: 'running', statusLabel: 'running'}
+        ],
+        // Emplacement libre affiché en pointillés après les conteneurs
+        slot: '+ nouveaux serveurs'
+    },
+
     // Projets affichés dans le CV (3 max)
     cvProjects: [
         {
@@ -182,8 +217,8 @@ const DATA = {
         },
         {
             name: 'HomeLab',
-            desc: 'Infrastructure auto-hébergée — Proxmox + OPNsense, 7 services isolés en conteneurs LXC, reliés via Tailscale.',
-            tags: ['Proxmox', 'OPNsense', 'Docker', 'Tailscale', 'Ubuntu Server']
+            desc: 'Infrastructure auto-hébergée — hyperviseur Proxmox VE, conteneur LXC dédié au jeu où chaque serveur Minecraft tourne dans son propre conteneur Docker.',
+            tags: ['Proxmox VE', 'LXC', 'Docker', 'Debian', 'Linux']
         },
         {
             name: 'Tapis Market',

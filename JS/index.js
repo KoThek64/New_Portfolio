@@ -169,6 +169,72 @@ document.getElementById('index-skills').innerHTML = DATA.skillsIndex.map(functio
 }).join('');
 document.querySelectorAll('#index-skills .reveal').forEach(el => window.revealObs.observe(el));
 
+/* ─── HOMELAB ────────────────────────────────────────────────── */
+/* Deux rendus depuis DATA.homelab : la topologie réseau (chaîne box → switch,
+   puis les machines en aval) et le diagramme d'architecture imbriqué
+   Proxmox → LXC → conteneurs Docker. */
+const HL = DATA.homelab;
+
+const netNode = n => `
+  <div class="net-node${n.accent ? ' accent' : ''}">
+    <span class="net-node-name">${n.name}</span>
+    ${n.meta ? `<span class="net-node-meta">${n.meta}</span>` : ''}
+  </div>`;
+
+document.getElementById('homelab-network').innerHTML = `
+  <div class="net-flow">
+    ${HL.network.chain.map(netNode).join('<div class="net-link"></div>')}
+    <div class="net-link"></div>
+    <div class="net-leaves">${HL.network.leaves.map(netNode).join('')}</div>
+  </div>`;
+
+const dockerIcon = '<i class="devicon-docker-plain" style="color:#2496ED"></i>';
+
+const dockerCard = (c, extraClass = '') => `
+  <div class="dk ${extraClass}">
+    <div class="dk-head">
+      ${dockerIcon}
+      <span class="dk-name">${c.name}</span>
+      <span class="dk-status ${c.status}">
+        <span class="status-dot"></span>${c.statusLabel}
+      </span>
+    </div>
+    <p class="dk-desc">${c.desc}</p>
+    ${c.tags ? `<div class="dk-tags">${c.tags.map(t => `<span class="dk-tag">${t}</span>`).join('')}</div>` : ''}
+  </div>`;
+
+document.getElementById('homelab-arch').innerHTML = `
+  <div class="arch-box arch-host">
+    <div class="arch-bar">
+      ${DATA.skillsMeta['ProxmoxVE'].svg}
+      <span class="arch-bar-name">${HL.host.name}</span>
+      <span class="arch-bar-sub">${HL.host.role} · ${HL.host.os}</span>
+    </div>
+    <div class="arch-body">
+
+      <div class="arch-box arch-lxc">
+        <div class="arch-bar">
+          <i class="devicon-debian-plain" style="color:#A81D33"></i>
+          <span class="arch-bar-name">${HL.lxc.name}</span>
+          <span class="arch-bar-sub">${HL.lxc.role} ${HL.lxc.id} · ${HL.lxc.os}</span>
+        </div>
+        <div class="arch-body">
+
+          ${dockerCard(HL.manager, 'dk-manager')}
+
+          <div class="arch-connector"><span>pilote</span></div>
+
+          <div class="arch-dockers">
+            ${HL.containers.map(c => dockerCard(c)).join('')}
+            ${HL.slot ? `<div class="dk dk-slot">${HL.slot}</div>` : ''}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>`;
+
 document.getElementById('index-formation').innerHTML = DATA.formation.map(e => `
   <div class="timeline-entry ${e.highlight ? 'highlight' : ''}">
     <div class="timeline-year">${e.date}</div>
