@@ -421,10 +421,17 @@ body {
 }
 
 /* ── PROJECT CARDS ───────────────────────────────────────── */
+/* Grille 2 colonnes : gagne de la hauteur sur la page A4.
+   Un nombre impair de projets → la dernière carte occupe toute la largeur. */
 .cv-projects {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 7px;
+    align-items: start;
+}
+
+.cv-project:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
 .cv-project {

@@ -5,24 +5,20 @@ const DATA = {
     (<strong>TypeScript, React</strong>). Curieux, autonome, et toujours en train d'apprendre.`,
 
     experiences: [
-        // ── À activer dès le début de l'alternance (rentrée 2026) ────────────────
-        // Décommenter et placer en PREMIER (expérience la plus récente),
-        // puis retirer le highlight de l'expérience Enedis ci-dessous.
-        // {
-        //     date: 'Sep. 2026 → Aoû. 2027',
-        //     role: 'Alternant développeur web full-stack',
-        //     org: 'Lunéos',
-        //     location: 'Nantes',
-        //     desc: "Intégration de maquettes Figma et développement full-stack (WordPress, Shopify, Webflow ou custom code), connexion d'API tierces, automatisations N8N et intégration d'agents IA",
-        //     highlight: true
-        // },
+        {
+            date: 'Sep. 2026 → Aoû. 2027',
+            role: 'Alternant développeur web full-stack',
+            org: 'Luneos',
+            location: 'Nantes',
+            desc: "Intégration de maquettes Figma et développement full-stack (WordPress, Shopify, Webflow ou custom code), connexion d'API tierces, automatisations N8N et intégration d'agents IA",
+            highlight: true
+        },
         {
             date: 'Avr. → Juil. 2026',
             role: "Stagiaire développeur d'application web",
             org: 'Enedis Lab',
             location: 'Nantes',
-            desc: "Développement de fonctionnalités et maintenance d'applications web (Symfony/PHP, Node.js, PostgreSQL, TypeScript, AWS)",
-            highlight: true
+            desc: "Développement de fonctionnalités et maintenance d'applications web (Symfony/PHP, Node.js, PostgreSQL, TypeScript, AWS)"
         },
         // secondary: true → expériences non-tech, groupées en une ligne sur le portfolio
         // (le CV les affiche toujours en détail)
@@ -103,6 +99,8 @@ const DATA = {
         'JavaFX': {icon: 'devicon-java-plain', color: '#ea8220'},
         'React': {icon: 'devicon-react-original', color: '#61DAFB'},
         'SCSS': {icon: 'devicon-sass-original', color: '#CC6699'},
+        'WordPress': {icon: 'devicon-wordpress-plain', color: '#21759B'},
+        'Figma': {icon: 'devicon-figma-plain', color: '#F24E1E'},
         'Doctrine ORM': {
             color: '#FC6A31',
             svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FC6A31" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>`
@@ -141,9 +139,9 @@ const DATA = {
         },
         {
             label: 'Frameworks & Librairies',
-            items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX']
+            items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX', 'WordPress']
         },
-        {label: 'Outils & Déploiement', items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Supabase', 'Railway', 'Netlify', 'Mermaid JS']},
+        {label: 'Outils & Déploiement', items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Supabase', 'Railway', 'Netlify', 'Figma', 'Mermaid JS']},
         {
             label: 'Systèmes',
             items: ['Linux', 'EndeavourOS', 'Fedora', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Windows']
@@ -158,7 +156,7 @@ const DATA = {
         },
         {
             label: 'Frameworks & Librairies',
-            items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX']
+            items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX', 'WordPress']
         },
         {label: 'Outils', items: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Docker', 'Supabase', 'DBeaver', 'Tailscale', 'Mermaid JS']},
         {
@@ -170,7 +168,7 @@ const DATA = {
     // Section Environnement du CV uniquement
     skillsCVEnv: [
         {label: 'IDE', items: ['VS Code', 'IntelliJ', 'PHPStorm', 'PyCharm', 'WebStorm']},
-        {label: 'Design', items: ['Canva']},
+        {label: 'Design', items: ['Figma', 'Canva']},
     ],
 
     // ── HomeLab ─────────────────────────────────────────────────────────────
