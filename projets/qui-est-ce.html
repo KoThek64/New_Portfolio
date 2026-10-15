@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui-Est-Ce ? — Jeu en réseau et tests en Kotlin | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet Qui-Est-Ce ? : jeu multijoueur en Kotlin et JavaFX réalisé à quatre en SAE de première année. Ma part : l'analyse de testabilité et 55 tests JUnit 5 de la librairie client, ainsi que deux écrans du jeu.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/qui-est-ce.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Qui-Est-Ce ? — Jeu en réseau et tests en Kotlin">
+    <meta property="og:description" content="Un jeu multijoueur en Kotlin et JavaFX, réalisé à quatre. Ma part : tester la librairie réseau fournie et en analyser la testabilité.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/qui-est-ce.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Qui-Est-Ce ? — Jeu en réseau et tests en Kotlin">
+    <meta name="twitter:description" content="Un jeu multijoueur en Kotlin et JavaFX, réalisé à quatre. Ma part : tester la librairie réseau fournie et en analyser la testabilité.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet universitaire · SAE S2 · 2024–2025</p>
+        <h1 class="pj-title">Qui-Est-Ce ?<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Le jeu de société en version <strong>multijoueur en ligne</strong>, écrit en
+            <strong>Kotlin et JavaFX</strong> à quatre étudiants. Le jeu n'a pas été terminé dans le temps
+            imparti ; ma part principale, elle, l'est : l'<strong>analyse de testabilité</strong> et les
+            <strong>tests JUnit 5</strong> de la librairie réseau sur laquelle tout le jeu repose.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Mon rôle</dt><dd>Tests · 2 écrans du jeu</dd></div>
+            <div><dt>Équipe</dt><dd>4 étudiants</dd></div>
+            <div><dt>Période</dt><dd>Juin 2025</dd></div>
+            <div><dt>Statut</dt><dd class="paused">Non terminé</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">Kotlin</span>
+            <span class="tag">JavaFX</span>
+            <span class="tag">JUnit 5</span>
+            <span class="tag">MVC</span>
+            <span class="tag">Client / serveur</span>
+            <span class="tag">Gradle</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://github.com/KoThek64/Jeu_Qui_Est_Ce" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Code source sur GitHub →
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Un jeu autour d'une librairie imposée<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                C'est la <strong>SAE du deuxième semestre</strong> du BUT Informatique. L'IUT fournit un
+                serveur de jeu et une <strong>librairie cliente</strong> (<code class="pj-inline-code">QuiEstCeClient</code>)
+                qui envoie les requêtes : créer un joueur, créer ou rejoindre une partie, choisir son
+                personnage, poser une question, répondre…
+            </p>
+            <p>
+                Une partie suit des <strong>états</strong> précis, de sa création à sa fin : on attend que le
+                second joueur arrive, que chacun choisisse son personnage, puis on alterne questions et
+                réponses. À nous d'écrire l'application <strong>JavaFX</strong> autour, en <strong>MVC</strong>,
+                et de vérifier que la librairie se comporte comme annoncé.
+            </p>
+        </div>
+
+        <div class="pj-pipeline reveal">
+            <div class="pj-step">
+                <h4>Créée</h4>
+                <p>Un joueur ouvre une partie</p>
+            </div>
+            <div class="pj-step">
+                <h4>Initialisation</h4>
+                <p>Le second joueur la rejoint</p>
+            </div>
+            <div class="pj-step">
+                <h4>Réflexion</h4>
+                <p>Chacun choisit son personnage secret</p>
+            </div>
+            <div class="pj-step">
+                <h4>Question / réponse</h4>
+                <p>Les joueurs s'interrogent à tour de rôle</p>
+            </div>
+            <div class="pj-step">
+                <h4>Terminée</h4>
+                <p>Un joueur trouve le personnage</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — MA CONTRIBUTION
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Ma contribution</div>
+        <h2 class="section-title reveal">Ce que j'ai fait<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Dans l'équipe, je me suis chargé de la <strong>qualité</strong>. D'après l'historique Git,
+                sur les 76 tests de la librairie, <strong>55 sont de moi</strong>, répartis dans 11 classes
+                de test. Le reste du jeu (création de joueur, menus, choix du personnage, écrans de fin) a
+                été écrit par mes trois coéquipiers.
+            </p>
+        </div>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// 01 — analyse</p>
+                <h3>Analyse de testabilité</h3>
+                <p>
+                    Pour le constructeur et chacune des 15 requêtes de la librairie, une fiche note l'<strong>observabilité</strong>, la
+                    <strong>contrôlabilité</strong>, la <strong>disponibilité</strong> et la
+                    <strong>stabilité</strong>, avec les limites constatées et des pistes d'amélioration.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// 02 — tests</p>
+                <h3>55 tests JUnit 5</h3>
+                <p>
+                    Création de joueur et de partie, rejoindre, état, choix du personnage, grille, parties
+                    terminées, victoire… Chaque requête est testée sur son <strong>cas nominal</strong> et ses
+                    <strong>entrées invalides</strong>.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// 03 — jeu</p>
+                <h3>Deux écrans</h3>
+                <p>
+                    L'écran pour <strong>rejoindre une partie</strong> et l'<strong>écran de jeu</strong>
+                    lui-même. Puis, un an plus tard, la réparation du build Gradle et le nettoyage du dépôt
+                    pour le publier.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Zoom technique</div>
+        <h2 class="section-title reveal">Tester une librairie qu'on n'a pas écrite<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Les cas limites d'abord</h3>
+                <p>
+                    On ne voit pas le code de la librairie : on la teste <strong>en boîte noire</strong>,
+                    contre un serveur lancé en local. Pour rejoindre une partie, le cas nominal vérifie qu'on
+                    obtient un état ; les autres vérifient qu'un <strong>identifiant inexistant</strong> lève
+                    l'exception de la librairie et qu'un <strong>identifiant négatif</strong> est refusé avant
+                    même d'être envoyé.
+                </p>
+                <p>
+                    Les noms des joueurs de test sont tirés au hasard, y compris avec des
+                    <strong>apostrophes et des traits d'union</strong>, pour éprouver la création de joueur.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">testsLibrairie/requeteRejoindrePartieTests.kt · extrait <em>kotlin</em></div>
+<pre><code class="language-kotlin">@Test
+fun requeteRejoindrePartie() {
+    val joueur1 = client.requeteCreationJoueur(initTests.nom(), initTests.prenom())
+    val idPartie = client.requeteCreationPartie(joueur1.id, joueur1.cle)
+    val joueur2 = client.requeteCreationJoueur(initTests.nom(), initTests.prenom())
+    val etat = client.requeteRejoindrePartie(idPartie, joueur2.id, joueur2.cle)
+    assertNotNull(etat)
+}
+
+@Test
+fun requeteRejoindrePartieIdInvalide() {
+    val joueur2 = client.requeteCreationJoueur(initTests.nom(), initTests.prenom())
+    assertThrows&lt;QuiEstCeException&gt;{
+        client.requeteRejoindrePartie(0, joueur2.id, joueur2.cle)
+    }
+}
+
+@Test
+fun requeteRejoindrePartieIdInvalideNegatif() {
+    val n = -Random.nextInt(1, Int.MAX_VALUE)
+    val joueur2 = client.requeteCreationJoueur(initTests.nom(), initTests.prenom())
+    assertThrows&lt;IllegalArgumentException&gt;{
+        client.requeteRejoindrePartie(n, joueur2.id, joueur2.cle)
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Une note par critère</h3>
+                <p>
+                    L'analyse de testabilité met des mots sur ce qui rend un test difficile. Pour le
+                    constructeur du client, par exemple, l'<strong>observabilité</strong> est faible : il ne
+                    produit aucune sortie, on ne sait pas si la connexion a réussi.
+                </p>
+                <p>
+                    Les pistes proposées sont celles qu'on applique en entreprise : <strong>exposer un
+                    état</strong>, permettre d'<strong>injecter un serveur simulé</strong> et tester contre un
+                    serveur figé pour des résultats reproductibles.
+                </p>
+            </div>
+            <div class="pj-arch">
+                <div class="arch-box arch-host">
+                    <div class="arch-bar">
+                        <span class="arch-bar-name">QuiEstCeClient(hote, port)</span>
+                        <span class="arch-bar-sub">fiche de testabilité</span>
+                    </div>
+                    <div class="arch-body pj-layers">
+                        <div class="pj-layer">
+                            <span class="pj-layer-name">Observabilité · 2/5</span>
+                            <span class="pj-layer-desc">Aucune sortie ni log, initialisation silencieuse</span>
+                        </div>
+                        <div class="pj-layer">
+                            <span class="pj-layer-name">Contrôlabilité · 3/5</span>
+                            <span class="pj-layer-desc">Hôte et port contrôlables, mais connexion interne opaque</span>
+                        </div>
+                        <div class="pj-layer">
+                            <span class="pj-layer-name">Disponibilité · 4/5</span>
+                            <span class="pj-layer-desc">Constructeur public, accessible dans tout contexte</span>
+                        </div>
+                        <div class="pj-layer">
+                            <span class="pj-layer-name">Stabilité · 4/5</span>
+                            <span class="pj-layer-desc">Déterministe : mêmes hôte et port, mêmes résultats</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Bilan</div>
+        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Un projet inachevé</h3>
+                <p>
+                    On crée un joueur et une partie, on la rejoint, mais l'affichage des deux grilles et
+                    l'enchaînement des tours n'ont pas été stabilisés à temps. Je préfère le montrer tel
+                    qu'il est : la leçon, c'est d'assembler les écrans tôt plutôt qu'en fin de projet.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>Tester, c'est spécifier</h3>
+                <p>
+                    Écrire les tests d'une librairie oblige à décider ce qu'elle doit faire dans chaque cas.
+                    C'est là que j'ai pris l'habitude de commencer par les cas d'erreur et les bornes.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>Les limites d'un test réseau</h3>
+                <p>
+                    Des tests qui dépendent d'un serveur et de valeurs aléatoires peuvent échouer sans
+                    raison. C'est ce qui m'a fait comprendre l'intérêt des doublures de test et des données figées.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="quadtree.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">Jeu en Quadtree</span>
+        </a>
+        <a href="../index.html#projects" class="pj-next-link next">
+            <span class="pj-next-label">retour →</span>
+            <span class="pj-next-name">Tous les projets</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-kotlin.min.js"></script>
+</body>
+</html>

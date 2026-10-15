@@ -624,7 +624,7 @@ section { padding: 120px 0; }
   color: var(--muted2);
   border: 1px solid var(--border);
 }
-.project-links { display: flex; gap: 12px; }
+.project-links { display: flex; flex-wrap: wrap; gap: 12px; }
 .proj-link {
   font-family: 'DM Mono', monospace;
   font-size: 0.72rem;
@@ -764,6 +764,7 @@ section { padding: 120px 0; }
   font-size: 0.95rem;
   margin-bottom: 32px;
 }
+.homelab-fiche { display: inline-block; margin-bottom: 32px; }
 .homelab-block-title {
   font-family: 'DM Mono', monospace;
   font-size: 0.68rem;

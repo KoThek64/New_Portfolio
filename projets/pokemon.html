@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon CLI — Jeu de combat en Kotlin | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet Pokémon CLI : jeu de combat au tour par tour en Kotlin, avec les 151 Pokémon importés depuis PokéAPI dans PostgreSQL, Exposed ORM, tests JUnit 5 et intégration continue GitHub Actions.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/pokemon.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Pokémon CLI — Jeu de combat en Kotlin">
+    <meta property="og:description" content="Un jeu de combat Pokémon en ligne de commande : données importées depuis PokéAPI, base PostgreSQL sur mon homelab, tests JUnit 5 et CI.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/pokemon.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pokémon CLI — Jeu de combat en Kotlin">
+    <meta name="twitter:description" content="Un jeu de combat Pokémon en ligne de commande : données importées depuis PokéAPI, base PostgreSQL sur mon homelab, tests JUnit 5 et CI.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet personnel · 2025–2026</p>
+        <h1 class="pj-title">Pokémon CLI<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Un <strong>jeu de combat Pokémon au tour par tour</strong>, en ligne de commande. Les
+            <strong>151 Pokémon</strong> de la première génération et leurs capacités sont importés depuis
+            <strong>PokéAPI</strong> dans une base <strong>PostgreSQL</strong> hébergée sur mon homelab.
+            Le moteur de combat est couvert par des <strong>tests JUnit 5</strong> lancés en intégration continue.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Rôle</dt><dd>Seul</dd></div>
+            <div><dt>Code</dt><dd>~2 400 lignes de Kotlin</dd></div>
+            <div><dt>Période</dt><dd>Nov. 2025 → mars 2026</dd></div>
+            <div><dt>Statut</dt><dd class="paused">En pause</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">Kotlin 2.2</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Exposed ORM</span>
+            <span class="tag">Ktor Client</span>
+            <span class="tag">Coroutines</span>
+            <span class="tag">kotlinx.serialization</span>
+            <span class="tag">JUnit 5</span>
+            <span class="tag">GitHub Actions</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://github.com/KoThek64/Pokemon" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Code source sur GitHub →
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Un jeu pour pratiquer l'objet<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Après Suivi des dépenses, je voulais un projet Kotlin plus riche, avec beaucoup de
+                <strong>règles métier</strong> à modéliser. Un combat Pokémon en est rempli : statistiques
+                calculées selon le niveau, 18 types et leurs faiblesses, points de pouvoir, ordre d'attaque
+                selon la vitesse.
+            </p>
+            <p>
+                Le projet a évolué par étapes. D'abord des données en <strong>fichiers JSON</strong> écrits à
+                la main pour quelques Pokémon, puis un import automatique depuis <strong>PokéAPI</strong> vers
+                une vraie base <strong>PostgreSQL</strong>, installée dans un conteneur de mon
+                <a href="homelab.html" class="pj-inline-link">homelab</a>. Le développement est
+                aujourd'hui en pause, sans reprise prévue : le combat fonctionne, et la suite (évolutions, capture, statuts, zones à explorer) reste listée dans la roadmap du dépôt. Si je reprends l'idée, ce sera peut-être directement dans un moteur de jeu comme Unity.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — LE JEU
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Le jeu</div>
+        <h2 class="section-title reveal">Ce qui fonctionne<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// pokémon</p>
+                <h3>Des Pokémon fidèles</h3>
+                <ul>
+                    <li>151 espèces avec leur <strong>nom français</strong>, leurs types et leurs statistiques de base</li>
+                    <li>Niveaux de 1 à 100 et <strong>calcul des 6 statistiques</strong> selon le niveau</li>
+                    <li>4 capacités maximum, avec leurs <strong>PP</strong></li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// combat</p>
+                <h3>Un vrai combat au tour par tour</h3>
+                <ul>
+                    <li>Attaquer, <strong>changer de Pokémon</strong> ou fuir</li>
+                    <li>Le plus rapide attaque en premier</li>
+                    <li>Dégâts selon la <strong>formule officielle</strong>, KO et fin de combat</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// données</p>
+                <h3>Import et sauvegarde</h3>
+                <ul>
+                    <li>Import de PokéAPI au <strong>premier lancement</strong>, ignoré ensuite</li>
+                    <li>Partie sauvegardée en <strong>JSON</strong> : équipe, niveaux, PV et PP</li>
+                    <li>Base <strong>H2 en mémoire</strong> si aucun serveur n'est configuré</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// administration</p>
+                <h3>Un outil d'admin</h3>
+                <ul>
+                    <li>Programme séparé pour consulter la base</li>
+                    <li>Recherche par numéro, nom ou type</li>
+                    <li>Modifier, supprimer, lier Pokémon et capacités</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Zoom technique</div>
+        <h2 class="section-title reveal">Dans le code<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>La formule des dégâts</h3>
+                <p>
+                    Selon la catégorie de la capacité, on oppose l'<strong>attaque à la défense</strong>
+                    (physique) ou l'<strong>attaque spéciale à la défense spéciale</strong>. Une capacité de
+                    statut ne fait pas de dégâts.
+                </p>
+                <p>
+                    Le résultat est ensuite multiplié par le bonus de type identique
+                    (<strong>STAB</strong>, ×1,5), l'<strong>efficacité</strong> contre les deux types du
+                    défenseur (de ×0 à ×4) et un facteur aléatoire entre 85 et 100 %.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">modeles/classes/Combat.kt <em>kotlin</em></div>
+<pre><code class="language-kotlin">private fun calculerDegat(attaquant : Pokemon, defenseur : Pokemon, idCapacitee : Int) : Int {
+    // On récupère les données de la capacité
+    val capData = MoveRepository.getParId(idCapacitee)
+
+    val a : Int
+    val d : Int
+
+    val typeDefenseur1 = defenseur.espece.types[0]
+    val typeDefenseur2 = if(defenseur.espece.types.size > 1) defenseur.espece.types[1] else null
+
+    when (capData.categorie) {
+        CategorieCapacitee.PHYSIQUE -> {
+            a = attaquant.stats.attaque
+            d = defenseur.stats.defense
+        }
+        CategorieCapacitee.SPECIALE -> {
+            a = attaquant.stats.attaqueSpe
+            d = defenseur.stats.defenseSpe
+        }
+        CategorieCapacitee.STATUS -> return 0
+    }
+
+    val puissance = (capData.stats.puissance ?: 0).toDouble()
+    val niveau = attaquant.niveau.toDouble()
+
+    // Formule de dégâts officielle
+    var degatsBase = (floor(2.0 * niveau / 5.0 + 2.0).toInt() * puissance * a.toDouble() / d.toDouble())
+    degatsBase = floor(degatsBase / 50.0) + 2.0
+
+    // STAB + Efficacité
+    val stab = if (attaquant.espece.types.contains(capData.type)) 1.5 else 1.0
+    val efficaciteType = CalculEfficacite.getEfficaciteType(capData.type, typeDefenseur1, typeDefenseur2)
+    val aleatoire = Random.nextDouble(0.85, 1.0)
+    val critique = 1.0
+
+    return floor(degatsBase * stab * efficaciteType * aleatoire * critique).toInt()
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Importer 151 Pokémon depuis PokéAPI</h3>
+                <p>
+                    Au premier lancement, le seeder interroge l'API pour chaque numéro. Les appels réseau
+                    passent par <strong>Ktor</strong> dans des <strong>coroutines</strong>, et les réponses
+                    JSON sont désérialisées dans des DTO.
+                </p>
+                <p>
+                    Il est <strong>idempotent</strong> : s'il est interrompu, il reprend là où il s'était
+                    arrêté en sautant les Pokémon déjà en base, et une erreur sur un Pokémon n'arrête pas
+                    l'import des autres. Le nom français vient de la ressource <em>species</em>.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">service/PokemonSeeder.kt · extrait <em>kotlin</em></div>
+<pre><code class="language-kotlin">suspend fun seedPokemon(range : IntRange = 1..151){
+    if (isSeeded(range.count())) {
+        println("✅ Pokémon déjà importés, seeding ignoré.")
+        return
+    }
+    println("Début de l'importation")
+
+    val existingIds = transaction {
+        PokemonTable.slice(PokemonTable.id)
+            .selectAll()
+            .map { it[PokemonTable.id] }
+            .toSet() // On stocke dans un Set pour une recherche rapide
+    }
+
+    for (id in range){
+        if (id in existingIds) {
+            continue
+        }
+
+        try {
+            val pokemonDto: PokemonDto = client.get("https://pokeapi.co/api/v2/pokemon/$id").body()
+
+            val speciesDto: PokemonSpeciesDto = client.get("https://pokeapi.co/api/v2/pokemon-species/$id").body()
+            val nomFr = speciesDto.names.find { it.language.name == "fr" }?.name ?: pokemonDto.name
+
+            transaction {
+                PokemonTable.insertIgnore {
+                    it[PokemonTable.id] = pokemonDto.id
+                    it[nom] = nomFr
+                    // … statistiques et types
+                }
+            }
+            println("[#$id] $nomFr ajouté à la base")
+        } catch (e : Exception){
+            println("Erreur lors de l'import du pokémon ID $id : ${e.message}")
+        }
+    }
+    println("Importation terminée !")
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Les actions, typées</h3>
+                <p>
+                    Une action de combat est une <strong>classe scellée</strong> : le compilateur connaît
+                    tous les cas possibles et vérifie qu'un <code class="pj-inline-code">when</code> les traite
+                    tous. Ajouter une action (un objet, par exemple) signale chaque endroit à mettre à jour.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">modeles/ActionDeCombat.kt <em>kotlin</em></div>
+<pre><code class="language-kotlin">sealed class ActionDeCombat {
+    data class Attaque(val capacitee: CapaciteeApprise) : ActionDeCombat()
+    data class ChangerDePokemon(val index : Int) : ActionDeCombat()
+    object Fuite : ActionDeCombat()
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — ARCHITECTURE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Architecture</div>
+        <h2 class="section-title reveal">Comment c'est construit<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Le code est découpé par responsabilité : les <strong>modèles</strong> portent les règles du
+                jeu, les <strong>repositories</strong> lisent la base, les <strong>seeders</strong> la
+                remplissent depuis l'API. Les identifiants de connexion sont lus dans un fichier
+                <code class="pj-inline-code">db.properties</code> exclu de Git.
+            </p>
+        </div>
+
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <i class="devicon-kotlin-plain" style="color:#7F52FF"></i>
+                    <span class="arch-bar-name">Pokémon CLI</span>
+                    <span class="arch-bar-sub">Kotlin · JVM 21 · Gradle</span>
+                </div>
+                <div class="arch-body">
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <span class="arch-bar-name">Application</span>
+                            <span class="arch-bar-sub">2 points d'entrée : jeu et admin</span>
+                        </div>
+                        <div class="arch-body pj-layers">
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Modèles</span>
+                                <span class="pj-layer-desc"><code>Pokemon</code>, <code>Combat</code>, <code>Joueur</code>, <code>Adversaire</code> (interface <code>Combattant</code>), 18 <code>Type</code>, table des efficacités, exceptions métier</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Repositories</span>
+                                <span class="pj-layer-desc"><code>PokemonRepository</code>, <code>MoveRepository</code> : requêtes Exposed vers les espèces et les capacités</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Import</span>
+                                <span class="pj-layer-desc">Client Ktor + DTO, <code>PokemonSeeder</code> et <code>MoveSeeder</code>, jeu de données local pour H2</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Sauvegarde</span>
+                                <span class="pj-layer-desc"><code>SauvegardeService</code> : partie en JSON via kotlinx.serialization</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arch-connector"><span>JDBC · Tailscale</span></div>
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-postgresql-plain" style="color:#4169E1"></i>
+                            <span class="arch-bar-name">PostgreSQL</span>
+                            <span class="arch-bar-sub">Conteneur LXC sur Cuby</span>
+                        </div>
+                        <div class="arch-body pj-chips">
+                            <span class="tag">pokemon</span>
+                            <span class="tag">capacite</span>
+                            <span class="tag">pokemon_capacites</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — QUALITÉ
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Qualité</div>
+        <h2 class="section-title reveal">Tester les règles du jeu<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Les limites, d'abord</h3>
+                <p>
+                    <strong>15 tests JUnit 5</strong> couvrent les niveaux, les capacités (apprendre, oublier,
+                    doublons), les soins et les dégâts. Ils visent surtout les <strong>bornes</strong> :
+                    monter jusqu'au niveau 100 doit marcher, le dépasser doit lever une exception métier.
+                </p>
+                <p>
+                    Ils tournent sur <strong>GitHub Actions</strong> à chaque push et pull request : build
+                    Gradle, tests, publication des résultats dans la pull request et rapport HTML conservé.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">src/test/kotlin/NiveauTests.kt <em>kotlin</em></div>
+<pre><code class="language-kotlin">@Test
+fun monterDeNiveauJusqua100(){
+    salameche = Pokemon.creer(salamecheE, 1, capaciteeDex)
+    for(i in 1 until 100){
+        assertTrue { salameche.monterDeNiveau() }
+    }
+    assertTrue { salameche.niveau == 100 }
+}
+
+@Test
+fun monterDeNiveauAuDessusDe100(){
+    salameche = Pokemon.creer(salamecheE, 100, capaciteeDex)
+    assertThrows&lt;NiveauException&gt; { salameche.monterDeNiveau() }
+    assertTrue { salameche.niveau == 100 }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-pipeline reveal">
+            <div class="pj-step">
+                <h4>Branche dev</h4>
+                <p>Une fonctionnalité par pull request</p>
+            </div>
+            <div class="pj-step">
+                <h4>Build</h4>
+                <p>JDK 21 Temurin, <code>./gradlew build</code></p>
+            </div>
+            <div class="pj-step">
+                <h4>Tests</h4>
+                <p><code>./gradlew test</code></p>
+            </div>
+            <div class="pj-step">
+                <h4>Rapport</h4>
+                <p>Résultats commentés dans la PR, rapport HTML archivé 30 jours</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     06 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">06 — Bilan</div>
+        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Modéliser avant de coder</h3>
+                <p>
+                    Interface commune au joueur et à l'adversaire, classe scellée pour les actions,
+                    exceptions métier : le langage aide à rendre les états impossibles impossibles à écrire.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>Du fichier à la base</h3>
+                <p>
+                    Passer de JSON écrits à la main à PostgreSQL rempli par une API m'a fait toucher à
+                    l'ORM, aux appels réseau asynchrones et à la reprise sur erreur d'un import.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>L'outillage dès le départ</h3>
+                <p>
+                    Tests, CI, conventions de commit, guide des issues : mettre ces règles en place tôt
+                    rend les changements suivants moins risqués, même sur un projet personnel.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="site-restaurant.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">Site Restaurant</span>
+        </a>
+        <a href="quadtree.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">Jeu en Quadtree</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-kotlin.min.js"></script>
+</body>
+</html>

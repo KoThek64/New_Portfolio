@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi des dépenses — Application Kotlin et JavaFX | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet Suivi des dépenses : application Kotlin de gestion de dépenses par catégorie, en version terminal et en interface graphique JavaFX, avec import et export CSV.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/suivi-depenses.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Suivi des dépenses — Application Kotlin et JavaFX">
+    <meta property="og:description" content="Mon premier projet Kotlin : une même logique de gestion de dépenses, exposée en ligne de commande puis en interface graphique JavaFX.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/suivi-depenses.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/projets/suivi-depenses/total.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Suivi des dépenses — Application Kotlin et JavaFX">
+    <meta name="twitter:description" content="Mon premier projet Kotlin : une même logique de gestion de dépenses, exposée en ligne de commande puis en interface graphique JavaFX.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/projets/suivi-depenses/total.webp">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet personnel · 2025</p>
+        <h1 class="pj-title">Suivi des dépenses<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Une application de <strong>gestion de dépenses</strong> par catégorie, écrite pour apprendre
+            <strong>Kotlin</strong>. La même logique métier est utilisée par deux interfaces : une
+            <strong>version terminal</strong>, puis une <strong>interface graphique JavaFX</strong>.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Rôle</dt><dd>Seul</dd></div>
+            <div><dt>Durée</dt><dd>Environ 3 semaines</dd></div>
+            <div><dt>Période</dt><dd>Avril → mai 2025</dd></div>
+            <div><dt>Statut</dt><dd class="archived">Terminé</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">Kotlin 2.1</span>
+            <span class="tag">JavaFX 24</span>
+            <span class="tag">Gradle (Kotlin DSL)</span>
+            <span class="tag">JDK 23</span>
+            <span class="tag">CSV</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://github.com/KoThek64/Suivi_Des_Depenses" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Code source sur GitHub →
+            </a>
+        </div>
+
+        <figure class="pj-shot pj-cover reveal">
+            <div class="pj-shot-bar"><i></i><i></i><i></i><span>Gestionnaire des dépenses</span></div>
+            <img src="../images/projets/suivi-depenses/total.webp" alt="Fenêtre JavaFX : boutons d'action à gauche, tableau des dépenses (montant, catégorie, date) et fenêtre « Total des dépenses : 250 € »" width="788" height="619">
+        </figure>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Apprendre Kotlin sur un vrai besoin<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                C'est <strong>mon tout premier vrai projet</strong>, un projet d'entraînement. Pour apprendre
+                un langage, je préfère un petit outil concret plutôt qu'une suite d'exercices. Suivre ses dépenses s'y prête bien : un modèle simple
+                (montant, catégorie, date), de la <strong>validation de saisie</strong>, des calculs et de la
+                <strong>persistance</strong>.
+            </p>
+            <p>
+                J'ai d'abord écrit toute la logique en <strong>ligne de commande</strong>, puis ajouté une
+                <strong>interface graphique JavaFX</strong> qui réutilise le même gestionnaire. C'est ce
+                projet que je reprends aujourd'hui, en plus ambitieux, avec <strong>My Money</strong>
+                en Symfony.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — LE PRODUIT
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Le produit</div>
+        <h2 class="section-title reveal">Deux interfaces, une logique<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// terminal</p>
+                <h3>Version CLI</h3>
+                <ul>
+                    <li>Menu numéroté : ajouter, afficher, totaux, supprimer, sauvegarder</li>
+                    <li>Choix parmi <strong>13 catégories</strong> (logement, alimentation, transport…)</li>
+                    <li>Saisie <strong>redemandée</strong> tant que le montant ou la date est invalide</li>
+                    <li>Import d'un CSV au démarrage, export daté</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// javafx</p>
+                <h3>Version graphique</h3>
+                <ul>
+                    <li>Tableau des dépenses avec montants formatés en euros</li>
+                    <li>Dialogue d'ajout avec <strong>liste de catégories</strong> et <strong>sélecteur de date</strong></li>
+                    <li>Suppression de la ligne sélectionnée, total global et par catégorie</li>
+                    <li>Ouverture et enregistrement de fichiers via l'explorateur</li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="pj-gallery reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>terminal</span></div>
+                    <img src="../images/projets/suivi-depenses/cli.webp" alt="Version terminal : import d'un fichier CSV, menu numéroté puis liste des dépenses" width="592" height="411" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Version terminal : import CSV et menu</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>Ajouter une dépense</span></div>
+                    <img src="../images/projets/suivi-depenses/ajout.webp" alt="Version JavaFX : dialogue d'ajout avec montant, liste des catégories et sélecteur de date" width="795" height="623" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Version JavaFX : dialogue d'ajout</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Zoom technique</div>
+        <h2 class="section-title reveal">Dans le code<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Refuser le 31 février</h3>
+                <p>
+                    Une date au bon format n'est pas forcément une date qui existe. Avec le mode
+                    <code class="pj-inline-code">ResolverStyle.STRICT</code>, le parseur de
+                    <code class="pj-inline-code">java.time</code> rejette <strong>31/02/2025</strong> au lieu
+                    de le corriger silencieusement en 28 février.
+                </p>
+                <p>
+                    Tant que la saisie est invalide, on la redemande : l'utilisateur ne peut pas
+                    enregistrer une dépense datée d'un jour impossible.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">GestionnaireDepenses.kt <em>kotlin</em></div>
+<pre><code class="language-kotlin">fun choixDate() : String{
+    val formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT)
+
+    while (true) {
+        println("\nEntrez la date en format jj/mm/aaaa")
+        val date = readln()
+
+        try {
+            LocalDate.parse(date, formatter)
+            return date
+        } catch (_ : DateTimeParseException) {
+            println("La date saisie n'est pas valide veuillez recommencer")
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Un import qui ne plante pas</h3>
+                <p>
+                    Les dépenses sont sauvegardées en <strong>CSV</strong> (montant, catégorie, date) pour
+                    pouvoir être rouvertes dans un tableur. À l'import, chaque ligne est vérifiée : une
+                    catégorie inconnue est ignorée, et un montant illisible est signalé
+                    <strong>sans interrompre</strong> le chargement des autres lignes.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">GestionnaireDepenses.kt <em>kotlin</em></div>
+<pre><code class="language-kotlin">fun importerCSV(fichier : String) {
+    File(fichier).useLines { lines ->
+        lines.drop(1).forEach { line ->
+            val elements = line.split(";")
+            if (elements.size >= 3) {
+                try {
+                    val montant = elements[0].toDouble()
+                    val categorie = elements[1]
+                    val date = elements[2]
+
+                    if (categories.contains(categorie)) {
+                        ajouterDepense(Depense(montant, categorie, date))
+                    }
+                } catch (e: NumberFormatException) {
+                    println("Erreur dans le fichier CSV : le montant ${elements[0]} n'est pas un nombre valide")
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — ARCHITECTURE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Architecture</div>
+        <h2 class="section-title reveal">Comment c'est construit<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Quatre fichiers, et une idée : le <strong>gestionnaire</strong> porte les données et les
+                calculs, et les deux interfaces ne font que l'appeler. Ajouter JavaFX n'a pas demandé de
+                réécrire la logique, seulement une nouvelle façon de l'afficher.
+            </p>
+        </div>
+
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <i class="devicon-kotlin-plain" style="color:#7F52FF"></i>
+                    <span class="arch-bar-name">Application</span>
+                    <span class="arch-bar-sub">Kotlin · JVM 23 · Gradle</span>
+                </div>
+                <div class="arch-body pj-layers">
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Interfaces</span>
+                        <span class="pj-layer-desc"><code>Main.kt</code> (menu terminal) · <code>GestionnaireDepensesGUI.kt</code> (JavaFX : tableau, dialogues, sélecteurs de fichiers)</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Logique</span>
+                        <span class="pj-layer-desc"><code>GestionnaireDepenses</code> : liste des dépenses, catégories, totaux, validation, import et export CSV</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Modèle</span>
+                        <span class="pj-layer-desc"><code>Depense</code> : montant, catégorie, date</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Persistance</span>
+                        <span class="pj-layer-desc">Fichier CSV séparé par des points-virgules, nommé à la date du jour</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Bilan</div>
+        <h2 class="section-title reveal">Avec le recul<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                C'est mon premier projet, et je le relis aujourd'hui avec un œil plus exigeant.
+                Ce qu'il m'a appris, et ce que je ferais autrement :
+            </p>
+        </div>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Séparer logique et affichage</h3>
+                <p>
+                    Brancher une deuxième interface m'a montré l'intérêt de séparer les couches. Mais
+                    certaines fonctions du gestionnaire lisent encore le clavier : elles devraient
+                    recevoir des valeurs, pas les demander.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>Typer les données</h3>
+                <p>
+                    Les dates sont stockées en texte et les montants en <code class="pj-inline-code">Double</code>.
+                    Aujourd'hui, j'utiliserais <code class="pj-inline-code">LocalDate</code> pour pouvoir trier
+                    et filtrer, et des centimes entiers pour éviter les erreurs d'arrondi.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>Tester</h3>
+                <p>
+                    Il n'y a aucun test. Les totaux et l'import CSV sont exactement le genre de code qui se
+                    teste facilement : c'est ce que j'ai mis en place ensuite sur Pokémon CLI, avec
+                    JUnit 5 et une intégration continue.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="homelab.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">HomeLab</span>
+        </a>
+        <a href="site-restaurant.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">Site Restaurant</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-kotlin.min.js"></script>
+</body>
+</html>

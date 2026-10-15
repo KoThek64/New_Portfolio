@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fait Maison — Réseau social de recettes en Symfony | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet Fait Maison : réseau social de partage de recettes développé seul en PHP 8.4 / Symfony 8, PostgreSQL et Tailwind CSS, testé avec PHPUnit et déployé sur Railway.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/fait-maison.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Fait Maison — Réseau social de recettes en Symfony">
+    <meta property="og:description" content="Recettes, likes, commentaires, abonnements, fil d'actualité et back-office admin : un projet Symfony complet, de la base de données au déploiement.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/fait-maison.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/projets/fait-maison/home.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fait Maison — Réseau social de recettes en Symfony">
+    <meta name="twitter:description" content="Recettes, likes, commentaires, abonnements, fil d'actualité et back-office admin : un projet Symfony complet, de la base de données au déploiement.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/projets/fait-maison/home.webp">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet personnel · 2026</p>
+        <h1 class="pj-title">Fait Maison<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Un <strong>réseau social de partage de recettes</strong>, dans l'esprit de Marmiton :
+            publication avec photo, notes, likes, commentaires, abonnements, fil d'actualité personnalisé
+            et un back-office de modération. Conçu, développé, testé et déployé <strong>seul</strong>,
+            pour apprendre Symfony de bout en bout.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Rôle</dt><dd>Solo — conception → déploiement</dd></div>
+            <div><dt>Période</dt><dd>Fév. → Juin 2026</dd></div>
+            <div><dt>Volume</dt><dd>58 commits · 9 entités</dd></div>
+            <div><dt>Statut</dt><dd class="live">En ligne</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">PHP 8.4</span>
+            <span class="tag">Symfony 8</span>
+            <span class="tag">Doctrine ORM</span>
+            <span class="tag">PostgreSQL 16</span>
+            <span class="tag">Twig</span>
+            <span class="tag">Tailwind CSS v4</span>
+            <span class="tag">PHPUnit</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Railway</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://faitmaison.up.railway.app" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Voir le site →
+            </a>
+            <a href="https://github.com/KoThek64/FaitMaison" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                Code source sur GitHub
+            </a>
+        </div>
+
+        <figure class="pj-shot pj-cover reveal">
+            <div class="pj-shot-bar"><i></i><i></i><i></i><span>faitmaison.up.railway.app</span></div>
+            <img src="../images/projets/fait-maison/home.webp" alt="Page d'accueil de Fait Maison : bandeau « Des recettes maison, partagées avec amour », barre de recherche et dernières recettes" width="1440" height="900">
+        </figure>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Pourquoi ce projet<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                C'est <strong>mon plus gros projet à ce jour</strong>, et mes débuts en PHP avec Symfony : je
+                l'ai lancé pour me préparer à mon stage. Je voulais un projet <strong>complet, mené seul</strong>,
+                qui m'oblige à toucher à
+                tout ce qu'une vraie application web demande : modéliser une base relationnelle, gérer des
+                comptes et des droits, stocker des fichiers envoyés par les utilisateurs, écrire des tests
+                et mettre le tout en production.
+            </p>
+            <p>
+                Le thème des recettes s'y prête bien : il est parlant pour n'importe qui, et il justifie
+                naturellement des <strong>relations riches</strong> (un auteur, des catégories, des tags,
+                des notes, des likes, des commentaires, des abonnements entre utilisateurs) et une
+                <strong>modération</strong> côté administrateur.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — FONCTIONNALITÉS
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Fonctionnalités</div>
+        <h2 class="section-title reveal">Ce que fait l'application<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// recettes</p>
+                <h3>Publier et trouver</h3>
+                <ul>
+                    <li><strong>CRUD complet</strong>, limité à l'auteur de la recette</li>
+                    <li>Photo avec <strong>aperçu en direct</strong> et glisser-déposer</li>
+                    <li>Filtres catégorie, tag, difficulté, durée — <strong>conservés</strong> pendant la pagination</li>
+                    <li>Brouillon ou publication, 12 recettes par page</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// social</p>
+                <h3>Interagir sans recharger</h3>
+                <ul>
+                    <li>Notes de <strong>1 à 5 étoiles</strong>, likes, favoris, commentaires</li>
+                    <li><strong>Abonnements</strong> entre cuisiniers</li>
+                    <li>Toutes les actions passent en <strong>AJAX</strong> (<code class="pj-inline-code">fetch</code>), sans rechargement de page</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// découverte</p>
+                <h3>Un fil qui me ressemble</h3>
+                <ul>
+                    <li><strong>Fil d'actualité</strong> des personnes suivies</li>
+                    <li><strong>Recommandations</strong> selon les catégories likées, avec repli sur les tendances</li>
+                    <li>Profils avec avatar, bio, statistiques et recettes publiées</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// administration</p>
+                <h3>Modérer la communauté</h3>
+                <ul>
+                    <li><strong>Dashboard</strong> de statistiques (utilisateurs, recettes, bannis…)</li>
+                    <li>Dépublier une recette avec une <strong>note de l'admin</strong></li>
+                    <li><strong>Bannir</strong> pour une durée donnée avec un motif, débannir, supprimer</li>
+                    <li>Réservé au rôle <code class="pj-inline-code">ROLE_ADMIN</code></li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="pj-gallery reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/recettes</span></div>
+                    <img src="../images/projets/fait-maison/recettes.webp" alt="Liste des recettes avec le panneau de filtres : recherche, catégorie, difficulté, tag et durée maximale" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Liste des recettes et filtres combinables</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/recette/4</span></div>
+                    <img src="../images/projets/fait-maison/recette.webp" alt="Page détail d'une recette : catégorie, durée, nombre de personnes, auteur, description et étapes" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Page recette : infos, description, étapes</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ARCHITECTURE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Architecture</div>
+        <h2 class="section-title reveal">Comment c'est construit<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Une application <strong>Symfony classique en MVC</strong>, rendue côté serveur avec Twig.
+                Les contrôleurs restent fins : la logique d'accès aux données vit dans les
+                <strong>repositories</strong> (requêtes DQL), l'upload d'images dans un
+                <strong>service dédié</strong>, et le blocage des comptes bannis dans un
+                <strong>event subscriber</strong> branché sur la sécurité.
+            </p>
+        </div>
+
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <i class="devicon-railway-original" style="color:#a855f7"></i>
+                    <span class="arch-bar-name">Railway</span>
+                    <span class="arch-bar-sub">FrankenPHP + Caddy</span>
+                </div>
+                <div class="arch-body">
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-symfony-original" style="color:#8B5CF6"></i>
+                            <span class="arch-bar-name">Symfony 8</span>
+                            <span class="arch-bar-sub">PHP 8.4</span>
+                        </div>
+                        <div class="arch-body pj-layers">
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Vues</span>
+                                <span class="pj-layer-desc">Templates <code>Twig</code> + design system <code>Tailwind CSS v4</code>, JS natif pour l'AJAX</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Contrôleurs</span>
+                                <span class="pj-layer-desc">12 contrôleurs : recettes, profils, fil, social (like, favori, note, commentaire, abonnement), admin</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Formulaires</span>
+                                <span class="pj-layer-desc">Form types Symfony avec validation : recette, filtres, inscription, profil</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Services</span>
+                                <span class="pj-layer-desc"><code>ImageUploader</code> (photos, avatars) · <code>BanSubscriber</code> (sécurité)</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Repositories</span>
+                                <span class="pj-layer-desc">Requêtes DQL : publiées, fil des abonnements, recommandations, filtres admin, moyennes des notes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arch-connector"><span>doctrine orm</span></div>
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-postgresql-plain" style="color:#4479A1"></i>
+                            <span class="arch-bar-name">PostgreSQL 16</span>
+                            <span class="arch-bar-sub">9 entités · migrations Doctrine</span>
+                        </div>
+                        <div class="arch-body pj-chips">
+                            <span class="tag">user</span>
+                            <span class="tag">recipe</span>
+                            <span class="tag">category</span>
+                            <span class="tag">tag</span>
+                            <span class="tag">rating</span>
+                            <span class="tag">like</span>
+                            <span class="tag">favorite</span>
+                            <span class="tag">comment</span>
+                            <span class="tag">follow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Zoom technique</div>
+        <h2 class="section-title reveal">Dans le code<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Des recommandations en une requête</h3>
+                <p>
+                    Le fil propose des recettes des <strong>catégories que j'ai déjà likées</strong>, en
+                    excluant celles déjà likées et les miennes, triées par popularité puis par fraîcheur.
+                </p>
+                <p>
+                    Tout est fait en base avec deux <strong>sous-requêtes DQL</strong>. Si l'utilisateur
+                    n'a encore rien liké, on <strong>retombe sur les tendances</strong> pour ne jamais
+                    afficher un fil vide.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">src/Repository/RecipeRepository.php <em>php</em></div>
+<pre><code class="language-php">public function findRecommended(User $user): array
+{
+    // Sous-requête : catégories des recettes likées par l'utilisateur
+    $likedCategoriesDql = $this->getEntityManager()->createQueryBuilder()
+        ->select('IDENTITY(r2.category)')
+        ->from(Like::class, 'l2')
+        ->join('l2.recipe', 'r2')
+        ->where('l2.user = :user')
+        ->getDQL();
+
+    // Sous-requête : IDs des recettes déjà likées
+    $likedRecipesDql = $this->getEntityManager()->createQueryBuilder()
+        ->select('IDENTITY(l3.recipe)')
+        ->from(Like::class, 'l3')
+        ->where('l3.user = :user')
+        ->getDQL();
+
+    $results = $this->createQueryBuilder('r')
+        ->where('r.isPublished = true')
+        ->andWhere('r.author != :user')
+        ->andWhere('IDENTITY(r.category) IN (' . $likedCategoriesDql . ')')
+        ->andWhere('r.id NOT IN (' . $likedRecipesDql . ')')
+        ->setParameter('user', $user)
+        ->orderBy('SIZE(r.likes)', 'DESC')
+        ->addOrderBy('r.createdAt', 'DESC')
+        ->setMaxResults(10)
+        ->getQuery()
+        ->getResult();
+
+    // Fallback si aucun like : recettes récentes hors propres recettes
+    if (empty($results)) {
+        return $this->createQueryBuilder('r')
+            ->where('r.isPublished = true')
+            ->andWhere('r.author != :user')
+            ->setParameter('user', $user)
+            ->orderBy('SIZE(r.likes)', 'DESC')
+            ->addOrderBy('r.createdAt', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+    return $results;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Une route, deux réponses</h3>
+                <p>
+                    Les actions sociales répondent en <strong>JSON</strong> quand elles sont appelées en
+                    AJAX (le bouton se met à jour avec le nouveau compteur), et font une
+                    <strong>redirection classique</strong> sinon.
+                </p>
+                <p>
+                    Résultat : l'interface est fluide, mais le site <strong>reste utilisable sans
+                    JavaScript</strong>.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">src/Controller/LikeController.php <em>php</em></div>
+<pre><code class="language-php">#[IsGranted('ROLE_USER')]
+#[Route("/recette/{id}/liker", name: 'app_like_toggle', methods: ['POST'])]
+public function toggle(Request $request, LikeRepository $likeRepository, EntityManagerInterface $em, Recipe $recipe)
+{
+    $currentUser = $this->getUser();
+    if (!$currentUser instanceof User){
+        throw $this->createAccessDeniedException();
+    }
+
+    $like = $likeRepository->findOneBy(['user' => $currentUser, 'recipe' => $recipe]);
+    if ($like){
+        $em->remove($like);
+    } else {
+        $newLike = new Like();
+        $newLike->setRecipe($recipe);
+        $newLike->setUser($currentUser);
+        $em->persist($newLike);
+    }
+
+    $em->flush();
+    if ($request->isXmlHttpRequest()){
+        return $this->json([
+            "liked" => !isset($like),
+            "count" => $likeRepository->count(['recipe' => $recipe])
+        ]);
+    } else {
+        return $this->redirectToRoute('app_recipe_show', ['id' => $recipe->getId()]);
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Bloquer un compte banni dès la connexion</h3>
+                <p>
+                    Plutôt que de vérifier le bannissement dans chaque contrôleur, un
+                    <strong>event subscriber</strong> écoute l'événement <code class="pj-inline-code">CheckPassportEvent</code>
+                    du composant Security.
+                </p>
+                <p>
+                    Un utilisateur banni est refusé <strong>avant même d'être authentifié</strong>, avec un
+                    message qui donne la date de fin et le motif.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">src/EventSubscriber/BanSubscriber.php <em>php</em></div>
+<pre><code class="language-php">class BanSubscriber implements EventSubscriberInterface
+{
+    public static function getSubscribedEvents(): array
+    {
+        return [CheckPassportEvent::class => 'onCheckPassport'];
+    }
+
+    public function onCheckPassport(CheckPassportEvent $event): void
+    {
+        $user = $event->getPassport()->getUser();
+        if (!$user instanceof User){
+            return;
+        }
+        if ($user->isBanned()){
+            throw new CustomUserMessageAuthenticationException(
+                'Votre compte a été suspendu jusqu\'au ' . $user->getBannedUntil()->format('d/m/Y à H:i') . ' - ' . $user->getBanReason()
+            );
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — QUALITÉ & DÉPLOIEMENT
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Qualité &amp; déploiement</div>
+        <h2 class="section-title reveal">Du commit à la prod<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Chaque push sur <code>master</code> déclenche une <strong>intégration continue</strong>
+                GitHub Actions avec une vraie base PostgreSQL. Les tests couvrent l'upload d'images,
+                l'accueil, la connexion et la protection des recettes ; les interactions sociales sont
+                les prochaines à couvrir.
+            </p>
+        </div>
+
+        <div class="pj-pipeline reveal">
+            <div class="pj-step">
+                <h4>Push</h4>
+                <p>Commit sur <code>master</code></p>
+            </div>
+            <div class="pj-step">
+                <h4>CI</h4>
+                <p>PostgreSQL de test, migrations, build Tailwind, <code>phpunit</code></p>
+            </div>
+            <div class="pj-step">
+                <h4>Build</h4>
+                <p><code>composer install</code>, importmap, Tailwind, compilation des assets</p>
+            </div>
+            <div class="pj-step">
+                <h4>Release</h4>
+                <p>Warmup du cache puis <code>migrations:migrate</code> automatique</p>
+            </div>
+            <div class="pj-step">
+                <h4>En ligne</h4>
+                <p>FrankenPHP + Caddy, healthcheck et redémarrage auto</p>
+            </div>
+        </div>
+
+        <div class="pj-gallery with-mobile reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/login</span></div>
+                    <img src="../images/projets/fait-maison/login.webp" alt="Page de connexion de Fait Maison" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Connexion — Symfony Security, jeton CSRF, mots de passe hachés</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-phone">
+                    <img src="../images/projets/fait-maison/mobile-home.webp" alt="Page d'accueil de Fait Maison sur mobile" width="390" height="844" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Responsive, sidebar rétractable</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     06 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">06 — Bilan</div>
+        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Simplifier le modèle</h3>
+                <p>
+                    J'avais prévu une gestion fine des ingrédients (entités <code class="pj-inline-code">Ingredient</code>
+                    et <code class="pj-inline-code">RecipeIngredient</code>). Je l'ai retirée pour garder un modèle
+                    que je maîtrise et livrer les fonctionnalités sociales.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>La prod n'est pas le local</h3>
+                <p>
+                    Le déploiement sur Railway m'a appris l'ordre de build (dépendances, assets, migrations)
+                    et à rendre la mise en production reproductible avec un fichier de configuration versionné.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>Penser les cas limites</h3>
+                <p>
+                    Un fil vide sans likes, une table nommée <code class="pj-inline-code">like</code> (mot réservé SQL),
+                    un compte banni qui tente de se connecter : ce sont ces détails qui font la différence
+                    entre une démo et une application.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="../index.html#projects" class="pj-next-link prev">
+            <span class="pj-next-label">← retour</span>
+            <span class="pj-next-name">Tous les projets</span>
+        </a>
+        <a href="tapismarket.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">TapisMarket</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+</body>
+</html>

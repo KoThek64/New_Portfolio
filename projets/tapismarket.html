@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TapisMarket — Marketplace e-commerce en équipe | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet TapisMarket : marketplace de tapis multi-rôles (client, vendeur, admin) en PHP / CodeIgniter 4 et MySQL, réalisée à 5 en SAE. Ma part : front, panier, commande et mise en production sur Railway.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/tapismarket.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="TapisMarket — Marketplace e-commerce en équipe">
+    <meta property="og:description" content="Une marketplace à trois espaces (client, vendeur, admin) réalisée à 5. Ma part : front, panier invité, commande et déploiement Docker sur Railway.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/tapismarket.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/projets/tapismarket/home.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TapisMarket — Marketplace e-commerce en équipe">
+    <meta name="twitter:description" content="Une marketplace à trois espaces (client, vendeur, admin) réalisée à 5. Ma part : front, panier invité, commande et déploiement Docker sur Railway.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/projets/tapismarket/home.webp">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet universitaire · SAE S3 · 2025–2026</p>
+        <h1 class="pj-title">TapisMarket<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Une <strong>marketplace de tapis</strong> qui met en relation des vendeurs professionnels et des
+            clients, avec trois espaces distincts : <strong>client, vendeur et administrateur</strong>.
+            Réalisée à <strong>cinq</strong> pendant le semestre 3 du BUT ; je me suis occupé du front,
+            du <strong>panier et de la commande</strong>, et de la <strong>mise en production</strong>.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Mon rôle</dt><dd>Front · panier · déploiement</dd></div>
+            <div><dt>Équipe</dt><dd>5 étudiants</dd></div>
+            <div><dt>Période</dt><dd>Sept. 2025 → Janv. 2026</dd></div>
+            <div><dt>Statut</dt><dd class="live">En ligne</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">PHP 8.4</span>
+            <span class="tag">CodeIgniter 4</span>
+            <span class="tag">MySQL 8</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">Docker / Podman</span>
+            <span class="tag">Apache</span>
+            <span class="tag">PHPUnit</span>
+            <span class="tag">Railway</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://tapismarket.up.railway.app/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Voir le site →
+            </a>
+            <a href="https://github.com/KoThek64/TapisMarket" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                Code source sur GitHub
+            </a>
+        </div>
+
+        <figure class="pj-shot pj-cover reveal">
+            <div class="pj-shot-bar"><i></i><i></i><i></i><span>tapismarket.up.railway.app</span></div>
+            <img src="../images/projets/tapismarket/home.webp" alt="Page d'accueil de TapisMarket : « L'Art du Tapis, tissé pour vous » et bouton Explorer le catalogue" width="1440" height="900">
+        </figure>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Une SAE à cinq<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                TapisMarket est la <strong>SAE du semestre 3</strong> du BUT Informatique : concevoir et
+                développer en équipe une application web complète à partir d'un cahier des charges, avec
+                l'analyse UML, la documentation technique et la présentation qui vont avec.
+            </p>
+            <p>
+                Le sujet : une <strong>marketplace</strong> où des vendeurs validés publient leurs tapis,
+                où les clients achètent, et où un administrateur modère l'ensemble. Le code vivait sur le
+                GitLab de l'université, chacun sur ses fonctionnalités, avec un environnement de
+                développement commun sous <strong>Podman</strong> (application, MySQL et PHPMyAdmin).
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — LE PRODUIT
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Le produit</div>
+        <h2 class="section-title reveal">Trois espaces, un site<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// client</p>
+                <h3>Acheter</h3>
+                <ul>
+                    <li>Catalogue avec <strong>filtres</strong> (catégorie, matière, dimensions, vendeur, budget)</li>
+                    <li>Fiches produits, <strong>panier</strong>, commande avec choix de livraison</li>
+                    <li>Suivi : payée → en préparation → expédiée → livrée</li>
+                    <li>Adresses et avis notés</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// vendeur</p>
+                <h3>Vendre</h3>
+                <ul>
+                    <li>Tableau de bord avec statistiques</li>
+                    <li>CRUD des produits et de leurs photos</li>
+                    <li>Gestion des commandes reçues</li>
+                    <li>Personnalisation de la boutique, avis clients</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// administrateur</p>
+                <h3>Modérer</h3>
+                <ul>
+                    <li>Validation des <strong>comptes vendeurs</strong></li>
+                    <li>Modération des produits et des avis</li>
+                    <li>Gestion des catégories</li>
+                    <li>Supervision de toutes les commandes</li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="pj-gallery reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/catalog</span></div>
+                    <img src="../images/projets/tapismarket/catalog.webp" alt="Catalogue TapisMarket avec filtres latéraux et grille de tapis" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Catalogue et filtres</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/product/antique-carpet-02eb</span></div>
+                    <img src="../images/projets/tapismarket/product.webp" alt="Fiche produit d'un tapis : photo, prix, stock, vendeur, matière, dimensions et ajout au panier" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Fiche produit et ajout au panier</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — MA CONTRIBUTION
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Ma contribution</div>
+        <h2 class="section-title reveal">Ce que j'ai fait<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Sur un projet à cinq, je préfère être précis : voici <strong>ma part</strong>, telle
+                qu'on la retrouve dans l'historique Git (<strong>29 commits sur 218</strong>). Le reste
+                — espaces vendeur et admin, avis, frais de port en <em>Template Method</em>, analyse UML —
+                est le travail de mes coéquipiers.
+            </p>
+        </div>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// 01 — front</p>
+                <h3>Maquettes et refonte du front</h3>
+                <p>
+                    Premières pages en HTML/CSS (accueil, catalogue, produit, panier, profil, connexion,
+                    inscription), puis une <strong>refonte complète du design</strong> du site en décembre.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// 02 — panier</p>
+                <h3>Panier, y compris sans compte</h3>
+                <p>
+                    Panier des clients connectés en base, et <strong>panier invité en session</strong>,
+                    fusionné automatiquement à la connexion. Contrôle du stock à chaque modification.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// 03 — commande</p>
+                <h3>Tunnel de commande</h3>
+                <p>
+                    Contrôleur et pages du <strong>checkout</strong> : adresse, mode de livraison,
+                    création de la commande à partir du panier et page de confirmation.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// 04 — production</p>
+                <h3>Mise en ligne sur Railway</h3>
+                <p>
+                    <strong>Dockerfile</strong> de production, configuration Apache et base de données à
+                    l'exécution, migrations et jeu de données au premier démarrage. Plus la documentation
+                    technique et le README.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Zoom technique</div>
+        <h2 class="section-title reveal">Dans le code<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Ne pas perdre le panier à la connexion</h3>
+                <p>
+                    Un visiteur peut remplir son panier <strong>sans compte</strong> : il est stocké en
+                    session, sous la forme <code class="pj-inline-code">[produit => quantité]</code>.
+                </p>
+                <p>
+                    Quand il se connecte, ce panier est <strong>fusionné</strong> avec son panier en base :
+                    les quantités s'additionnent si le produit y est déjà, et chaque ligne est
+                    <strong>revérifiée contre le stock</strong> avant d'être ajoutée.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">src/app/Controllers/Auth.php <em>php</em></div>
+<pre><code class="language-php">private function mergeGuestCart(int $userId)
+{
+    $session = session();
+    $guestCart = $session->get('guest_cart');
+
+    if (!empty($guestCart)) {
+        $cart = $this->cartModel->getActiveCart($userId);
+
+        foreach ($guestCart as $productId => $quantity) {
+            // Check if item exists in user cart
+            $existingItem = $this->cartItemModel->where('cart_id', $cart->id)
+                ->where('product_id', $productId)
+                ->first();
+
+            $currentQty = $existingItem ? $existingItem->quantity : 0;
+            $newTotalQty = $currentQty + $quantity;
+
+            // Validate merged stock
+            if ($this->productModel->hasSufficientStock($productId, $newTotalQty)) {
+                if ($existingItem) {
+                    $this->cartItemModel->updateQuantity($cart->id, $productId, $newTotalQty);
+                } else {
+                    $this->cartItemModel->addItem($cart->id, $productId, $quantity);
+                }
+            }
+        }
+
+        $this->cartModel->updateTotal($cart->id);
+        $session->remove('guest_cart');
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Une image, configurée au démarrage</h3>
+                <p>
+                    Railway fournit la base MySQL et le port <strong>par variables d'environnement</strong>.
+                    Plutôt que de figer la configuration dans l'image, le script d'entrée génère le
+                    <code class="pj-inline-code">.env</code> de CodeIgniter et le port d'Apache
+                    <strong>au lancement du conteneur</strong>.
+                </p>
+                <p>
+                    Il applique ensuite les migrations et ne lance le jeu de données de démonstration
+                    qu'<strong>une seule fois</strong>, grâce à un fichier témoin.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">Dockerfile → entry.sh <em>bash</em></div>
+<pre><code class="language-bash"># Create .env file at runtime with Railway environment variables
+cat > /var/www/html/.env &lt;&lt;ENVFILE
+CI_ENVIRONMENT = ${CI_ENVIRONMENT:-production}
+database.default.hostname = ${MYSQLHOST:-localhost}
+database.default.database = ${MYSQLDATABASE:-railway}
+database.default.username = ${MYSQLUSER:-root}
+database.default.password = ${MYSQLPASSWORD:-}
+database.default.DBDriver = MySQLi
+database.default.port = ${MYSQLPORT:-3306}
+ENVFILE
+
+# Configure port at runtime (Railway provides PORT env var)
+PORT=${PORT:-8080}
+echo "Listen ${PORT}" > /etc/apache2/ports.conf
+
+# Run migrations automatiquement au démarrage
+php /var/www/html/spark migrate --all || true
+
+# Run seeder only once (check if marker file exists)
+if [ ! -f /var/www/html/writable/.seeded ]; then
+    echo "Running DataSeeder for the first time..."
+    php /var/www/html/spark db:seed DataSeeder || true
+    touch /var/www/html/writable/.seeded
+fi
+
+exec apache2-foreground</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — ARCHITECTURE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Architecture</div>
+        <h2 class="section-title reveal">Comment c'est construit<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Une application <strong>CodeIgniter 4 en MVC</strong>, découpée par rôle. Des
+                <strong>filtres</strong> protègent les espaces (connexion, vendeur validé), et la commande
+                est créée dans une <strong>transaction</strong> : lignes de commande, décrément des stocks,
+                frais de port et vidage du panier réussissent ou échouent ensemble.
+            </p>
+        </div>
+
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <i class="devicon-docker-plain" style="color:#2496ED"></i>
+                    <span class="arch-bar-name">Conteneur</span>
+                    <span class="arch-bar-sub">PHP 8.4 + Apache · Railway / Podman</span>
+                </div>
+                <div class="arch-body">
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-codeigniter-plain" style="color:#EF4223"></i>
+                            <span class="arch-bar-name">CodeIgniter 4</span>
+                            <span class="arch-bar-sub">MVC</span>
+                        </div>
+                        <div class="arch-body pj-layers">
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Filtres</span>
+                                <span class="pj-layer-desc"><code>AuthFilter</code> (connexion et rôle) · <code>ValidatedSellerFilter</code> (vendeur validé par l'admin)</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Contrôleurs</span>
+                                <span class="pj-layer-desc">Par espace : <code>Client</code>, <code>Seller</code>, <code>Admin</code> + partagés (<code>Auth</code>, <code>Cart</code>, <code>Checkout</code>)</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Modèles</span>
+                                <span class="pj-layer-desc">13 modèles + entités et enums PHP (<code>UserRole</code>, <code>ShippingType</code>)</span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Librairies</span>
+                                <span class="pj-layer-desc">Calcul des frais de port en patron <code>Template Method</code></span>
+                            </div>
+                            <div class="pj-layer">
+                                <span class="pj-layer-name">Vues</span>
+                                <span class="pj-layer-desc">Layouts et vues organisés par rôle</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arch-connector"><span>mysqli</span></div>
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-mysql-original" style="color:#4479A1"></i>
+                            <span class="arch-bar-name">MySQL 8</span>
+                            <span class="arch-bar-sub">13 tables · migrations + DataSeeder</span>
+                        </div>
+                        <div class="arch-body pj-chips">
+                            <span class="tag">users</span>
+                            <span class="tag">customers</span>
+                            <span class="tag">sellers</span>
+                            <span class="tag">administrators</span>
+                            <span class="tag">products</span>
+                            <span class="tag">product_photos</span>
+                            <span class="tag">categories</span>
+                            <span class="tag">carts</span>
+                            <span class="tag">cart_items</span>
+                            <span class="tag">orders</span>
+                            <span class="tag">order_items</span>
+                            <span class="tag">reviews</span>
+                            <span class="tag">addresses</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pj-gallery with-mobile reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/auth/login</span></div>
+                    <img src="../images/projets/tapismarket/login.webp" alt="Page de connexion avec choix du type de compte : client particulier, vendeur ou administrateur" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Connexion par type de compte</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-phone">
+                    <img src="../images/projets/tapismarket/mobile-home.webp" alt="Page d'accueil de TapisMarket sur mobile" width="390" height="844" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Version mobile</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     06 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">06 — Bilan</div>
+        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Coder à plusieurs</h3>
+                <p>
+                    218 commits à cinq : se répartir les fonctionnalités, gérer les conflits de fusion et
+                    s'adapter au code des autres quand ils refactorisent le sien.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>Penser à l'utilisateur pressé</h3>
+                <p>
+                    Obliger à créer un compte avant de remplir son panier fait fuir. Le panier invité ajoute
+                    des cas à gérer (fusion, stock, vendeur ou admin qui se connecte), mais il change
+                    l'expérience.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>Rendre une image portable</h3>
+                <p>
+                    Passer de Podman en local à Railway m'a appris à sortir la configuration de l'image :
+                    port, base de données et URL lus au démarrage, et un conflit de modules Apache à
+                    résoudre.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="fait-maison.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">Fait Maison</span>
+        </a>
+        <a href="homelab.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">HomeLab</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>

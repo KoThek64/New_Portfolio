@@ -17,16 +17,19 @@ Portfolio personnel. Développeur web full-stack en alternance chez Luneos, étu
 New_Portfolio/
 ├── index.html      # Portfolio (hero, à propos, skills, projets, homelab, contact)
 ├── cv.html         # CV A4, exporté en PDF via l'impression du navigateur
+├── projets/        # Une fiche détaillée par projet (contexte, contribution, code, bilan)
 ├── CSS/
 │   ├── index.css   # Styles du portfolio
+│   ├── projet.css  # Composants des fiches projets (s'ajoute à index.css)
 │   ├── cv.css      # Styles du CV (écran + impression)
 │   └── fonts.css   # @font-face des polices auto-hébergées
 ├── JS/
 │   ├── data.js     # Source de vérité : expériences, formation, compétences, homelab, projets du CV
-│   ├── index.js    # Interactions (curseur, scroll, nav, reveal, menu mobile, tilt) + rendu depuis data.js
+│   ├── common.js   # Interactions partagées : curseur, barre de scroll, reveal, tilt
+│   ├── index.js    # Nav active, défilement, menu mobile + rendu depuis data.js
 │   └── cv.js       # Mise à l'échelle du CV + rendu depuis data.js + impression PDF
 ├── fonts/          # Polices .woff2
-├── images/         # Photo, captures de projets (WebP), image de partage og-image.png
+├── images/         # Photo, captures de projets (WebP, dont images/projets/ pour les fiches), og-image.png
 ├── _headers        # En-têtes HTTP Netlify (noindex sur le CV)
 ├── robots.txt
 └── sitemap.xml
@@ -35,6 +38,8 @@ New_Portfolio/
 ## Fonctionnement
 
 `JS/data.js` est la source unique des données : expériences, formation, compétences, homelab et projets du CV. Le modifier met à jour à la fois le portfolio et le CV.
+
+Les fiches de `projets/` sont des pages statiques qui réutilisent `index.css` et `common.js`. Les extraits de code y sont copiés tels quels depuis les dépôts, coloration par [Prism](https://prismjs.com) 1.29.0.
 
 Le CV (`cv.html`) n'est pas indexé par les moteurs de recherche (`X-Robots-Tag: noindex` dans `_headers`) car il contient des coordonnées personnelles.
 

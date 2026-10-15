@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuisine Delight — Site vitrine de restaurant | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet Cuisine Delight : site vitrine responsive d'un restaurant fictif en HTML, CSS et JavaScript, avec réservation en ligne enregistrée dans Supabase et déploiement sur Netlify.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/site-restaurant.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Cuisine Delight — Site vitrine de restaurant">
+    <meta property="og:description" content="Un site vitrine responsive en HTML, CSS et JavaScript vanilla, avec un formulaire de réservation relié à Supabase.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/site-restaurant.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/projets/site-restaurant/home.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cuisine Delight — Site vitrine de restaurant">
+    <meta name="twitter:description" content="Un site vitrine responsive en HTML, CSS et JavaScript vanilla, avec un formulaire de réservation relié à Supabase.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/projets/site-restaurant/home.webp">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet personnel · 2025</p>
+        <h1 class="pj-title">Cuisine Delight<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Le <strong>site vitrine</strong> d'un restaurant fictif de cuisine française : accueil, carte,
+            contact et <strong>réservation en ligne</strong>. Écrit en <strong>HTML, CSS et JavaScript
+            sans framework</strong>, responsive du mobile au grand écran, avec les réservations
+            enregistrées dans <strong>Supabase</strong>.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Rôle</dt><dd>Seul · design et code</dd></div>
+            <div><dt>Pages</dt><dd>4 + 2 confirmations</dd></div>
+            <div><dt>Période</dt><dd>Juin → oct. 2025</dd></div>
+            <div><dt>Statut</dt><dd class="live">En ligne</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Netlify</span>
+            <span class="tag">Responsive</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://cuisinedelight.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Voir le site →
+            </a>
+            <a href="https://github.com/KoThek64/Site_Resto_Fictif" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                Code source sur GitHub
+            </a>
+        </div>
+
+        <figure class="pj-shot pj-cover reveal">
+            <div class="pj-shot-bar"><i></i><i></i><i></i><span>cuisinedelight.netlify.app</span></div>
+            <img src="../images/projets/site-restaurant/home.webp" alt="Page d'accueil de Cuisine Delight : photo de salle, « Bienvenue chez Cuisine Delight », boutons Consulter le menu et Réserver une table" width="1440" height="900">
+        </figure>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Les bases, sans filet<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Mon deuxième projet personnel, juste après Suivi des dépenses, et un projet d'entraînement :
+                après ma première année de BUT, j'ai voulu consolider le <strong>front-end</strong> sans
+                m'appuyer sur un framework : mise en page, responsive, formulaires et un peu de
+                JavaScript, le tout écrit à la main.
+            </p>
+            <p>
+                Un restaurant est un bon sujet : un site vitrine soigné, avec une vraie interaction, la
+                <strong>réservation d'une table</strong>. Pour l'enregistrer sans écrire de serveur, j'ai
+                découvert <strong>Supabase</strong>, une base PostgreSQL accessible directement depuis le
+                navigateur.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — LE SITE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Le site</div>
+        <h2 class="section-title reveal">Quatre pages, un parcours<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// accueil</p>
+                <h3>Donner envie</h3>
+                <p>
+                    Grande photo d'ambiance, deux appels à l'action (la carte, la réservation), grille
+                    des <strong>plats du chef</strong> et avis clients.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// menu</p>
+                <h3>La carte</h3>
+                <p>
+                    Entrées, plats, desserts et boissons, chaque plat avec sa photo, sa description et
+                    son prix, mis en page en cartes sur mobile.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// réservation</p>
+                <h3>Réserver une table</h3>
+                <p>
+                    Couverts, date, heure et nom. La réservation est <strong>enregistrée dans Supabase</strong>
+                    avec un identifiant unique, puis on arrive sur une page de confirmation.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// contact</p>
+                <h3>Nous écrire</h3>
+                <p>
+                    Coordonnées, réseaux sociaux et un formulaire de contact envoyé par email via
+                    <strong>FormSubmit</strong>, sans aucun code serveur.
+                </p>
+            </article>
+        </div>
+
+        <div class="pj-gallery reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/HTML/menu.html</span></div>
+                    <img src="../images/projets/site-restaurant/menu.webp" alt="Page Notre Menu : entrées avec photo, description et prix" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>La carte</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>/HTML/reservation.html</span></div>
+                    <img src="../images/projets/site-restaurant/reservation.webp" alt="Formulaire de réservation : couverts, date, heure et nom" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Le formulaire de réservation</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Zoom technique</div>
+        <h2 class="section-title reveal">Dans le code<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Pas de réservation dans l'heure</h3>
+                <p>
+                    Le restaurant a besoin d'un peu de temps pour préparer une table. Si l'on réserve
+                    <strong>pour aujourd'hui</strong>, les créneaux passés et ceux de la prochaine heure sont
+                    désactivés dans la liste.
+                </p>
+                <p>
+                    Les heures sont stockées sous la forme <code class="pj-inline-code">19h30</code> : on les
+                    découpe sur le <code class="pj-inline-code">h</code> et on compare tout en minutes. La liste
+                    est recalculée à chaque changement de date.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">HTML/reservation.html <em>javascript</em></div>
+<pre><code class="language-javascript">function updateAvailableHours() {
+    const selectedDate = new Date(dateInput.value);
+    const now = new Date();
+    const options = heureSelect.querySelectorAll('option:not([disabled][hidden])');
+
+    options.forEach(option => {
+        option.disabled = false;
+    });
+
+    if (selectedDate.toDateString() === now.toDateString()) {
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+
+        options.forEach(option => {
+            const timeValue = option.value;
+            const [hours, minutes] = timeValue.split('h').map(part => parseInt(part || 0, 10));
+
+            const optionTimeInMinutes = hours * 60 + minutes;
+            const currentTimeInMinutes = currentHour * 60 + currentMinute;
+
+            if (optionTimeInMinutes &lt;= currentTimeInMinutes + 60) {
+                option.disabled = true;
+            }
+        });
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Enregistrer sans serveur</h3>
+                <p>
+                    Le client Supabase est importé en <strong>module ES</strong> depuis un CDN. À l'envoi du
+                    formulaire, on empêche le rechargement de la page, on construit un
+                    <strong>numéro de réservation</strong> à partir de la date et de deux nombres aléatoires,
+                    puis on insère la ligne.
+                </p>
+                <p>
+                    En cas d'erreur, l'utilisateur est prévenu ; sinon, il est redirigé vers la page de
+                    confirmation.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">main.js <em>javascript</em></div>
+<pre><code class="language-javascript">document.getElementById('reservation-form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // empêche le rechargement
+
+    const now = new Date();
+    const timestamp = String(now.getMonth() + 1).padStart(2, '0') +
+        String(now.getDate()).padStart(2, '0') +
+        String(now.getHours()).padStart(2, '0') +
+        String(now.getMinutes()).padStart(2, '0') +
+        String(now.getSeconds()).padStart(2, '0');
+
+    const random1 = Math.floor(Math.random() * 90) + 10;
+    const random2 = Math.floor(Math.random() * 90) + 10;
+
+    const table_id = `${timestamp}-${random1}${random2}`;
+    const couverts = document.getElementById('nombre-couvert').value;
+    const date = document.getElementById('date-reservation').value;
+    const heure = document.getElementById('heure-reservation').value;
+    const nom = document.getElementById('nom').value;
+
+    document.getElementById('table_id').value = table_id;
+
+    const { data, error } = await supabase
+        .from('reservations')
+        .insert([{ couverts, date, heure, nom, table_id }]);
+
+    if (error) {
+        alert("Erreur lors de la réservation : " + error.message);
+    } else {
+        window.location.href = "merci_2.html";
+    }
+});</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — RESPONSIVE ET DÉPLOIEMENT
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Responsive et mise en ligne</div>
+        <h2 class="section-title reveal">Du téléphone au grand écran<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Une seule feuille de style, avec <strong>quatre paliers</strong> (1024, 768, 480 et 360 px) :
+                la grille de photos passe sur une colonne, la carte se transforme en cartes empilées et
+                les boutons prennent toute la largeur.
+            </p>
+            <p>
+                Même seul sur le projet, j'ai travaillé sur une branche <code class="pj-inline-code">dev</code>
+                et fusionné par <strong>pull requests</strong> (24 au total) : chaque fusion sur la branche
+                principale déclenche le <strong>déploiement sur Netlify</strong>.
+            </p>
+        </div>
+
+        <div class="pj-pipeline reveal">
+            <div class="pj-step">
+                <h4>Branche dev</h4>
+                <p>Une fonctionnalité ou une page à la fois</p>
+            </div>
+            <div class="pj-step">
+                <h4>Pull request</h4>
+                <p>Une pull request par étape terminée</p>
+            </div>
+            <div class="pj-step">
+                <h4>Fusion</h4>
+                <p>Sur la branche principale</p>
+            </div>
+            <div class="pj-step">
+                <h4>Netlify</h4>
+                <p>Déploiement automatique du site statique</p>
+            </div>
+        </div>
+
+        <div class="pj-gallery with-mobile reveal">
+            <figure>
+                <div class="pj-shot">
+                    <div class="pj-shot-bar"><i></i><i></i><i></i><span>cuisinedelight.netlify.app</span></div>
+                    <img src="../images/projets/site-restaurant/home.webp" alt="Page d'accueil en version bureau" width="1440" height="900" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Version bureau</figcaption>
+            </figure>
+            <figure>
+                <div class="pj-phone">
+                    <img src="../images/projets/site-restaurant/mobile-home.webp" alt="Page d'accueil de Cuisine Delight sur mobile" width="390" height="844" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Version mobile</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Bilan</div>
+        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Le CSS à la main</h3>
+                <p>
+                    Sans framework, chaque mise en page se construit : flexbox, grilles, media queries.
+                    C'est ce qui m'a rendu à l'aise pour écrire le CSS de ce portfolio.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>Un backend sans serveur</h3>
+                <p>
+                    Supabase permet d'écrire en base depuis le navigateur. Cela oblige à penser à ce que
+                    la clé publique autorise : c'est la sécurité au niveau des lignes de la base qui
+                    protège les données, pas le code JavaScript.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>Un workflow propre, même seul</h3>
+                <p>
+                    Branche de développement, pull requests et déploiement automatique : les mêmes
+                    habitudes que sur un projet d'équipe, prises dès un petit projet.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="suivi-depenses.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">Suivi des dépenses</span>
+        </a>
+        <a href="pokemon.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">Pokémon CLI</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu en Quadtree — Jeu 2D en Go | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet Jeu en Quadtree : jeu 2D en Go avec Ebitengine, réalisé en binôme en SAE de première année. Le terrain est stocké dans un arbre quaternaire ; ma part : sa construction, les collisions avec l'eau, le zoom et la téléportation.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/quadtree.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Jeu en Quadtree — Jeu 2D en Go">
+    <meta property="og:description" content="Un jeu 2D en Go dont le terrain est stocké dans un arbre quaternaire, réalisé en binôme en première année de BUT.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/quadtree.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jeu en Quadtree — Jeu 2D en Go">
+    <meta name="twitter:description" content="Un jeu 2D en Go dont le terrain est stocké dans un arbre quaternaire, réalisé en binôme en première année de BUT.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet universitaire · SAE S1 · 2024–2025</p>
+        <h1 class="pj-title">Jeu en Quadtree<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Un <strong>jeu d'exploration 2D en Go</strong>, réalisé en <strong>binôme</strong> pendant la
+            première année du BUT. Le terrain est stocké dans un <strong>arbre quaternaire</strong>
+            (quadtree), et le jeu est enrichi d'<strong>extensions</strong> activables une à une :
+            eau infranchissable, zoom, téléportation, cartes générées aléatoirement…
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Mon rôle</dt><dd>Quadtree · extensions</dd></div>
+            <div><dt>Équipe</dt><dd>2 étudiants</dd></div>
+            <div><dt>Période</dt><dd>Nov. 2024 → janv. 2025</dd></div>
+            <div><dt>Statut</dt><dd class="archived">Rendu</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">Go</span>
+            <span class="tag">Ebitengine</span>
+            <span class="tag">Structures de données</span>
+            <span class="tag">Récursivité</span>
+            <span class="tag">go test</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://github.com/KoThek64/Jeu_en_Go" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Code source sur GitHub →
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Une SAE à partir d'un squelette<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                C'est la <strong>SAE du premier semestre</strong> du BUT Informatique. L'enseignant fournit
+                un squelette de jeu en Go, avec le moteur <strong>Ebitengine</strong> : un personnage animé,
+                une caméra et un terrain fait de tuiles. À nous de compléter le cœur du programme, puis
+                d'ajouter des <strong>extensions</strong> au choix.
+            </p>
+            <p>
+                Le point central est le <strong>quadtree</strong>. Plutôt que de garder tout le terrain dans
+                un grand tableau, on le découpe récursivement en quatre tant qu'une zone n'est pas d'un seul
+                type de sol. Une grande étendue d'herbe tient alors dans <strong>un seul nœud</strong>, et l'on
+                retrouve vite le contenu d'une case en descendant dans l'arbre.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — LE PARTAGE DU TRAVAIL
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Ma contribution</div>
+        <h2 class="section-title reveal">Qui a fait quoi<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Nous étions deux, avec mon binôme Axel Doucet. D'après l'historique Git, le travail s'est
+                réparti ainsi :
+            </p>
+        </div>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// moi</p>
+                <h3>Construction et extensions de jeu</h3>
+                <ul>
+                    <li><strong>Construction du quadtree</strong> à partir du terrain (<code class="pj-inline-code">MakeFromArray</code>)</li>
+                    <li>Extension <strong>eau infranchissable</strong> et blocage aux bords de la carte</li>
+                    <li><strong>Zoom</strong> et dézoom en temps réel</li>
+                    <li><strong>Téléportation</strong> entre deux portails posés par le joueur, avec leurs sprites</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// axel</p>
+                <h3>Lecture et génération de cartes</h3>
+                <ul>
+                    <li>Lecture du terrain depuis un fichier</li>
+                    <li>Lecture d'une zone du quadtree (<code class="pj-inline-code">GetContent</code>)</li>
+                    <li>Génération de cartes aléatoires, puis par l'algorithme <strong>Diamond-Square</strong></li>
+                    <li>Enregistrement des cartes générées</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Zoom technique</div>
+        <h2 class="section-title reveal">Dans le code<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Construire l'arbre, récursivement</h3>
+                <p>
+                    On regarde la zone : si toutes ses cases ont le <strong>même type de sol</strong>, c'est une
+                    <strong>feuille</strong> qui garde ce type. Sinon, on la coupe en quatre quadrants et on
+                    recommence sur chacun.
+                </p>
+                <p>
+                    Les quadrants de droite et du bas reçoivent le reste de la division
+                    (<code class="pj-inline-code">width - middleWidth</code>), ce qui gère les terrains de
+                    <strong>taille impaire</strong>. La boucle étiquetée s'arrête dès la première case
+                    différente.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">quadtree/make.go <em>go</em></div>
+<pre><code class="language-go">func makeFromArrayRecursive(floorContent [][]int, topLeftX, topLeftY, width, height int) *node {
+	// Supposer initialement que la zone actuelle a un contenu uniforme
+	content := floorContent[topLeftY][topLeftX]
+	is_leaf := true
+
+	// Vérifier si la zone n'est pas uniforme
+check_leaf:
+	for x := topLeftX; x &lt; topLeftX+width; x++ {
+		for y := topLeftY; y &lt; topLeftY+height; y++ {
+			if floorContent[y][x] != content {
+				is_leaf = false
+				break check_leaf
+			}
+		}
+	}
+
+	// Créer un nouveau nœud de quadtree
+	returnNode := node{
+		topLeftX: topLeftX,
+		topLeftY: topLeftY,
+		width:    width,
+		height:   height,
+		isLeaf:   is_leaf,
+	}
+
+	// Si la zone est uniforme, assigner le contenu
+	if is_leaf {
+		returnNode.content = content
+	} else {
+		// Diviser la zone en quatre quadrants et créer les nœuds enfants
+		middleWidth := width / 2
+		middleHeight := height / 2
+
+		returnNode.topLeftNode = makeFromArrayRecursive(floorContent, topLeftX, topLeftY, middleWidth, middleHeight)
+		returnNode.topRightNode = makeFromArrayRecursive(floorContent, topLeftX+middleWidth, topLeftY, width-middleWidth, middleHeight)
+		returnNode.bottomLeftNode = makeFromArrayRecursive(floorContent, topLeftX, topLeftY+middleHeight, middleWidth, height-middleHeight)
+		returnNode.bottomRightNode = makeFromArrayRecursive(floorContent, topLeftX+middleWidth, topLeftY+middleHeight, width-middleWidth, height-middleHeight)
+	}
+
+	return &amp;returnNode
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Des portails sans aller-retour infini</h3>
+                <p>
+                    La touche <strong>T</strong> pose le premier portail, puis le second. Les fois suivantes,
+                    elle déplace les portails : l'ancien d'arrivée devient celui de départ.
+                </p>
+                <p>
+                    Le piège : en arrivant sur un portail, le personnage se trouve… sur un portail, et
+                    repartirait aussitôt. Un drapeau <code class="pj-inline-code">tp_autorise</code> n'est
+                    réactivé qu'une fois le personnage <strong>sorti des deux portails</strong>.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">character/portail.go · extrait <em>go</em></div>
+<pre><code class="language-go">// Si tous les portails sont déjà posés et qu'on ne vient pas d'en poser un juste avant, on autorise la téléportation //
+if c.portail_actif &lt; 2 {
+	c.tp_autorise = false
+} else if (c.portail_arrivee_x != c.X || c.portail_arrivee_y != c.Y) &amp;&amp; (c.portail_depart_x != c.X || c.portail_depart_y != c.Y) {
+	c.tp_autorise = true
+}
+
+// Gère la téléportation d'un portail à l'autre //
+if (c.X == c.portail_arrivee_x) &amp;&amp; (c.Y == c.portail_arrivee_y) &amp;&amp; c.tp_autorise {
+	c.X = c.portail_depart_x
+	c.Y = c.portail_depart_y
+	c.tp_autorise = false
+	teleported = true
+} else if (c.X == c.portail_depart_x) &amp;&amp; (c.Y == c.portail_depart_y) &amp;&amp; c.tp_autorise {
+	c.X = c.portail_arrivee_x
+	c.Y = c.portail_arrivee_y
+	c.tp_autorise = false
+	teleported = true
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — ARCHITECTURE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Architecture</div>
+        <h2 class="section-title reveal">Comment c'est construit<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Un paquet Go par responsabilité, et toutes les extensions <strong>activables dans
+                <code class="pj-inline-code">config.json</code></strong> : on peut comparer le jeu avec et sans
+                chacune, sans toucher au code.
+            </p>
+        </div>
+
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <i class="devicon-go-original-wordmark" style="color:#00ADD8"></i>
+                    <span class="arch-bar-name">Jeu</span>
+                    <span class="arch-bar-sub">Go · Ebitengine</span>
+                </div>
+                <div class="arch-body pj-layers">
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">game</span>
+                        <span class="pj-layer-desc">Boucle du jeu : mise à jour, dessin, zoom</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">character · camera</span>
+                        <span class="pj-layer-desc">Déplacement et animation du personnage, portails, caméra fixe ou qui le suit</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">floor</span>
+                        <span class="pj-layer-desc">Chargement, génération et enregistrement des cartes, cases bloquantes</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">quadtree</span>
+                        <span class="pj-layer-desc">Construction de l'arbre et lecture d'une zone, avec tests <code>go test</code></span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">configuration</span>
+                        <span class="pj-layer-desc">Lecture de <code>config.json</code> : taille des tuiles, mode de caméra, extensions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — BILAN
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Bilan</div>
+        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards three reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">01</p>
+                <h3>Penser récursif</h3>
+                <p>
+                    Le quadtree a été ma première vraie structure récursive : un cas de base, un découpage,
+                    et des bornes à soigner pour ne perdre aucune case.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">02</p>
+                <h3>Entrer dans le code d'un autre</h3>
+                <p>
+                    Partir d'un squelette fourni oblige à lire et comprendre du code qu'on n'a pas écrit
+                    avant d'y ajouter quoi que ce soit.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">03</p>
+                <h3>Mon premier projet en binôme</h3>
+                <p>
+                    Se répartir le travail, utiliser Git à deux et résoudre nos premiers conflits de fusion,
+                    sur le GitLab de l'université.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="pokemon.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">Pokémon CLI</span>
+        </a>
+        <a href="qui-est-ce.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">Qui-Est-Ce ?</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+</body>
+</html>
