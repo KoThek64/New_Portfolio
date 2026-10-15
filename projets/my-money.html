@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Money — Gestion de budget en Symfony | Mattys Lachaise</title>
+    <meta name="description" content="Fiche projet My Money : application web de gestion de budget en PHP 8.5 et Symfony 8, en cours de développement. Isolation des comptes au niveau de Doctrine, 82 tests, CI qualité avec PHPStan, Rector et php-cs-fixer.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/my-money.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="My Money — Gestion de budget en Symfony">
+    <meta property="og:description" content="Mon projet le plus ambitieux, en cours : une application de budget en Symfony 8, construite avec des tests, une CI qualité et une isolation stricte des comptes.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/my-money.html">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="My Money — Gestion de budget en Symfony">
+    <meta name="twitter:description" content="Mon projet le plus ambitieux, en cours : une application de budget en Symfony 8, construite avec des tests, une CI qualité et une isolation stricte des comptes.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="index.html" class="pj-fab" aria-label="Retour aux projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════════════
+     EN-TÊTE
+════════════════════════════════════════════════════════════ -->
+<header class="pj-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="index.html" class="pj-back">← tous les projets</a>
+        <p class="pj-eyebrow">Projet personnel · en cours · 2026</p>
+        <h1 class="pj-title">My Money<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Une <strong>application web de gestion de budget</strong> : dépenses et revenus par catégorie,
+            opérations récurrentes, objectifs d'épargne et statistiques. C'est la version aboutie de mon
+            tout premier projet, Suivi des dépenses, et mon <strong>projet le plus ambitieux</strong> :
+            je le construis comme en entreprise, avec des <strong>tests</strong>, une
+            <strong>intégration continue</strong> et des règles métier formalisées.
+        </p>
+
+        <dl class="pj-meta">
+            <div><dt>Rôle</dt><dd>Seul</dd></div>
+            <div><dt>Démarrage</dt><dd>Juin 2026</dd></div>
+            <div><dt>Stack</dt><dd>PHP 8.5 · Symfony 8.1</dd></div>
+            <div><dt>Statut</dt><dd class="wip">En développement</dd></div>
+        </dl>
+
+        <div class="project-tags">
+            <span class="tag">PHP 8.5</span>
+            <span class="tag">Symfony 8.1</span>
+            <span class="tag">PostgreSQL 16</span>
+            <span class="tag">Doctrine ORM 3</span>
+            <span class="tag">SCSS</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">PHPUnit</span>
+            <span class="tag">PHPStan</span>
+            <span class="tag">Rector</span>
+            <span class="tag">GitHub Actions</span>
+        </div>
+
+        <div class="pj-cta">
+            <a href="https://github.com/KoThek64/my-money" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Suivre le code sur GitHub →
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     01 — CONTEXTE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">01 — Contexte</div>
+        <h2 class="section-title reveal">Refaire mon premier projet, en mieux<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                <a href="suivi-depenses.html" class="pj-inline-link">Suivi des dépenses</a> était mon tout
+                premier projet : une petite application Kotlin, sans tests, qui m'a surtout appris ce que je
+                ferais autrement. My Money reprend la même idée, cette fois en <strong>application web
+                multi-comptes</strong>, avec tout ce que j'ai appris depuis sur Fait Maison et en entreprise.
+            </p>
+            <p>
+                Le projet n'est pas terminé, et cette fiche le montre tel qu'il est : les
+                <strong>fondations</strong> sont posées et testées, les écrans de l'application arrivent
+                ensuite.
+            </p>
+        </div>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// déjà en place</p>
+                <h3>Les fondations</h3>
+                <ul>
+                    <li>Modèle de données : <strong>5 entités</strong> et leurs contraintes en base</li>
+                    <li>Inscription, connexion et politique de mot de passe</li>
+                    <li><strong>Isolation des comptes</strong> appliquée à toutes les lectures</li>
+                    <li>13 catégories de base copiées à l'inscription, modifiables ensuite</li>
+                    <li><strong>82 tests</strong> et une CI qualité sur chaque pull request</li>
+                </ul>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// à venir</p>
+                <h3>L'application</h3>
+                <ul>
+                    <li>Saisie des dépenses et des revenus</li>
+                    <li>Opérations <strong>récurrentes</strong> générées chaque mois (loyer, salaire…)</li>
+                    <li><strong>Objectifs</strong> : plafond global, plafond par catégorie, épargne</li>
+                    <li>Statistiques et graphiques</li>
+                    <li>Mise en ligne</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     02 — CE QUI A CHANGÉ
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">02 — Avant / après</div>
+        <h2 class="section-title reveal">Ce que Suivi des dépenses m'a appris<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Le bilan de mon premier projet listait ce que je ferais autrement. Voici ce que c'est
+                devenu concrètement :
+            </p>
+        </div>
+
+        <div class="pj-compare reveal">
+            <div class="pj-compare-head">
+                <span></span>
+                <span>Suivi des dépenses · 2025</span>
+                <span>My Money · 2026</span>
+            </div>
+            <div class="pj-compare-row">
+                <span class="pj-compare-label">Montants</span>
+                <span class="pj-compare-old"><code>Double</code>, sujet aux erreurs d'arrondi</span>
+                <span class="pj-compare-new">Entiers en <strong>centimes</strong>, positifs garantis par un <code>CHECK</code> SQL</span>
+            </div>
+            <div class="pj-compare-row">
+                <span class="pj-compare-label">Dates</span>
+                <span class="pj-compare-old">Texte au format jj/mm/aaaa</span>
+                <span class="pj-compare-new">Vraies dates <code>DateTimeImmutable</code>, indexées pour trier et filtrer</span>
+            </div>
+            <div class="pj-compare-row">
+                <span class="pj-compare-label">Données</span>
+                <span class="pj-compare-old">Un fichier CSV, un seul utilisateur</span>
+                <span class="pj-compare-new">PostgreSQL, <strong>un espace isolé par compte</strong></span>
+            </div>
+            <div class="pj-compare-row">
+                <span class="pj-compare-label">Logique</span>
+                <span class="pj-compare-old">Mélangée à la saisie au clavier</span>
+                <span class="pj-compare-new">Entités, services et voters séparés, rangés par domaine</span>
+            </div>
+            <div class="pj-compare-row">
+                <span class="pj-compare-label">Tests</span>
+                <span class="pj-compare-old">Aucun</span>
+                <span class="pj-compare-new"><strong>82 tests</strong> unitaires, d'intégration et fonctionnels</span>
+            </div>
+            <div class="pj-compare-row">
+                <span class="pj-compare-label">Qualité</span>
+                <span class="pj-compare-old">Rien d'automatique</span>
+                <span class="pj-compare-new">Style, analyse statique, refactos et tests vérifiés <strong>à chaque pull request</strong></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — ZOOM TECHNIQUE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Zoom technique</div>
+        <h2 class="section-title reveal">Personne ne voit le budget des autres<span class="title-dot">.</span></h2>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Un filtre sur toutes les lectures</h3>
+                <p>
+                    Les données d'un budget sont sensibles. Plutôt que de compter sur chaque requête pour
+                    penser à filtrer par utilisateur, un <strong>filtre SQL Doctrine</strong> ajoute la
+                    condition automatiquement à toute lecture d'une entité qui appartient à un compte.
+                </p>
+                <p>
+                    Il est armé au début de chaque requête HTTP. Et s'il n'y a <strong>pas d'utilisateur
+                    connecté</strong>, il ne renvoie rien plutôt que tout : une isolation qui échoue doit
+                    échouer fermée.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">src/Doctrine/Filter/OwnerFilter.php <em>php</em></div>
+<pre><code class="language-php">final class OwnerFilter extends SQLFilter
+{
+    public const string NAME = 'owner';
+    public const string PARAMETER = 'user_id';
+
+    public function addFilterConstraint(ClassMetadata $targetEntity, string $targetTableAlias): string
+    {
+        if (!$targetEntity->reflClass->implementsInterface(OwnedByUser::class)) {
+            return '';
+        }
+
+        // Filtre armé sans utilisateur (visiteur anonyme) : on ne renvoie rien
+        // plutôt que tout — une isolation ne doit jamais échouer en s'ouvrant.
+        if (!$this->hasParameter(self::PARAMETER)) {
+            return '1 = 0';
+        }
+
+        $column = $targetEntity->getSingleAssociationJoinColumnName('user');
+
+        return sprintf('%s.%s = %s', $targetTableAlias, $column, $this->getParameter(self::PARAMETER));
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="pj-snippet reveal">
+            <div>
+                <h3>Tester l'attaque, pas seulement le cas normal</h3>
+                <p>
+                    Les identifiants sont des <strong>UUID</strong>, impossibles à deviner. Mais le test
+                    suppose le pire : Alice connaît l'identifiant d'une catégorie de Bob. Même ainsi, la
+                    ligne <strong>ne remonte pas</strong> de la base.
+                </p>
+                <p>
+                    De la même façon, le propriétaire d'une donnée n'est jamais lu depuis un formulaire,
+                    que le client pourrait modifier : il est posé côté serveur au moment de l'enregistrement.
+                </p>
+            </div>
+            <div class="pj-code">
+                <div class="pj-code-bar">tests/Functional/OwnerFilterTest.php · extrait <em>php</em></div>
+<pre><code class="language-php">public function testForcingAnotherAccountsUuidFindsNothing(): void
+{
+    $alice = $this->createUser('alice@my-money.test');
+    $bob = $this->createUser('bob@my-money.test');
+    $bobCategoryId = $this->createCategory($bob, 'Loyer')->getId();
+    self::assertInstanceOf(Uuid::class, $bobCategoryId);
+
+    $this->browse('/', $alice);
+
+    self::assertNull($this->entityManager()->find(Category::class, $bobCategoryId));
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     04 — MODÈLE DE DONNÉES
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section alt">
+    <div class="container">
+        <div class="section-label reveal">04 — Modèle de données</div>
+        <h2 class="section-title reveal">Cinq entités, des garde-fous en base<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Les règles importantes ne vivent pas que dans le PHP : elles sont aussi
+                <strong>écrites dans PostgreSQL</strong>. Un montant ne peut pas être négatif, supprimer un
+                compte efface toutes ses données, et un même objectif ne peut pas exister deux fois. Des
+                tests d'intégration vérifient que la base refuse bien ce qu'elle doit refuser.
+            </p>
+        </div>
+
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <i class="devicon-postgresql-plain" style="color:#4169E1"></i>
+                    <span class="arch-bar-name">PostgreSQL 16</span>
+                    <span class="arch-bar-sub">Doctrine ORM 3 · identifiants UUID</span>
+                </div>
+                <div class="arch-body pj-layers">
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">User</span>
+                        <span class="pj-layer-desc">Le compte. Sa suppression part en <code>CASCADE</code> sur tout ce qui lui appartient</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Category</span>
+                        <span class="pj-layer-desc">Dépense ou revenu, avec couleur et icône ; archivable plutôt que supprimée</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Transaction</span>
+                        <span class="pj-layer-desc">Montant en centimes, libellé, date ; suppression douce, index partiels sur les lignes actives</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Recurrence</span>
+                        <span class="pj-layer-desc">Opération mensuelle : jour du mois et dernier mois généré, pour ne jamais la créer deux fois</span>
+                    </div>
+                    <div class="pj-layer">
+                        <span class="pj-layer-name">Goal</span>
+                        <span class="pj-layer-desc">Plafond global, plafond par catégorie ou épargne ; unicité garantie par des index partiels</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     05 — MÉTHODE
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">05 — Méthode</div>
+        <h2 class="section-title reveal">Travailler comme en équipe<span class="title-dot">.</span></h2>
+        <div class="pj-prose reveal">
+            <p>
+                Même seul, chaque changement passe par une <strong>pull request</strong> de
+                <code class="pj-inline-code">dev</code> vers <code class="pj-inline-code">master</code>, et rien
+                n'est fusionné tant que la CI n'est pas verte. Un hook Git impose une convention de message
+                et un <strong>temps passé</strong> par commit ; un workflow additionne ces temps et les
+                publie sur chaque pull request.
+            </p>
+        </div>
+
+        <div class="pj-pipeline reveal">
+            <div class="pj-step">
+                <h4>Commit</h4>
+                <p>Hook <code>commit-msg</code> : <code>feat(auth): … @1h30</code></p>
+            </div>
+            <div class="pj-step">
+                <h4>Pull request</h4>
+                <p>De <code>dev</code> vers <code>master</code>, rapport de temps automatique</p>
+            </div>
+            <div class="pj-step">
+                <h4>Qualité</h4>
+                <p>php-cs-fixer, PHPStan niveau 6, Rector</p>
+            </div>
+            <div class="pj-step">
+                <h4>Tests</h4>
+                <p>PHPUnit sur un vrai PostgreSQL 16</p>
+            </div>
+            <div class="pj-step">
+                <h4>Fusion</h4>
+                <p><code>dev</code> réaligné automatiquement sur <code>master</code></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Navigation entre fiches -->
+<div class="container">
+    <div class="pj-next">
+        <a href="fait-maison.html" class="pj-next-link prev">
+            <span class="pj-next-label">← projet précédent</span>
+            <span class="pj-next-name">Fait Maison</span>
+        </a>
+        <a href="tapismarket.html" class="pj-next-link next">
+            <span class="pj-next-label">projet suivant →</span>
+            <span class="pj-next-name">TapisMarket</span>
+        </a>
+    </div>
+</div>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+</body>
+</html>

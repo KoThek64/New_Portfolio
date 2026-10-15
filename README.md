@@ -17,7 +17,7 @@ Portfolio personnel. Développeur web full-stack en alternance chez Luneos, étu
 New_Portfolio/
 ├── index.html      # Portfolio (hero, à propos, skills, projets, homelab, contact)
 ├── cv.html         # CV A4, exporté en PDF via l'impression du navigateur
-├── projets/        # Une fiche détaillée par projet (contexte, contribution, code, bilan)
+├── projets/        # index.html (tous les projets) + une fiche détaillée par projet
 ├── CSS/
 │   ├── index.css   # Styles du portfolio
 │   ├── projet.css  # Composants des fiches projets (s'ajoute à index.css)

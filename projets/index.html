@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets en détail | Mattys Lachaise</title>
+    <meta name="description" content="Tous les projets de Mattys Lachaise en détail : contexte, contribution, extraits de code, architecture et bilan. Symfony, Kotlin, Go, infrastructure Proxmox.">
+    <meta name="author" content="Mattys Lachaise">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mattys-lachaise.fr/projets/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
+    <meta property="og:title" content="Projets en détail — Mattys Lachaise">
+    <meta property="og:description" content="Chaque projet expliqué : contexte, contribution, extraits de code, architecture et bilan.">
+    <meta property="og:url" content="https://mattys-lachaise.fr/projets/">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projets en détail — Mattys Lachaise">
+    <meta name="twitter:description" content="Chaque projet expliqué : contexte, contribution, extraits de code, architecture et bilan.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
+
+    <link rel="icon" type="image/png" href="../images/6.png">
+    <link rel="preload" href="../fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../CSS/fonts.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/projet.css">
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="scroll-bar"></div>
+
+<nav id="nav" aria-label="Navigation principale">
+    <a href="../index.html#hero">accueil</a>
+    <a href="../index.html#about">à propos</a>
+    <a href="../index.html#skills">skills</a>
+    <a href="../index.html#projects" class="active">projets</a>
+    <a href="../index.html#homelab">homelab</a>
+    <a href="../index.html#contact">contact</a>
+</nav>
+
+<a href="../index.html#projects" class="pj-fab" aria-label="Retour au portfolio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+</a>
+
+<main>
+
+<header class="pj-hero hub-hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+        <a href="../index.html#projects" class="pj-back">← retour au portfolio</a>
+        <p class="pj-eyebrow">Projets · fiches détaillées</p>
+        <h1 class="pj-title">Projets en détail<span class="title-dot">.</span></h1>
+        <p class="pj-tagline">
+            Pour chaque projet : le <strong>contexte</strong>, <strong>ma part</strong> quand on était
+            plusieurs, des <strong>extraits du vrai code</strong>, l'architecture et ce que j'en retiens.
+            La plupart sont des projets d'entraînement : ils montrent surtout comment j'ai progressé.
+        </p>
+    </div>
+</header>
+
+<section class="pj-section hub-section">
+    <div class="container">
+        <div class="hub-grid">
+
+            <article class="hub-card reveal">
+                <a href="fait-maison.html" class="card-link" aria-label="Fiche du projet Fait Maison"></a>
+                <div class="hub-thumb"><img src="../images/projets/fait-maison/home.webp" alt="" width="1440" height="900" loading="lazy" decoding="async"></div>
+                <div class="hub-body">
+                    <p class="hub-kind">Personnel · 2026 <span class="hub-status live">en ligne</span></p>
+                    <h2 class="hub-name">Fait Maison</h2>
+                    <p class="hub-desc">Réseau social de recettes en Symfony : mon plus gros projet à ce jour, testé et déployé seul.</p>
+                    <div class="hub-tags"><span class="tag">PHP 8.4</span><span class="tag">Symfony</span><span class="tag">PostgreSQL</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="my-money.html" class="card-link" aria-label="Fiche du projet My Money"></a>
+                <div class="hub-thumb hub-thumb-icon wip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><circle cx="17" cy="14.5" r="1.5"/></svg>
+                </div>
+                <div class="hub-body">
+                    <p class="hub-kind">Personnel · 2026 <span class="hub-status wip">en cours</span></p>
+                    <h2 class="hub-name">My Money</h2>
+                    <p class="hub-desc">Gestion de budget en Symfony 8 : isolation des comptes, 82 tests et CI qualité dès les fondations.</p>
+                    <div class="hub-tags"><span class="tag">PHP 8.5</span><span class="tag">Symfony 8</span><span class="tag">PHPStan</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="tapismarket.html" class="card-link" aria-label="Fiche du projet TapisMarket"></a>
+                <div class="hub-thumb"><img src="../images/projets/tapismarket/home.webp" alt="" width="1440" height="900" loading="lazy" decoding="async"></div>
+                <div class="hub-body">
+                    <p class="hub-kind">Universitaire · équipe de 5 <span class="hub-status live">en ligne</span></p>
+                    <h2 class="hub-name">TapisMarket</h2>
+                    <p class="hub-desc">Marketplace multi-rôles. Ma part : front, panier invité, commande et mise en production Docker.</p>
+                    <div class="hub-tags"><span class="tag">PHP</span><span class="tag">CodeIgniter 4</span><span class="tag">Railway</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="homelab.html" class="card-link" aria-label="Fiche du projet HomeLab"></a>
+                <div class="hub-thumb hub-thumb-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+                </div>
+                <div class="hub-body">
+                    <p class="hub-kind">Infrastructure · perso <span class="hub-status live">en service</span></p>
+                    <h2 class="hub-name">HomeLab</h2>
+                    <p class="hub-desc">Proxmox sur un mini-PC, conteneurs LXC et Docker, et un pare-feu OPNsense en résidence CROUS.</p>
+                    <div class="hub-tags"><span class="tag">Proxmox VE</span><span class="tag">LXC</span><span class="tag">Docker</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="suivi-depenses.html" class="card-link" aria-label="Fiche du projet Suivi des dépenses"></a>
+                <div class="hub-thumb"><img src="../images/projets/suivi-depenses/total.webp" alt="" width="788" height="619" loading="lazy" decoding="async"></div>
+                <div class="hub-body">
+                    <p class="hub-kind">Personnel · 2025 <span class="hub-status">terminé</span></p>
+                    <h2 class="hub-name">Suivi des dépenses</h2>
+                    <p class="hub-desc">Mon tout premier projet : une application Kotlin en terminal puis en JavaFX.</p>
+                    <div class="hub-tags"><span class="tag">Kotlin</span><span class="tag">JavaFX</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="site-restaurant.html" class="card-link" aria-label="Fiche du projet Cuisine Delight"></a>
+                <div class="hub-thumb"><img src="../images/projets/site-restaurant/home.webp" alt="" width="1440" height="900" loading="lazy" decoding="async"></div>
+                <div class="hub-body">
+                    <p class="hub-kind">Personnel · 2025 <span class="hub-status live">en ligne</span></p>
+                    <h2 class="hub-name">Cuisine Delight</h2>
+                    <p class="hub-desc">Site vitrine de restaurant en HTML, CSS et JavaScript, avec réservation dans Supabase.</p>
+                    <div class="hub-tags"><span class="tag">HTML / CSS</span><span class="tag">JavaScript</span><span class="tag">Supabase</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="pokemon.html" class="card-link" aria-label="Fiche du projet Pokémon CLI"></a>
+                <div class="hub-thumb hub-thumb-logo"><img src="../images/pokemon.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></div>
+                <div class="hub-body">
+                    <p class="hub-kind">Personnel · 2025–2026 <span class="hub-status paused">en pause</span></p>
+                    <h2 class="hub-name">Pokémon CLI</h2>
+                    <p class="hub-desc">Combats au tour par tour, 151 Pokémon importés de PokéAPI, tests JUnit 5 et CI.</p>
+                    <div class="hub-tags"><span class="tag">Kotlin</span><span class="tag">PostgreSQL</span><span class="tag">Ktor</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="quadtree.html" class="card-link" aria-label="Fiche du projet Jeu en Quadtree"></a>
+                <div class="hub-thumb hub-thumb-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M12 3v18M3 12h18M16.5 3v9M12 7.5h9"/></svg>
+                </div>
+                <div class="hub-body">
+                    <p class="hub-kind">Universitaire · binôme <span class="hub-status">rendu</span></p>
+                    <h2 class="hub-name">Jeu en Quadtree</h2>
+                    <p class="hub-desc">Jeu 2D en Go : construction récursive de l'arbre, collisions, zoom et téléportation.</p>
+                    <div class="hub-tags"><span class="tag">Go</span><span class="tag">Ebitengine</span></div>
+                </div>
+            </article>
+
+            <article class="hub-card reveal">
+                <a href="qui-est-ce.html" class="card-link" aria-label="Fiche du projet Qui-Est-Ce ?"></a>
+                <div class="hub-thumb hub-thumb-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                </div>
+                <div class="hub-body">
+                    <p class="hub-kind">Universitaire · équipe de 4 <span class="hub-status paused">non terminé</span></p>
+                    <h2 class="hub-name">Qui-Est-Ce ?</h2>
+                    <p class="hub-desc">Jeu en réseau en Kotlin. Ma part : l'analyse de testabilité et 55 tests de la librairie client.</p>
+                    <div class="hub-tags"><span class="tag">Kotlin</span><span class="tag">JavaFX</span><span class="tag">JUnit 5</span></div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>© 2026 <span class="footer-accent">Mattys Lachaise</span>. Tous droits réservés.</p>
+    <p class="footer-meta"><span class="footer-prompt">$</span> built with vanilla HTML · CSS · JS — deployed on Netlify<span class="footer-caret"></span></p>
+    <p>Fait avec <span class="footer-accent">♥</span></p>
+</footer>
+
+<script src="../JS/common.js"></script>
+</body>
+</html>
