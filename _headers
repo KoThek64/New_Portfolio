@@ -1,0 +1,11 @@
+# En-têtes HTTP Netlify — https://docs.netlify.com/routing/headers/
+
+# Le CV contient des coordonnées personnelles (téléphone) : on interdit son
+# indexation par les moteurs de recherche. Ne PAS bloquer /cv.html dans
+# robots.txt, sinon Google ne pourrait plus lire cet en-tête.
+/cv.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+# Même page servie sans extension (Pretty URLs Netlify)
+/cv
+  X-Robots-Tag: noindex, nofollow, noarchive

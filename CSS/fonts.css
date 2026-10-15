@@ -1,6 +1,8 @@
 /* ══ FONTES AUTO-HÉBERGÉES (statiques, non-variable) ═════════════════
    Chargées depuis /fonts/ — garantit texte sélectionnable dans les PDF
    générés via impression navigateur (Chrome vectorise les variable fonts).
+   font-display: swap → le texte s'affiche tout de suite avec une police de
+   secours. Le CV attend document.fonts.ready avant d'imprimer (JS/cv.js).
    ════════════════════════════════════════════════════════════════════ */
 
 /* ── Outfit ──────────────────────────────────────────────── */
@@ -8,21 +10,21 @@
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 300;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/outfit-300.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 400;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/outfit-400.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/outfit-500.woff2') format('woff2');
 }
 
@@ -31,21 +33,21 @@
     font-family: 'Unbounded';
     font-style: normal;
     font-weight: 400;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/unbounded-400.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Unbounded';
     font-style: normal;
     font-weight: 700;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/unbounded-700.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Unbounded';
     font-style: normal;
     font-weight: 900;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/unbounded-900.woff2') format('woff2');
 }
 
@@ -54,13 +56,13 @@
     font-family: 'DM Mono';
     font-style: normal;
     font-weight: 400;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/dm-mono-400.woff2') format('woff2');
 }
 @font-face {
     font-family: 'DM Mono';
     font-style: normal;
     font-weight: 500;
-    font-display: block;
+    font-display: swap;
     src: url('../fonts/dm-mono-500.woff2') format('woff2');
 }

@@ -22,8 +22,11 @@ body {
   cursor: none;
 }
 a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 ::selection { background: var(--accent); color: #fff; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* Point final coloré des titres de section */
+.title-dot { color: var(--accent); }
 
 /* ─── CURSOR ────────────────────────────────────────────────────── */
 #cursor-dot {
@@ -959,13 +962,15 @@ section { padding: 120px 0; }
   flex-shrink: 0;
 }
 .contact-link-icon svg { width: 18px; height: 18px; fill: var(--muted2); }
+/* Icônes dessinées au trait (email, CV) : pas de remplissage */
+.contact-link-icon svg[fill="none"] { fill: none; stroke: var(--muted2); }
 .contact-link-label {
   font-family: 'DM Mono', monospace;
   font-size: 0.68rem;
   color: var(--muted); letter-spacing: 0.1em;
   margin-bottom: 2px;
 }
-.contact-link-value { font-size: 0.9rem; font-weight: 500; }
+.contact-link-value { font-size: 0.9rem; font-weight: 500; overflow-wrap: anywhere; }
 
 /* ─── FOOTER ─────────────────────────────────────────────────────── */
 footer {
@@ -1131,4 +1136,31 @@ footer p {
 @media (max-width: 340px) {
   .hero-available { font-size: 0.58rem; padding: 5px 10px; gap: 6px; }
   .available-meta { display: none; }
+}
+
+/* ─── ÉCRANS TACTILES ────────────────────────────────────────────── */
+/* Pas de souris (tablette, téléphone) : curseur custom désactivé,
+   quelle que soit la largeur de l'écran. */
+@media (hover: none), (pointer: coarse) {
+  #cursor-dot, #cursor-ring { display: none; }
+  body, .project-card { cursor: auto; }
+  #hamburger { cursor: pointer; }
+}
+
+/* ─── MOUVEMENT RÉDUIT ───────────────────────────────────────────── */
+/* Réglage système « réduire les animations » : contenu affiché directement,
+   sans défilement animé, ni reveal, ni curseur qui suit la souris. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  #cursor-dot, #cursor-ring { display: none; }
+  body, .project-card { cursor: auto; }
+  #hamburger { cursor: pointer; }
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mattys Lachaise — Portfolio | Étudiant BUT Informatique, Nantes</title>
-    <meta name="description" content="Portfolio de Mattys Lachaise, étudiant en BUT Informatique à l'IUT de Nantes. Développement, infrastructure et homelab.">
+    <title>Mattys Lachaise — Développeur web full-stack en alternance | Nantes</title>
+    <meta name="description" content="Portfolio de Mattys Lachaise, développeur web full-stack en alternance chez Luneos et étudiant en BUT Informatique à l'IUT de Nantes. Développement, infrastructure et homelab.">
     <meta name="author" content="Mattys Lachaise">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mattys-lachaise.fr/">
@@ -13,18 +13,19 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
-    <meta property="og:title" content="Mattys Lachaise — Portfolio">
-    <meta property="og:description" content="Étudiant en BUT Informatique à Nantes, passionné par le développement et l'infrastructure.">
+    <meta property="og:title" content="Mattys Lachaise — Développeur web full-stack">
+    <meta property="og:description" content="Développeur web full-stack en alternance chez Luneos, étudiant en BUT Informatique à Nantes. Développement et infrastructure.">
     <meta property="og:url" content="https://mattys-lachaise.fr/">
-    <meta property="og:image" content="https://mattys-lachaise.fr/images/Mattys.jpg">
-    <meta property="og:image:width" content="400">
-    <meta property="og:image:height" content="400">
+    <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mattys Lachaise — Développeur web full-stack en alternance">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mattys Lachaise — Portfolio">
-    <meta name="twitter:description" content="Étudiant en BUT Informatique à Nantes, passionné par le développement et l'infrastructure.">
-    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/Mattys.jpg">
+    <meta name="twitter:title" content="Mattys Lachaise — Développeur web full-stack">
+    <meta name="twitter:description" content="Développeur web full-stack en alternance chez Luneos, étudiant en BUT Informatique à Nantes. Développement et infrastructure.">
+    <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -34,13 +35,22 @@
       "name": "Mattys Lachaise",
       "url": "https://mattys-lachaise.fr/",
       "image": "https://mattys-lachaise.fr/images/Mattys.jpg",
-      "jobTitle": "Étudiant en BUT Informatique",
-      "description": "Étudiant en BUT Informatique à l'IUT de Nantes, passionné par le développement et l'infrastructure.",
+      "email": "mailto:contact@mattys-lachaise.fr",
+      "jobTitle": "Développeur web full-stack en alternance",
+      "description": "Développeur web full-stack en alternance chez Luneos, étudiant en BUT Informatique à l'IUT de Nantes, passionné par le développement et l'infrastructure.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Luneos"
+      },
       "alumniOf": {
         "@type": "CollegeOrUniversity",
         "name": "IUT de Nantes"
       },
-      "knowsAbout": ["Développement web", "Développement backend", "Infrastructure", "Homelab", "Proxmox"],
+      "knowsAbout": ["Développement web", "Développement full-stack", "Développement backend", "Infrastructure", "Homelab", "Proxmox"],
+      "sameAs": [
+        "https://github.com/KoThek64",
+        "https://www.linkedin.com/in/mattys-lachaise-b16617360/"
+      ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Nantes",
@@ -50,9 +60,14 @@
     </script>
 
     <link rel="icon" type="image/png" href="images/6.png">
+    <!-- Polices visibles dès l'écran d'accueil : chargées en priorité -->
+    <link rel="preload" href="fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/outfit-300.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="CSS/fonts.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.17.0/devicon.min.css">
     <link rel="stylesheet" href="CSS/index.css">
+    <!-- Sans JavaScript, les éléments animés au scroll restent visibles -->
+    <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
 
@@ -73,15 +88,15 @@
 </nav>
 
 <!-- Hamburger mobile -->
-<button id="hamburger" aria-label="Menu" aria-expanded="false">
+<button id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
 </button>
 
 <!-- Overlay menu mobile -->
-<div id="mobile-menu">
+<div id="mobile-menu" inert>
     <a href="#hero" data-index="0">accueil</a>
     <a href="#about" data-index="1">à propos</a>
-    <a href="#skills" data-index="2">compétences</a>
+    <a href="#skills" data-index="2">skills</a>
     <a href="#projects" data-index="3">projets</a>
     <a href="#homelab" data-index="4">homelab</a>
     <a href="#contact" data-index="5">contact</a>
@@ -94,13 +109,13 @@
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="container hero-content">
-        <p class="hero-eyebrow">— Portfolio 2026</p>
+        <p class="hero-eyebrow">— Portfolio</p>
         <h1 class="hero-name">
             <span>Mattys</span>
             <span>Lachaise</span>
         </h1>
         <p class="hero-sub">
-            <strong>Étudiant en BUT Informatique</strong> à l'IUT de Nantes.<br>
+            <strong>Développeur web full-stack</strong> · BUT Info à Nantes.<br>
             Passionné par le développement et l'infrastructure.
         </p>
         <div class="hero-available">
@@ -154,18 +169,18 @@
 <section id="about">
     <div class="container">
         <div class="section-label reveal">À propos</div>
-        <h2 class="section-title reveal reveal-delay-1">Qui suis-je<span style="color:var(--accent)">.</span></h2>
+        <h2 class="section-title reveal reveal-delay-1">Qui suis-je<span class="title-dot">.</span></h2>
 
         <div class="about-grid">
             <div class="about-photo-wrap reveal reveal-delay-2">
-                <img src="images/Mattys.jpg" alt="Mattys Lachaise">
+                <img src="images/Mattys.jpg" alt="Mattys Lachaise" width="400" height="400" loading="lazy" decoding="async">
                 <span class="about-accent-badge"><span class="badge-dot"></span>BUT INFO · NANTES</span>
             </div>
 
             <div class="about-text">
                 <p class="reveal reveal-delay-2">
-                    Bonjour ! Je suis <strong>Mattys Lachaise</strong>, étudiant en deuxième année de <strong>BUT
-                    Informatique</strong> à l'IUT de Nantes. J'aime autant écrire du code que configurer la machine qui
+                    Bonjour ! Je suis <strong>Mattys Lachaise</strong>, étudiant en troisième année de <strong>BUT
+                    Informatique</strong> à l'IUT de Nantes, en alternance chez <strong>Luneos</strong>. J'aime autant écrire du code que configurer la machine qui
                     va le faire tourner.
                 </p>
                 <p class="reveal reveal-delay-3">
@@ -206,7 +221,7 @@
         <div class="skills-header">
             <div>
                 <div class="section-label reveal">Compétences</div>
-                <h2 class="section-title reveal reveal-delay-1">Tech Stack<span style="color:var(--accent)">.</span>
+                <h2 class="section-title reveal reveal-delay-1">Tech Stack<span class="title-dot">.</span>
                 </h2>
             </div>
         </div>
@@ -223,8 +238,7 @@
         <div class="projects-header">
             <div>
                 <div class="section-label reveal">Projets</div>
-                <h2 class="section-title reveal reveal-delay-1">Ce que j'ai construit<span
-                        style="color:var(--accent)">.</span></h2>
+                <h2 class="section-title reveal reveal-delay-1">Ce que j'ai construit<span class="title-dot">.</span></h2>
             </div>
         </div>
 
@@ -233,7 +247,7 @@
 
             <!-- Fait Maison - grande card -->
             <div class="project-card">
-                <img class="project-img" src="images/fait-maison.png" alt="Fait Maison">
+                <img class="project-img" src="images/fait-maison.webp" alt="Fait Maison" width="1105" height="629" loading="lazy" decoding="async">
                 <div class="project-body">
                     <span class="project-badge done">Personnel</span>
                     <h3 class="project-name">Fait Maison</h3>
@@ -247,15 +261,15 @@
                         <span class="tag">Doctrine ORM</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/KoThek64/FaitMaison" class="proj-link">GitHub</a>
-                        <a href="https://faitmaison.up.railway.app" class="proj-link primary">Voir le site →</a>
+                        <a href="https://github.com/KoThek64/FaitMaison" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub</a>
+                        <a href="https://faitmaison.up.railway.app" target="_blank" rel="noopener noreferrer" class="proj-link primary">Voir le site →</a>
                     </div>
                 </div>
             </div>
 
             <!-- Suivi dépenses -->
             <div class="project-card">
-                <img class="project-img" src="images/Suivi_depense.png" alt="Suivi dépenses">
+                <img class="project-img" src="images/Suivi_depense.webp" alt="Suivi dépenses" width="788" height="619" loading="lazy" decoding="async">
                 <div class="project-body">
                     <span class="project-badge done">Personnel</span>
                     <h3 class="project-name">Suivi des dépenses</h3>
@@ -266,14 +280,14 @@
                         <span class="tag">JavaFX</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/KoThek64/Suivi_Des_Depenses" class="proj-link">GitHub →</a>
+                        <a href="https://github.com/KoThek64/Suivi_Des_Depenses" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
                     </div>
                 </div>
             </div>
 
             <!-- Site Restaurant -->
             <div class="project-card">
-                <img class="project-img" src="images/Cuisine_Delight.png" alt="Restaurant fictif">
+                <img class="project-img" src="images/Cuisine_Delight.webp" alt="Restaurant fictif" width="1528" height="649" loading="lazy" decoding="async">
                 <div class="project-body">
                     <span class="project-badge done">Personnel</span>
                     <h3 class="project-name">Site Restaurant Fictif</h3>
@@ -285,8 +299,8 @@
                         <span class="tag">JavaScript</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/KoThek64/Site_Resto_Fictif" class="proj-link">GitHub</a>
-                        <a href="https://cuisinedelight.netlify.app/" class="proj-link primary">Voir le site →</a>
+                        <a href="https://github.com/KoThek64/Site_Resto_Fictif" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub</a>
+                        <a href="https://cuisinedelight.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj-link primary">Voir le site →</a>
                     </div>
                 </div>
             </div>
@@ -294,7 +308,7 @@
             <!-- Pokémon - projet en pause -->
             <div class="project-card project-wide">
                 <div class="project-img-placeholder wide-visual">
-                    <img src="images/pokemon.png" alt="Logo Pokémon" class="wide-logo">
+                    <img src="images/pokemon.webp" alt="Logo Pokémon" class="wide-logo" width="480" height="480" loading="lazy" decoding="async">
                     <span>Jeu CLI</span>
                 </div>
                 <div class="project-body">
@@ -316,7 +330,7 @@
                         <span class="tag">Gradle</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/KoThek64/Pokemon" class="proj-link">GitHub →</a>
+                        <a href="https://github.com/KoThek64/Pokemon" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
                     </div>
                 </div>
             </div>
@@ -363,8 +377,8 @@
                     <span class="tag">MySQL</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/KoThek64/TapisMarket" class="proj-link">GitHub</a>
-                    <a href="https://tapismarket.up.railway.app/" class="proj-link primary">Live →</a>
+                    <a href="https://github.com/KoThek64/TapisMarket" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub</a>
+                    <a href="https://tapismarket.up.railway.app/" target="_blank" rel="noopener noreferrer" class="proj-link primary">Live →</a>
                 </div>
             </div>
 
@@ -377,7 +391,7 @@
                     <span class="tag">Go</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/KoThek64/Jeu_en_Go" class="proj-link">GitHub →</a>
+                    <a href="https://github.com/KoThek64/Jeu_en_Go" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
                 </div>
             </div>
 
@@ -391,7 +405,7 @@
                     <span class="tag">JavaFX</span>
                 </div>
                 <div class="project-links">
-                    <a href="https://github.com/KoThek64/Jeu_Qui_Est_Ce" class="proj-link">GitHub →</a>
+                    <a href="https://github.com/KoThek64/Jeu_Qui_Est_Ce" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
                 </div>
             </div>
         </div>
@@ -404,7 +418,7 @@
 <section id="homelab" style="background: var(--surface); border-top: 1px solid var(--border);">
     <div class="container">
         <div class="section-label reveal">Infrastructure</div>
-        <h2 class="section-title reveal reveal-delay-1">HomeLab<span style="color:var(--accent)">.</span></h2>
+        <h2 class="section-title reveal reveal-delay-1">HomeLab<span class="title-dot">.</span></h2>
 
         <div class="homelab-layout">
             <div class="homelab-info reveal reveal-delay-1">
@@ -439,12 +453,24 @@
                 </h2>
                 <p class="contact-sub reveal reveal-delay-2">
                     <strong style="color:#4ADE80">● Alternant développeur web full-stack chez Luneos.</strong><br>
-                    Disponible aussi pour des projets ou simplement pour échanger. N'hésitez pas à me contacter via
-                    GitHub ou LinkedIn.
+                    Disponible aussi pour des projets ou simplement pour échanger. N'hésitez pas à m'écrire par
+                    email ou à me retrouver sur GitHub et LinkedIn.
                 </p>
             </div>
 
             <div class="contact-actions reveal reveal-delay-2">
+                <a href="mailto:contact@mattys-lachaise.fr" class="contact-link">
+                    <div class="contact-link-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="contact-link-label">EMAIL</div>
+                        <div class="contact-link-value">contact@mattys-lachaise.fr</div>
+                    </div>
+                </a>
                 <a href="https://github.com/KoThek64" target="_blank" rel="noopener noreferrer" class="contact-link">
                     <div class="contact-link-icon">
                         <svg viewBox="0 0 24 24">
