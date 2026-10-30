@@ -1,8 +1,8 @@
 const DATA = {
 
-    profile: `Étudiant en <strong>BUT Informatique à l'IUT de Nantes</strong>, passionné de développement
-    et d'infrastructure. Orienté backend (<strong>PHP, Kotlin</strong>), avec des notions frontend
-    (<strong>TypeScript, React</strong>). Curieux, autonome, et toujours en train d'apprendre.`,
+    profile: `Étudiant en <strong>BUT Informatique à l'IUT de Nantes</strong>, en alternance
+    chez Luneos. Plutôt backend (<strong>PHP, Kotlin</strong>), avec des bases en frontend
+    (<strong>TypeScript, React</strong>). J'héberge aussi mes propres services sur un serveur à la maison.`,
 
     experiences: [
         {
@@ -125,6 +125,18 @@ const DATA = {
             color: '#E57000',
             svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E57000" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`
         },
+        'Forgejo': {
+            color: '#FB923C',
+            svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FB923C" stroke-width="2"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 7v10M18 11c0 4-6 3-10 7"/></svg>`
+        },
+        'Caddy': {
+            color: '#22B638',
+            svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22B638" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`
+        },
+        'CrowdSec': {
+            color: '#7C6CF2',
+            svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C6CF2" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`
+        },
         'OPNsense': {
             color: '#D94F00',
             svg: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D94F00" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
@@ -141,10 +153,10 @@ const DATA = {
             label: 'Frameworks & Librairies',
             items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX', 'WordPress']
         },
-        {label: 'Outils & Déploiement', items: ['Git', 'GitHub', 'GitLab', 'Docker', 'Supabase', 'Railway', 'Netlify', 'Figma', 'Mermaid JS']},
+        {label: 'Outils & Déploiement', items: ['Git', 'GitHub', 'GitLab', 'Forgejo', 'Docker', 'Caddy', 'Supabase', 'Railway', 'Netlify', 'Figma', 'Mermaid JS']},
         {
             label: 'Systèmes',
-            items: ['Linux', 'EndeavourOS', 'Fedora', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Windows']
+            items: ['Linux', 'EndeavourOS', 'Fedora', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'CrowdSec', 'Windows']
         },
     ],
 
@@ -158,10 +170,10 @@ const DATA = {
             label: 'Frameworks & Librairies',
             items: ['Symfony', 'React', 'Doctrine ORM', 'Jetpack Compose', 'CodeIgniter', 'Ktor', 'SCSS', 'Node.js', 'JUnit 5', 'JavaFX', 'WordPress']
         },
-        {label: 'Outils', items: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Docker', 'Supabase', 'DBeaver', 'Tailscale', 'Mermaid JS']},
+        {label: 'Outils', items: ['Git', 'GitHub', 'GitLab', 'Forgejo', 'Docker', 'Supabase', 'DBeaver', 'Tailscale', 'Mermaid JS']},
         {
             label: 'Systèmes & Déploiement',
-            items: ['Linux', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Railway', 'Netlify']
+            items: ['Linux', 'Ubuntu Server', 'ProxmoxVE', 'OPNsense', 'Caddy', 'CrowdSec', 'Railway', 'Netlify']
         },
     ],
 
@@ -173,8 +185,7 @@ const DATA = {
 
     // ── HomeLab ─────────────────────────────────────────────────────────────
     // Deux blocs rendus par index.js : la topologie réseau, puis l'architecture
-    // du serveur (Proxmox → LXC → conteneurs Docker).
-    // Pour ajouter un serveur Minecraft : une entrée de plus dans `containers`.
+    // du serveur : l'hyperviseur Proxmox et ses conteneurs LXC.
     homelab: {
         network: {
             // Chaîne principale, de la box jusqu'au switch
@@ -189,34 +200,33 @@ const DATA = {
             ]
         },
         host: {name: 'Cuby', os: 'Proxmox VE', role: 'Hyperviseur'},
-        lxc: {id: '100', name: 'minecraft', os: 'Debian', role: 'Conteneur LXC'},
-        // Le conteneur qui orchestre les autres
-        manager: {
-            name: 'dashboard',
-            status: 'planned',
-            statusLabel: 'à venir',
-            desc: "Interface web maison pour créer, démarrer, arrêter et surveiller chaque serveur sans passer par SSH.",
-            tags: ['PHP', 'Symfony', 'Docker API']
-        },
-        // Un conteneur Docker = un serveur de jeu
-        containers: [
-            {name: 'mc-paper', desc: 'Serveur Paper · exposé via playit.gg', status: 'running', statusLabel: 'running'}
+        // Chaîne de conteneurs LXC reliés : un connecteur `link` décrit le lien
+        chain: [
+            {name: 'caddy', sub: "LXC · seule porte d'entrée", tags: ['HTTPS', 'CrowdSec', 'DNS dynamique']},
+            {link: 'transmet les visites'},
+            {name: 'forgejo', sub: 'LXC · équivalent de GitHub', tags: ['Dépôts', 'Issues', 'CI']},
+            {link: 'jobs CI de tous les dépôts'},
+            {name: 'runner', sub: 'LXC · exécute la CI', tags: ['Docker', 'Copie vers GitHub']}
         ],
-        // Emplacement libre affiché en pointillés après les conteneurs
-        slot: '+ nouveaux serveurs'
+        // Conteneurs indépendants de la chaîne
+        asideLabel: 'à côté',
+        aside: [
+            {name: 'uptime-kuma', desc: "Vérifie le site chaque minute, alerte sur mon téléphone.", status: 'running', statusLabel: 'running', tags: ['Docker', 'ntfy']},
+            {name: 'minecraft', desc: 'Un Docker par serveur de jeu, piloté par un dashboard maison.', status: 'planned', statusLabel: 'en refonte', tags: ['Docker'], manager: true}
+        ]
     },
 
     // Projets affichés dans le CV (3 max)
     cvProjects: [
         {
             name: 'Fait Maison',
-            desc: "Réseau social de partage de recettes — publication, notation, commentaires, abonnements, fil d'actualité.",
+            desc: "Réseau social de partage de recettes : publication, notation, commentaires, abonnements, fil d'actualité.",
             tags: ['PHP 8.4', 'Symfony', 'PostgreSQL', 'Tailwind CSS', 'Doctrine ORM']
         },
         {
             name: 'HomeLab',
-            desc: 'Infrastructure auto-hébergée — hyperviseur Proxmox VE, conteneur LXC dédié au jeu où chaque serveur Minecraft tourne dans son propre conteneur Docker.',
-            tags: ['Proxmox VE', 'LXC', 'Docker', 'Debian', 'Linux']
+            desc: 'Serveur Proxmox VE à la maison : Forgejo (GitHub auto-hébergé) en HTTPS, CI sur mon runner, copie automatique vers GitHub, CrowdSec.',
+            tags: ['Proxmox VE', 'LXC', 'Forgejo', 'Caddy', 'Docker']
         },
         {
             name: 'Tapis Market',

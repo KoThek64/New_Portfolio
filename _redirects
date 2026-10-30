@@ -1,0 +1,23 @@
+# Redirections Netlify — https://docs.netlify.com/routing/redirects/
+
+# Les fiches projets ont été retirées le 2026-10-30 (seule la fiche homelab
+# reste). Les anciennes adresses renvoient vers la section projets.
+/projets                       /#projects  301
+/projets/                      /#projects  301
+/projets/index.html            /#projects  301
+/projets/fait-maison.html      /#projects  301
+/projets/fait-maison           /#projects  301
+/projets/my-money.html         /#projects  301
+/projets/my-money              /#projects  301
+/projets/tapismarket.html      /#projects  301
+/projets/tapismarket           /#projects  301
+/projets/suivi-depenses.html   /#projects  301
+/projets/suivi-depenses        /#projects  301
+/projets/site-restaurant.html  /#projects  301
+/projets/site-restaurant       /#projects  301
+/projets/pokemon.html          /#projects  301
+/projets/pokemon               /#projects  301
+/projets/quadtree.html         /#projects  301
+/projets/quadtree              /#projects  301
+/projets/qui-est-ce.html       /#projects  301
+/projets/qui-est-ce            /#projects  301

@@ -128,7 +128,7 @@ document.querySelectorAll('#index-skills .reveal').forEach(el => window.revealOb
 /* ─── HOMELAB ────────────────────────────────────────────────── */
 /* Deux rendus depuis DATA.homelab : la topologie réseau (chaîne box → switch,
    puis les machines en aval) et le diagramme d'architecture imbriqué
-   Proxmox → LXC → conteneurs Docker. */
+   Proxmox → chaîne Caddy → Forgejo → runner, puis les conteneurs à côté. */
 const HL = DATA.homelab;
 
 const netNode = n => `
@@ -144,19 +144,34 @@ document.getElementById('homelab-network').innerHTML = `
     <div class="net-leaves">${HL.network.leaves.map(netNode).join('')}</div>
   </div>`;
 
-const dockerIcon = '<i class="devicon-docker-plain" style="color:#2496ED"></i>';
+const debianIcon = '<i class="devicon-debian-plain" style="color:#A81D33"></i>';
+const dkTags = tags => tags ? `<div class="dk-tags">${tags.map(t => `<span class="dk-tag">${t}</span>`).join('')}</div>` : '';
 
-const dockerCard = (c, extraClass = '') => `
-  <div class="dk ${extraClass}">
+
+// Un maillon de la chaîne : un conteneur LXC, ou le lien vers le suivant
+const chainItem = item => item.link
+  ? `<div class="arch-connector"><span>${item.link}</span></div>`
+  : `
+  <div class="arch-box arch-lxc">
+    <div class="arch-bar">
+      ${debianIcon}
+      <span class="arch-bar-name">${item.name}</span>
+      <span class="arch-bar-sub">${item.sub}</span>
+    </div>
+    <div class="arch-body"><div class="dk-tags" style="margin-top:0">${item.tags.map(t => `<span class="dk-tag">${t}</span>`).join('')}</div></div>
+  </div>`;
+
+const serviceCard = c => `
+  <div class="dk${c.manager ? ' dk-manager' : ''}">
     <div class="dk-head">
-      ${dockerIcon}
+      ${debianIcon}
       <span class="dk-name">${c.name}</span>
       <span class="dk-status ${c.status}">
         <span class="status-dot"></span>${c.statusLabel}
       </span>
     </div>
     <p class="dk-desc">${c.desc}</p>
-    ${c.tags ? `<div class="dk-tags">${c.tags.map(t => `<span class="dk-tag">${t}</span>`).join('')}</div>` : ''}
+    ${dkTags(c.tags)}
   </div>`;
 
 document.getElementById('homelab-arch').innerHTML = `
@@ -167,27 +182,9 @@ document.getElementById('homelab-arch').innerHTML = `
       <span class="arch-bar-sub">${HL.host.role} · ${HL.host.os}</span>
     </div>
     <div class="arch-body">
-
-      <div class="arch-box arch-lxc">
-        <div class="arch-bar">
-          <i class="devicon-debian-plain" style="color:#A81D33"></i>
-          <span class="arch-bar-name">${HL.lxc.name}</span>
-          <span class="arch-bar-sub">${HL.lxc.role} ${HL.lxc.id} · ${HL.lxc.os}</span>
-        </div>
-        <div class="arch-body">
-
-          ${dockerCard(HL.manager, 'dk-manager')}
-
-          <div class="arch-connector"><span>pilote</span></div>
-
-          <div class="arch-dockers">
-            ${HL.containers.map(c => dockerCard(c)).join('')}
-            ${HL.slot ? `<div class="dk dk-slot">${HL.slot}</div>` : ''}
-          </div>
-
-        </div>
-      </div>
-
+      ${HL.chain.map(chainItem).join('')}
+      <div class="arch-sep">${HL.asideLabel}</div>
+      <div class="arch-dockers">${HL.aside.map(serviceCard).join('')}</div>
     </div>
   </div>`;
 

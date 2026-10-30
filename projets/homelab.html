@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeLab — Infrastructure auto-hébergée | Mattys Lachaise</title>
-    <meta name="description" content="Fiche projet HomeLab : mon infrastructure auto-hébergée sous Proxmox VE. D'un pare-feu OPNsense en résidence CROUS à un serveur recentré sur des conteneurs LXC et Docker.">
+    <meta name="description" content="Mon homelab : un mini-PC sous Proxmox VE qui fait tourner Forgejo, un équivalent de GitHub que j'héberge moi-même, avec sa CI et une copie vers GitHub.">
     <meta name="author" content="Mattys Lachaise">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mattys-lachaise.fr/projets/homelab.html">
@@ -14,14 +14,14 @@
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
     <meta property="og:title" content="HomeLab — Infrastructure auto-hébergée">
-    <meta property="og:description" content="Un mini-PC sous Proxmox VE, des services isolés en conteneurs LXC, et un épisode réseau en résidence CROUS avec un pare-feu OPNsense.">
+    <meta property="og:description" content="Un mini-PC sous Proxmox VE qui fait tourner Forgejo, un équivalent de GitHub auto-hébergé, avec sa CI et une copie vers GitHub.">
     <meta property="og:url" content="https://mattys-lachaise.fr/projets/homelab.html">
     <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HomeLab — Infrastructure auto-hébergée">
-    <meta name="twitter:description" content="Un mini-PC sous Proxmox VE, des services isolés en conteneurs LXC, et un épisode réseau en résidence CROUS avec un pare-feu OPNsense.">
+    <meta name="twitter:description" content="Un mini-PC sous Proxmox VE qui fait tourner Forgejo, un équivalent de GitHub auto-hébergé, avec sa CI et une copie vers GitHub.">
     <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
 
     <link rel="icon" type="image/png" href="../images/6.png">
@@ -64,10 +64,10 @@
         <p class="pj-eyebrow">Projet personnel · infrastructure · en continu</p>
         <h1 class="pj-title">HomeLab<span class="title-dot">.</span></h1>
         <p class="pj-tagline">
-            Mon <strong>infrastructure auto-hébergée</strong>, sur un mini-PC baptisé <strong>Cuby</strong>
-            qui tourne sous <strong>Proxmox VE</strong>. Elle a commencé derrière le réseau d'une
-            <strong>résidence CROUS</strong>, avec mon propre pare-feu <strong>OPNsense</strong>, et elle est
-            aujourd'hui recentrée sur l'hébergement de <strong>serveurs de jeu en conteneurs</strong>.
+            Cuby est un mini-PC sous <strong>Proxmox VE</strong>. Il fait tourner <strong>Forgejo</strong>, un
+            équivalent de GitHub que j'héberge moi-même, et c'est là que je garde tout mon code. Pour
+            l'instant, GitHub me sert de vitrine pour les versions stables de mes projets ; à terme, j'aimerais
+            tout faire sur Forgejo.
         </p>
 
         <dl class="pj-meta">
@@ -80,77 +80,221 @@
         <div class="project-tags">
             <span class="tag">Proxmox VE</span>
             <span class="tag">LXC</span>
+            <span class="tag">Forgejo</span>
             <span class="tag">Docker</span>
-            <span class="tag">Debian</span>
-            <span class="tag">OPNsense</span>
-            <span class="tag">Tailscale</span>
-            <span class="tag">Ubuntu Server</span>
-            <span class="tag">playit.gg</span>
+            <span class="tag">Caddy</span>
+            <span class="tag">CrowdSec</span>
+            <span class="tag">Uptime Kuma</span>
+            <span class="tag">Bash</span>
         </div>
 
         <div class="pj-cta">
-            <a href="#aujourdhui" class="btn-primary">Voir l'architecture actuelle →</a>
-            <a href="#crous" class="btn-outline">L'épisode CROUS</a>
+            <a href="#architecture" class="btn-primary">Voir l'architecture →</a>
+            <a href="https://git.mattys-lachaise.fr" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                git.mattys-lachaise.fr ↗
+            </a>
         </div>
     </div>
 </header>
 
 <!-- ════════════════════════════════════════════════════════════
-     01 — CONTEXTE
+     01 — ARCHITECTURE
 ════════════════════════════════════════════════════════════ -->
-<section class="pj-section">
+<section class="pj-section" id="architecture">
     <div class="container">
-        <div class="section-label reveal">01 — Contexte</div>
-        <h2 class="section-title reveal">Apprendre en hébergeant<span class="title-dot">.</span></h2>
+        <div class="section-label reveal">01 — Architecture</div>
+        <h2 class="section-title reveal">Un service par conteneur<span class="title-dot">.</span></h2>
         <div class="pj-prose reveal">
             <p>
-                En cours, on déploie surtout sur des plateformes qui font le travail à notre place. Je voulais
-                comprendre ce qu'il y a <strong>en dessous</strong> : un hyperviseur, des conteneurs, un réseau
-                local, un pare-feu, et ce qu'il faut faire pour qu'un service reste joignable.
+                Chaque service tourne dans son propre conteneur LXC (Debian 13, non privilégié). Seul Caddy
+                est joignable depuis Internet, et aucun conteneur ne peut contacter les autres machines de la
+                maison. Avec tout allumé, Cuby utilise environ 2 Go de RAM sur 16 et moins de 2 % de CPU.
             </p>
-            <p>
-                Le HomeLab est ce terrain d'essai. Il n'a pas de cahier des charges : il <strong>évolue avec
-                mes besoins</strong> et avec l'endroit où je vis. Il a connu deux grandes versions, racontées
-                ci-dessous.
-            </p>
+        </div>
+
+        <div class="pj-topo reveal">
+            <p class="homelab-block-title">// quand quelqu'un ouvre git.mattys-lachaise.fr</p>
+            <div class="net-flow">
+                <div class="net-node">
+                    <span class="net-node-name">Visiteur</span>
+                    <span class="net-node-meta">navigateur</span>
+                </div>
+                <span class="net-arrow" aria-hidden="true"></span>
+                <div class="net-node">
+                    <span class="net-node-name">Box 5G</span>
+                    <span class="net-node-meta">ouvre les ports web</span>
+                </div>
+                <span class="net-arrow" aria-hidden="true"></span>
+                <div class="net-node accent">
+                    <span class="net-node-name">Caddy</span>
+                    <span class="net-node-meta">HTTPS + CrowdSec</span>
+                </div>
+                <span class="net-arrow" aria-hidden="true"></span>
+                <div class="net-node accent">
+                    <span class="net-node-name">Forgejo</span>
+                    <span class="net-node-meta">affiche la page</span>
+                </div>
+            </div>
+            <p class="homelab-block-title">// quand je pousse du code</p>
+            <div class="net-flow">
+                <div class="net-node">
+                    <span class="net-node-name">Mon PC</span>
+                    <span class="net-node-meta">git push</span>
+                </div>
+                <span class="net-arrow" aria-hidden="true"></span>
+                <div class="net-node accent">
+                    <span class="net-node-name">Forgejo</span>
+                    <span class="net-node-meta">déclenche la CI</span>
+                </div>
+                <span class="net-arrow" aria-hidden="true"></span>
+                <div class="net-node">
+                    <span class="net-node-name">Runner</span>
+                    <span class="net-node-meta">lance le job</span>
+                </div>
+                <span class="net-arrow" aria-hidden="true"></span>
+                <div class="net-node">
+                    <span class="net-node-name">GitHub</span>
+                    <span class="net-node-meta">reçoit main + releases</span>
+                </div>
+            </div>
+        </div>
+        <div class="pj-arch reveal">
+            <div class="arch-box arch-host">
+                <div class="arch-bar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E57000" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    <span class="arch-bar-name">Cuby</span>
+                    <span class="arch-bar-sub">Hyperviseur · Proxmox VE 8.4</span>
+                </div>
+                <div class="arch-body">
+                    <p class="pj-host-desc">i5-6500T (4 cœurs, 35 W) · 16 Go de RAM · SSD 256 Go</p>
+
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-debian-plain" style="color:#A81D33"></i>
+                            <span class="arch-bar-name">caddy</span>
+                            <span class="arch-bar-sub">LXC · seule porte d'entrée</span>
+                        </div>
+                        <div class="arch-body pj-chips"><span class="tag">HTTPS</span><span class="tag">CrowdSec</span><span class="tag">DNS dynamique</span></div>
+                    </div>
+
+                    <div class="arch-connector"><span>transmet les visites</span></div>
+
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-debian-plain" style="color:#A81D33"></i>
+                            <span class="arch-bar-name">forgejo</span>
+                            <span class="arch-bar-sub">LXC · équivalent de GitHub</span>
+                        </div>
+                        <div class="arch-body pj-chips"><span class="tag">Dépôts</span><span class="tag">Issues</span><span class="tag">CI</span><span class="tag">2FA</span></div>
+                    </div>
+
+                    <div class="arch-connector"><span>jobs CI de tous les dépôts</span></div>
+
+                    <div class="arch-box arch-lxc">
+                        <div class="arch-bar">
+                            <i class="devicon-debian-plain" style="color:#A81D33"></i>
+                            <span class="arch-bar-name">runner</span>
+                            <span class="arch-bar-sub">LXC · exécute la CI</span>
+                        </div>
+                        <div class="arch-body pj-chips"><span class="tag">Docker</span><span class="tag">Copie vers GitHub</span></div>
+                    </div>
+
+                    <div class="arch-sep">à côté</div>
+
+                    <div class="arch-dockers">
+                        <div class="dk">
+                            <div class="dk-head">
+                                <i class="devicon-debian-plain" style="color:#A81D33"></i>
+                                <span class="dk-name">uptime-kuma</span>
+                                <span class="dk-status running"><span class="status-dot"></span>running</span>
+                            </div>
+                            <p class="dk-desc">Vérifie le site chaque minute, alerte sur mon téléphone.</p>
+                        </div>
+                        <div class="dk dk-manager">
+                            <div class="dk-head">
+                                <i class="devicon-debian-plain" style="color:#A81D33"></i>
+                                <span class="dk-name">minecraft</span>
+                                <span class="dk-status planned"><span class="status-dot"></span>en refonte</span>
+                            </div>
+                            <p class="dk-desc">Serveurs de jeu en Docker, avec un dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     02 — V1 : LA RÉSIDENCE CROUS
+     02 — EN DÉTAIL
 ════════════════════════════════════════════════════════════ -->
-<section class="pj-section alt" id="crous">
+<section class="pj-section alt">
     <div class="container">
-        <div class="section-label reveal">02 — Version 1 · résidence CROUS</div>
-        <h2 class="section-title reveal">Mon réseau derrière le leur<span class="title-dot">.</span></h2>
+        <div class="section-label reveal">02 — En détail</div>
+        <h2 class="section-title reveal">Comment ça tient<span class="title-dot">.</span></h2>
+
+        <div class="pj-cards reveal">
+            <article class="pj-card">
+                <p class="pj-card-num">// dns</p>
+                <h3>Une IP qui change plusieurs fois par jour</h3>
+                <p>
+                    La box 5G change d'IP publique régulièrement. Un script Bash, lancé chaque minute par un
+                    timer systemd, met à jour le domaine via l'API Netlify. Il crée le nouvel enregistrement
+                    avant de supprimer l'ancien.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// sécurité</p>
+                <h3>Plusieurs barrières</h3>
+                <p>
+                    Pare-feu Proxmox en « tout refuser sauf », conteneurs isolés du réseau local, CrowdSec qui
+                    bannit les IP suspectes via nftables, mises à jour de sécurité automatiques. Les premiers
+                    robots sont arrivés moins d'une heure après la mise en ligne.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// ci</p>
+                <h3>La CI, et GitHub en vitrine</h3>
+                <p>
+                    Le runner exécute dans Docker la CI de tous mes dépôts Forgejo. Quand
+                    <code>main</code> avance, la version stable est copiée sur GitHub ; pour un tag, une release
+                    est créée avec ses notes. La copie n'est jamais forcée : en cas d'écart, le job échoue.
+                </p>
+            </article>
+            <article class="pj-card">
+                <p class="pj-card-num">// exploitation</p>
+                <h3>Sauvegardes et supervision</h3>
+                <p>
+                    Sauvegardes vzdump quotidiennes de Forgejo et Caddy, hebdomadaires pour Minecraft. Uptime
+                    Kuma vérifie que la forge répond et surveille le certificat ; les alertes arrivent par ntfy.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     03 — AVANT / APRÈS
+════════════════════════════════════════════════════════════ -->
+<section class="pj-section">
+    <div class="container">
+        <div class="section-label reveal">03 — Avant et après</div>
+        <h2 class="section-title reveal">Avant, et la suite<span class="title-dot">.</span></h2>
         <div class="pj-prose reveal">
             <p>
-                En résidence, Internet arrive par une <strong>prise murale</strong> gérée par le prestataire
-                du CROUS (Wifirst). Le réseau est pensé pour un ordinateur par étudiant : il faut passer un
-                <strong>portail captif</strong> qui enregistre l'adresse MAC de l'appareil, et le trafic est
-                filtré par leur pare-feu.
-            </p>
-            <p>
-                Impossible dans ces conditions de brancher un serveur, un switch et plusieurs machines. J'ai
-                donc recyclé un <strong>vieux PC HP en passerelle sous OPNsense</strong> : il présente au
-                portail l'adresse MAC d'un appareil déjà autorisé, puis crée derrière lui
-                <strong>mon propre réseau privé</strong>, avec son DHCP, son NAT et ses règles de pare-feu.
-                Toutes mes machines sortent par lui, et ne dépendent plus du filtrage de la résidence.
-            </p>
-            <p>
-                Pour y accéder de l'extérieur sans pouvoir ouvrir le moindre port, chaque machine est
-                reliée par <strong>Tailscale</strong>, un VPN maillé : je retrouve mes services depuis
-                n'importe où, sans rien exposer sur Internet.
+                La première version tournait en résidence CROUS. Le réseau n'acceptait qu'un appareil par
+                étudiant, alors j'avais monté une passerelle OPNsense sur un vieux PC pour avoir mon propre
+                réseau derrière, et Tailscale pour y accéder de l'extérieur. Depuis, la box 5G fait le routage
+                et OPNsense n'est plus utilisé.
             </p>
         </div>
 
         <div class="pj-topo reveal">
-            <p class="homelab-block-title">// réseau · résidence CROUS</p>
+            <p class="homelab-block-title">// réseau en résidence CROUS (avant)</p>
             <div class="net-flow">
                 <div class="net-node warn">
                     <span class="net-node-name">Prise murale</span>
-                    <span class="net-node-meta">CROUS · portail captif</span>
+                    <span class="net-node-meta">portail captif</span>
                 </div>
                 <div class="net-link"></div>
                 <div class="net-node accent">
@@ -159,7 +303,7 @@
                 </div>
                 <div class="net-link"></div>
                 <div class="net-node">
-                    <span class="net-node-name">Switch 5 ports</span>
+                    <span class="net-node-name">Switch</span>
                     <span class="net-node-meta">LAN privé</span>
                 </div>
                 <div class="net-link"></div>
@@ -169,293 +313,31 @@
                         <span class="net-node-meta">Proxmox VE</span>
                     </div>
                     <div class="net-node">
-                        <span class="net-node-name">Asus TUF</span>
-                        <span class="net-node-meta">Ubuntu Server</span>
-                    </div>
-                    <div class="net-node">
-                        <span class="net-node-name">PC portable, PS5</span>
+                        <span class="net-node-name">Autres machines</span>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="pj-arch reveal">
-            <div class="pj-hosts">
-                <div class="arch-box arch-host">
-                    <div class="arch-bar">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E57000" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                        <span class="arch-bar-name">Cuby</span>
-                        <span class="arch-bar-sub">Proxmox VE</span>
-                    </div>
-                    <div class="arch-body">
-                        <p class="pj-host-desc">
-                            Un conteneur <strong>LXC Debian</strong> par service, pour qu'une panne ou une
-                            mise à jour ratée n'emporte pas les autres.
-                        </p>
-                        <div class="pj-chips">
-                            <span class="tag">Gitea · dépôts Git</span>
-                            <span class="tag">Uptime Kuma · monitoring</span>
-                            <span class="tag">Wiki.js · documentation</span>
-                            <span class="tag">Paperless-ngx · documents</span>
-                            <span class="tag">Portainer · Docker</span>
-                            <span class="tag">IT-Tools · outils dev</span>
-                            <span class="tag">CloudBeaver · bases de données</span>
-                            <span class="tag">PostgreSQL · projet Pokémon</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-box arch-host">
-                    <div class="arch-bar">
-                        <i class="devicon-ubuntu-plain" style="color:#E95420"></i>
-                        <span class="arch-bar-name">Asus TUF</span>
-                        <span class="arch-bar-sub">Ubuntu Server</span>
-                    </div>
-                    <div class="arch-body">
-                        <p class="pj-host-desc">
-                            Le serveur de jeu : <strong>Minecraft</strong> avec le modpack Better MC 4,
-                            rendu public par un tunnel <strong>playit.gg</strong>.
-                        </p>
-                        <div class="pj-chips">
-                            <span class="tag">Minecraft · Better MC 4</span>
-                            <span class="tag">playit.gg · tunnel</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     03 — V2 : AUJOURD'HUI
-════════════════════════════════════════════════════════════ -->
-<section class="pj-section" id="aujourdhui">
-    <div class="container">
-        <div class="section-label reveal">03 — Version 2 · aujourd'hui</div>
-        <h2 class="section-title reveal">Moins de services, mieux rangés<span class="title-dot">.</span></h2>
-        <div class="pj-prose reveal">
-            <p>
-                En quittant la résidence, le problème réseau a disparu : une <strong>box 5G</strong> et un
-                switch suffisent, et le pare-feu OPNsense n'a plus de raison d'être. J'en ai profité pour
-                <strong>faire le tri</strong> : je garde ce que j'utilise vraiment, et je regroupe tout sur Cuby.
-            </p>
-            <p>
-                Le serveur de jeu, qui occupait une machine entière, vit désormais dans un
-                <strong>conteneur LXC dédié</strong>. À l'intérieur, chaque serveur Minecraft est un
-                <strong>conteneur Docker</strong> : on en ajoute ou on en supprime un sans toucher aux autres.
-            </p>
-        </div>
-
-        <div class="pj-topo reveal">
-            <p class="homelab-block-title">// réseau · aujourd'hui</p>
-            <div class="net-flow">
-                <div class="net-node">
-                    <span class="net-node-name">Box SFR</span>
-                    <span class="net-node-meta">5G</span>
-                </div>
-                <div class="net-link"></div>
-                <div class="net-node">
-                    <span class="net-node-name">Switch 5 ports</span>
-                    <span class="net-node-meta">Gigabit</span>
-                </div>
-                <div class="net-link"></div>
-                <div class="net-leaves">
-                    <div class="net-node">
-                        <span class="net-node-name">Poste de dev</span>
-                    </div>
-                    <div class="net-node accent">
-                        <span class="net-node-name">Cuby</span>
-                        <span class="net-node-meta">Serveur</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="pj-arch reveal">
-            <div class="arch-box arch-host">
-                <div class="arch-bar">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E57000" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    <span class="arch-bar-name">Cuby</span>
-                    <span class="arch-bar-sub">Hyperviseur · Proxmox VE 8.4</span>
-                </div>
-                <div class="arch-body">
-                    <p class="pj-host-desc">
-                        HP ProDesk 400 G2 Mini · Intel Core i5-6500T (4 cœurs, 35 W) · 16 Go de RAM · SSD 256 Go
-                    </p>
-                    <div class="arch-box arch-lxc">
-                        <div class="arch-bar">
-                            <i class="devicon-debian-plain" style="color:#A81D33"></i>
-                            <span class="arch-bar-name">minecraft</span>
-                            <span class="arch-bar-sub">Conteneur LXC 100 · Debian</span>
-                        </div>
-                        <div class="arch-body">
-                            <div class="dk dk-manager">
-                                <div class="dk-head">
-                                    <i class="devicon-docker-plain" style="color:#2496ED"></i>
-                                    <span class="dk-name">dashboard</span>
-                                    <span class="dk-status planned"><span class="status-dot"></span>à venir</span>
-                                </div>
-                                <p class="dk-desc">Interface web maison pour créer, démarrer, arrêter et surveiller chaque serveur sans passer par SSH.</p>
-                                <div class="dk-tags"><span class="dk-tag">PHP</span><span class="dk-tag">Symfony</span><span class="dk-tag">Docker API</span></div>
-                            </div>
-
-                            <div class="arch-connector"><span>pilote</span></div>
-
-                            <div class="arch-dockers">
-                                <div class="dk">
-                                    <div class="dk-head">
-                                        <i class="devicon-docker-plain" style="color:#2496ED"></i>
-                                        <span class="dk-name">mc-paper</span>
-                                        <span class="dk-status running"><span class="status-dot"></span>running</span>
-                                    </div>
-                                    <p class="dk-desc">Serveur Paper · exposé via playit.gg</p>
-                                </div>
-                                <div class="dk dk-slot">+ nouveaux serveurs</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     04 — CHOIX TECHNIQUES
-════════════════════════════════════════════════════════════ -->
-<section class="pj-section alt">
-    <div class="container">
-        <div class="section-label reveal">04 — Choix techniques</div>
-        <h2 class="section-title reveal">Pourquoi ces outils<span class="title-dot">.</span></h2>
-
-        <div class="pj-cards reveal">
-            <article class="pj-card">
-                <p class="pj-card-num">// hyperviseur</p>
-                <h3>Proxmox VE</h3>
-                <p>
-                    Un seul mini-PC de bureau, sobre (processeur de <strong>35 W</strong>), pour
-                    tout héberger, administré depuis une <strong>interface web</strong>.
-                    Il gère aussi bien des machines virtuelles que des conteneurs LXC, ce qui laisse le choix
-                    service par service.
-                </p>
-            </article>
-            <article class="pj-card">
-                <p class="pj-card-num">// isolation</p>
-                <h3>Un conteneur LXC par usage</h3>
-                <p>
-                    Chaque service est <strong>isolé</strong> dans son conteneur : si l'un tombe ou qu'une
-                    mise à jour se passe mal, <strong>les autres continuent de tourner</strong>. Et un LXC
-                    est bien plus léger qu'une VM complète sur un mini-PC.
-                </p>
-            </article>
-            <article class="pj-card">
-                <p class="pj-card-num">// serveurs de jeu</p>
-                <h3>Docker dans le LXC</h3>
-                <p>
-                    Un serveur Minecraft = <strong>un conteneur Docker</strong>. On le crée à partir d'une
-                    image, on le supprime sans laisser de traces, et c'est cette API Docker que le futur
-                    dashboard pilotera.
-                </p>
-            </article>
-            <article class="pj-card">
-                <p class="pj-card-num">// accès</p>
-                <h3>Tunnels plutôt que ports ouverts</h3>
-                <p>
-                    <strong>playit.gg</strong> ouvre un tunnel sortant pour que mes amis rejoignent le
-                    serveur, et <strong>Tailscale</strong> me donne accès à l'administration. Aucun port
-                    n'est ouvert sur la box : rien n'est directement exposé.
-                </p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     05 — LA SUITE
-════════════════════════════════════════════════════════════ -->
-<section class="pj-section">
-    <div class="container">
-        <div class="section-label reveal">05 — La suite</div>
-        <h2 class="section-title reveal">Un dashboard pour tout piloter<span class="title-dot">.</span></h2>
-        <div class="pj-prose reveal">
-            <p>
-                Aujourd'hui, créer un serveur passe encore par SSH et la ligne de commande. Le prochain
-                chantier est une <strong>interface web en Symfony</strong>, hébergée dans le même LXC, qui
-                parle à l'<strong>API Docker</strong> pour gérer les serveurs de jeu en quelques clics.
-            </p>
-        </div>
-
-        <div class="pj-pipeline reveal">
-            <div class="pj-step">
-                <h4>Créer</h4>
-                <p>Choisir une version et un type de serveur, le conteneur est lancé</p>
-            </div>
-            <div class="pj-step">
-                <h4>Piloter</h4>
-                <p>Démarrer, arrêter, redémarrer sans ouvrir de terminal</p>
-            </div>
-            <div class="pj-step">
-                <h4>Surveiller</h4>
-                <p>État de chaque conteneur et consommation de ressources</p>
-            </div>
-            <div class="pj-step">
-                <h4>Partager</h4>
-                <p>Donner l'adresse playit.gg aux joueurs</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     06 — BILAN
-════════════════════════════════════════════════════════════ -->
-<section class="pj-section alt">
-    <div class="container">
-        <div class="section-label reveal">06 — Bilan</div>
-        <h2 class="section-title reveal">Ce que j'en retiens<span class="title-dot">.</span></h2>
 
         <div class="pj-cards three reveal">
             <article class="pj-card">
-                <p class="pj-card-num">01</p>
-                <h3>Le réseau, en vrai</h3>
-                <p>
-                    Monter une passerelle OPNsense m'a fait manipuler ce qu'on ne voit qu'en théorie :
-                    adresses MAC, DHCP, NAT, règles de pare-feu, et ce qui casse quand l'un d'eux est mal réglé.
-                </p>
+                <p class="pj-card-num">// à venir</p>
+                <h3>Minecraft</h3>
+                <p>Un conteneur Docker par serveur, un dashboard pour les gérer sans SSH, et une adresse <code>mc.mattys-lachaise.fr</code> pour les amis.</p>
             </article>
             <article class="pj-card">
-                <p class="pj-card-num">02</p>
-                <h3>Isoler pour ne pas tout perdre</h3>
-                <p>
-                    Un service par conteneur, c'est plus de choses à gérer, mais une erreur reste
-                    contenue. C'est le même raisonnement que pour découper une application.
-                </p>
+                <p class="pj-card-num">// à venir</p>
+                <h3>Sauvegardes hors site</h3>
+                <p>Aujourd'hui elles restent sur le même disque. Le but est d'en avoir une copie ailleurs.</p>
             </article>
             <article class="pj-card">
-                <p class="pj-card-num">03</p>
-                <h3>Savoir simplifier</h3>
-                <p>
-                    Huit services, c'était surtout huit choses à maintenir. Changer de contexte a été
-                    l'occasion de ne garder que l'utile, et de bien le structurer.
-                </p>
+                <p class="pj-card-num">// à venir</p>
+                <h3>Le reste</h3>
+                <p>Passer à Proxmox VE 9, automatiser les mises à jour, rapatrier tous mes projets sur Forgejo, puis me passer de GitHub.</p>
             </article>
         </div>
     </div>
 </section>
-
-<!-- Navigation entre fiches -->
-<div class="container">
-    <div class="pj-next">
-        <a href="tapismarket.html" class="pj-next-link prev">
-            <span class="pj-next-label">← projet précédent</span>
-            <span class="pj-next-name">TapisMarket</span>
-        </a>
-        <a href="suivi-depenses.html" class="pj-next-link next">
-            <span class="pj-next-label">projet suivant →</span>
-            <span class="pj-next-name">Suivi des dépenses</span>
-        </a>
-    </div>
-</div>
 
 </main>
 
