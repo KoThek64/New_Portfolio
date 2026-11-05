@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeLab — Infrastructure auto-hébergée | Mattys Lachaise</title>
-    <meta name="description" content="Mon homelab : un mini-PC sous Proxmox VE qui fait tourner Forgejo, un équivalent de GitHub que j'héberge moi-même, avec sa CI et une copie vers GitHub.">
+    <meta name="description" content="Mon homelab : un mini-PC sous Proxmox VE qui fait tourner Forgejo, un GitHub que j'héberge moi-même, avec sa CI, une copie vers GitHub et une sécurité auditée.">
     <meta name="author" content="Mattys Lachaise">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mattys-lachaise.fr/projets/homelab.html">
@@ -14,14 +14,14 @@
     <meta property="og:locale" content="fr_FR">
     <meta property="og:site_name" content="Mattys Lachaise — Portfolio">
     <meta property="og:title" content="HomeLab — Infrastructure auto-hébergée">
-    <meta property="og:description" content="Un mini-PC sous Proxmox VE qui fait tourner Forgejo, un équivalent de GitHub auto-hébergé, avec sa CI et une copie vers GitHub.">
+    <meta property="og:description" content="Un mini-PC sous Proxmox VE qui fait tourner Forgejo, un GitHub auto-hébergé, avec sa CI, une copie vers GitHub et une sécurité auditée.">
     <meta property="og:url" content="https://mattys-lachaise.fr/projets/homelab.html">
     <meta property="og:image" content="https://mattys-lachaise.fr/images/og-image.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HomeLab — Infrastructure auto-hébergée">
-    <meta name="twitter:description" content="Un mini-PC sous Proxmox VE qui fait tourner Forgejo, un équivalent de GitHub auto-hébergé, avec sa CI et une copie vers GitHub.">
+    <meta name="twitter:description" content="Un mini-PC sous Proxmox VE qui fait tourner Forgejo, un GitHub auto-hébergé, avec sa CI, une copie vers GitHub et une sécurité auditée.">
     <meta name="twitter:image" content="https://mattys-lachaise.fr/images/og-image.png">
 
     <link rel="icon" type="image/png" href="../images/6.png">
@@ -73,7 +73,7 @@
         <dl class="pj-meta">
             <div><dt>Rôle</dt><dd>Seul, de A à Z</dd></div>
             <div><dt>Machine</dt><dd>HP ProDesk 400 G2 Mini</dd></div>
-            <div><dt>Hyperviseur</dt><dd>Proxmox VE 8.4</dd></div>
+            <div><dt>Hyperviseur</dt><dd>Proxmox VE 9.2</dd></div>
             <div><dt>Statut</dt><dd class="live">En service</dd></div>
         </dl>
 
@@ -86,6 +86,7 @@
             <span class="tag">CrowdSec</span>
             <span class="tag">Uptime Kuma</span>
             <span class="tag">Bash</span>
+            <span class="tag">Debian 13</span>
         </div>
 
         <div class="pj-cta">
@@ -163,7 +164,7 @@
                 <div class="arch-bar">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E57000" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                     <span class="arch-bar-name">Cuby</span>
-                    <span class="arch-bar-sub">Hyperviseur · Proxmox VE 8.4</span>
+                    <span class="arch-bar-sub">Hyperviseur · Proxmox VE 9.2</span>
                 </div>
                 <div class="arch-body">
                     <p class="pj-host-desc">i5-6500T (4 cœurs, 35 W) · 16 Go de RAM · SSD 256 Go</p>
@@ -214,9 +215,9 @@
                             <div class="dk-head">
                                 <i class="devicon-debian-plain" style="color:#A81D33"></i>
                                 <span class="dk-name">minecraft</span>
-                                <span class="dk-status planned"><span class="status-dot"></span>en refonte</span>
+                                <span class="dk-status planned"><span class="status-dot"></span>à reconstruire</span>
                             </div>
-                            <p class="dk-desc">Serveurs de jeu en Docker, avec un dashboard.</p>
+                            <p class="dk-desc">Supprimé pour repartir proprement. Reviendra avec un dashboard maison.</p>
                         </div>
                     </div>
                 </div>
@@ -247,9 +248,9 @@
                 <p class="pj-card-num">// sécurité</p>
                 <h3>Plusieurs barrières</h3>
                 <p>
-                    Pare-feu Proxmox en « tout refuser sauf », conteneurs isolés du réseau local, CrowdSec qui
-                    bannit les IP suspectes via nftables, mises à jour de sécurité automatiques. Les premiers
-                    robots sont arrivés moins d'une heure après la mise en ligne.
+                    Pare-feu Proxmox en « tout refuser sauf », conteneurs isolés du réseau local, CrowdSec via
+                    nftables, mises à jour automatiques. En novembre, audit complet : SSH par clé, double
+                    authentification sur Proxmox. Un scan externe confirme que seuls les ports web sont visibles.
                 </p>
             </article>
             <article class="pj-card">
@@ -265,8 +266,9 @@
                 <p class="pj-card-num">// exploitation</p>
                 <h3>Sauvegardes et supervision</h3>
                 <p>
-                    Sauvegardes vzdump quotidiennes de Forgejo et Caddy, hebdomadaires pour Minecraft. Uptime
-                    Kuma vérifie que la forge répond et surveille le certificat ; les alertes arrivent par ntfy.
+                    Sauvegardes vzdump quotidiennes de Forgejo et Caddy. Uptime Kuma vérifie que la forge
+                    répond et surveille le certificat ; les alertes arrivent par ntfy. Cuby ne s'administre que
+                    depuis la maison.
                 </p>
             </article>
         </div>
@@ -323,17 +325,17 @@
             <article class="pj-card">
                 <p class="pj-card-num">// à venir</p>
                 <h3>Minecraft</h3>
-                <p>Un conteneur Docker par serveur, un dashboard pour les gérer sans SSH, et une adresse <code>mc.mattys-lachaise.fr</code> pour les amis.</p>
+                <p>Un dashboard en Go qui gère des serveurs, chacun dans son conteneur Docker avec sa propre adresse. Les amis verront leur état sur <code>mc.mattys-lachaise.fr</code>.</p>
             </article>
             <article class="pj-card">
                 <p class="pj-card-num">// à venir</p>
                 <h3>Sauvegardes hors site</h3>
-                <p>Aujourd'hui elles restent sur le même disque. Le but est d'en avoir une copie ailleurs.</p>
+                <p>Elles restent sur le même disque, avec une copie faite à la main sur mon PC. Prochaine étape : l'automatiser.</p>
             </article>
             <article class="pj-card">
                 <p class="pj-card-num">// à venir</p>
                 <h3>Le reste</h3>
-                <p>Passer à Proxmox VE 9, automatiser les mises à jour, rapatrier tous mes projets sur Forgejo, puis me passer de GitHub.</p>
+                <p>Automatiser les mises à jour, rapatrier mes projets sur Forgejo, puis me passer de GitHub. Peut-être, à terme, une machine plus récente.</p>
             </article>
         </div>
     </div>

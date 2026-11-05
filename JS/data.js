@@ -212,7 +212,7 @@ const DATA = {
         asideLabel: 'à côté',
         aside: [
             {name: 'uptime-kuma', desc: "Vérifie le site chaque minute, alerte sur mon téléphone.", status: 'running', statusLabel: 'running', tags: ['Docker', 'ntfy']},
-            {name: 'minecraft', desc: 'Un Docker par serveur de jeu, piloté par un dashboard maison.', status: 'planned', statusLabel: 'en refonte', tags: ['Docker'], manager: true}
+            {name: 'minecraft', desc: 'Supprimé pour repartir proprement. Reviendra avec un dashboard maison.', status: 'planned', statusLabel: 'à reconstruire', manager: true}
         ]
     },
 
@@ -225,7 +225,7 @@ const DATA = {
         },
         {
             name: 'HomeLab',
-            desc: 'Serveur Proxmox VE à la maison : Forgejo (GitHub auto-hébergé) en HTTPS, CI sur mon runner, copie automatique vers GitHub, CrowdSec.',
+            desc: 'Serveur Proxmox VE à la maison : Forgejo (GitHub auto-hébergé) en HTTPS, CI sur mon runner, copie automatique vers GitHub, sécurité auditée.',
             tags: ['Proxmox VE', 'LXC', 'Forgejo', 'Caddy', 'Docker']
         },
         {
